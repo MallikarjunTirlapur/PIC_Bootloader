@@ -1,46 +1,45 @@
 Version 3.2 HI-TECH Software Intermediate Code
-[p mainexit ]
-"35 system.h
-[v _initVarConfigPort `(v ~T0 @X0 0 ef ]
-"26 UARTDriver.h
-[v _driverConfig__UART `(v ~T0 @X0 0 ef ]
-"34 system.h
-[v _runStateMachine `(v ~T0 @X0 0 ef ]
-"1158 C:\Program Files (x86)\Microchip\xc8\v1.21\include\pic18f4431.h
-[v _PORTB `Vuc ~T0 @X0 0 e@3969 ]
-"5411
-[v _ANSEL0 `Vuc ~T0 @X0 0 e@4024 ]
-"5472
-[v _ANSEL1 `Vuc ~T0 @X0 0 e@4025 ]
-"2936
-[s S148 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S148 . TRISC0 TRISC1 TRISC2 TRISC3 TRISC4 TRISC5 TRISC6 TRISC7 ]
-"2946
-[s S149 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S149 . RC0 RC1 RC2 RC3 RC4 RC5 RC6 RC7 ]
-"2935
-[u S147 `S148 1 `S149 1 ]
-[n S147 . . . ]
-"2957
-[v _TRISCbits `VS147 ~T0 @X0 0 e@3988 ]
-"42 main.c
-[c E4666 0 1 2 3 4 .. ]
-[n E4666 SYSTEM_STATUS_Tag SYS_WAIT_FOR_CONFIG_CMND SYS_CONFIG_FLASH SYS_RCV_FIRMWARE_HEADER SYS_FIRMWARE_UPDATE SYS_RUN_APPLCN  ]
-"48
-[c E4673 1 2 3 4 5 .. ]
-[n E4673 SYSTEM_COM_PROTOCOL_MSG_Tag SYS_CONFIG_CMND_FROM_PROGRMR SYS_READY_FOR_FIRMWARE_HEADER SYS_FIRMWARE_HEADER_POS_ACK SYS_FIRMWARE_HEADER_NEG_ACK SYS_SND_NXT_CHUNK  ]
-"27 UARTDriver.h
-[v _sendData__UART `(v ~T0 @X0 0 ef1`uc ]
-"26 FlashDriver.h
-[v _updateTablPtr__Flash `(v ~T0 @X0 0 ef ]
-"25
-[v _eraseSeq__Flash `(v ~T0 @X0 0 ef ]
-"24 C:\Program Files (x86)\Microchip\xc8\v1.21\include\string.h
-[v _memset `(*v ~T0 @X0 0 ef3`*v`i`ui ]
-"43
-[v _memcmp `(i ~T0 @X0 0 ef3`*Cv`*Cv`ui ]
-"24 FlashDriver.h
-[v _updateFirmware__Flash `(v ~T0 @X0 0 ef ]
+"7692 C:\Program Files (x86)\Microchip\xc8\v1.21\include\pic18f4431.h
+[v _TABLAT `Vuc ~T0 @X0 0 e@4085 ]
+"7544
+[s S397 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S397 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
+"7554
+[s S398 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S398 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE GIE ]
+"7564
+[s S399 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S399 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE GIEL GIEH ]
+"7574
+[s S400 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S400 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
+"7584
+[s S401 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S401 . . GIEL GIEH ]
+"7543
+[u S396 `S397 1 `S398 1 `S399 1 `S400 1 `S401 1 ]
+[n S396 . . . . . . ]
+"7590
+[v _INTCONbits `VS396 ~T0 @X0 0 e@4082 ]
+"4332
+[s S214 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S214 . RD WR WREN WRERR FREE . CFGS EEPGD ]
+"4342
+[s S215 :6 `uc 1 :1 `uc 1 ]
+[n S215 . . EEFS ]
+"4331
+[u S213 `S214 1 `S215 1 ]
+[n S213 . . . ]
+"4347
+[v _EECON1bits `VS213 ~T0 @X0 0 e@4006 ]
+"4391
+[v _EECON2 `Vuc ~T0 @X0 0 e@4007 ]
+"7718
+[v _TBLPTRU `Vuc ~T0 @X0 0 e@4088 ]
+"7712
+[v _TBLPTRH `Vuc ~T0 @X0 0 e@4087 ]
+"7706
+[v _TBLPTRL `Vuc ~T0 @X0 0 e@4086 ]
 [; ;pic18f4431.h: 44: extern volatile unsigned char DFLTCON @ 0xF60;
 "46 C:\Program Files (x86)\Microchip\xc8\v1.21\include\pic18f4431.h
 [; ;pic18f4431.h: 46: asm("DFLTCON equ 0F60h");
@@ -4298,286 +4297,155 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;UARTDriver.h: 24: uint8_t uart_rxbuffer_counter;
 [; ;UARTDriver.h: 26: void driverConfig__UART(void);
 [; ;UARTDriver.h: 27: void sendData__UART(uint8_t data);
-"14 main.c
-[v _main `(v ~T0 @X0 1 ef ]
+"14 FlashDriver.c
+[v _updateFirmware__Flash `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 14: void main(void) {
-[e :U _main ]
+[; ;FlashDriver.c: 14: void updateFirmware__Flash(void) {
+[e :U _updateFirmware__Flash ]
 [f ]
-[; ;main.c: 16: initVarConfigPort();
+"15
+[v _size `i ~T0 @X0 1 a ]
+[; ;FlashDriver.c: 15: int size = 0;
+[e = _size -> 0 `i ]
 "16
-[e ( _initVarConfigPort ..  ]
-[; ;main.c: 17: driverConfig__UART();
-"17
-[e ( _driverConfig__UART ..  ]
-[; ;main.c: 18: runStateMachine();
+[v _bufIndex `i ~T0 @X0 1 a ]
+[; ;FlashDriver.c: 16: int bufIndex = 0;
+[e = _bufIndex -> 0 `i ]
+[; ;FlashDriver.c: 18: while (size < 8 && bufIndex < 64) {
 "18
-[e ( _runStateMachine ..  ]
-[; ;main.c: 19: }
+[e $U 446  ]
+[e :U 447 ]
+{
+[; ;FlashDriver.c: 19: for (int bc = 0; bc < 8; bc++) {
 "19
+{
+[v _bc `i ~T0 @X0 1 a ]
+[e = _bc -> 0 `i ]
+[e $ < _bc -> 8 `i 449  ]
+[e $U 450  ]
+[e :U 449 ]
+{
+[; ;FlashDriver.c: 20: TABLAT = uart_rxbuffer[bufIndex++];
+"20
+[e = _TABLAT *U + &U _uart_rxbuffer * -> -> ++ _bufIndex -> 1 `i `ui `ux -> -> # *U &U _uart_rxbuffer `ui `ux ]
+[; ;FlashDriver.c: 26: asm(" TBLWTPOSTINC");
+"26
+[; <"  TBLWTPOSTINC ;# ">
+"28
+}
+"19
+[e ++ _bc -> 1 `i ]
+[e $ < _bc -> 8 `i 449  ]
+[e :U 450 ]
+"28
+}
+[; ;FlashDriver.c: 28: }
+[; ;FlashDriver.c: 32: asm(" TBLRDPOSTDEC");
+"32
+[; <"  TBLRDPOSTDEC ;# ">
+[; ;FlashDriver.c: 36: INTCONbits.GIE = 0;
+"36
+[e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
+[; ;FlashDriver.c: 37: EECON1bits.WREN = 1;
+"37
+[e = . . _EECON1bits 0 2 -> -> 1 `i `uc ]
+[; ;FlashDriver.c: 38: EECON1bits.FREE = 0;
+"38
+[e = . . _EECON1bits 0 4 -> -> 0 `i `uc ]
+[; ;FlashDriver.c: 39: EECON2 = 0X55;
+"39
+[e = _EECON2 -> -> 85 `i `uc ]
+[; ;FlashDriver.c: 40: EECON2 = 0xAA;
+"40
+[e = _EECON2 -> -> 170 `i `uc ]
+[; ;FlashDriver.c: 41: EECON1bits.WR = 1;
+"41
+[e = . . _EECON1bits 0 1 -> -> 1 `i `uc ]
+[; ;FlashDriver.c: 42: asm(" nop");
+"42
+[; <"  nop ;# ">
+[; ;FlashDriver.c: 43: EECON1bits.WREN = 0;
+"43
+[e = . . _EECON1bits 0 2 -> -> 0 `i `uc ]
+[; ;FlashDriver.c: 44: INTCONbits.GIE = 1;
+"44
+[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
+[; ;FlashDriver.c: 47: asm(" TBLRDPOSTINC");
+"47
+[; <"  TBLRDPOSTINC ;# ">
+[; ;FlashDriver.c: 51: size = size + 1;
+"51
+[e = _size + _size -> 1 `i ]
+"52
+}
+[e :U 446 ]
+"18
+[e $ && < _size -> 8 `i < _bufIndex -> 64 `i 447  ]
+[e :U 448 ]
+[; ;FlashDriver.c: 52: }
+[; ;FlashDriver.c: 53: }
+"53
 [e :UE 445 ]
 }
-"21
-[v _initVarConfigPort `(v ~T0 @X0 1 ef ]
-{
-[; ;main.c: 21: void initVarConfigPort(void) {
-[e :U _initVarConfigPort ]
-[f ]
-[; ;main.c: 22: PORTB = 0;
-"22
-[e = _PORTB -> -> 0 `i `uc ]
-[; ;main.c: 23: ANSEL0 = 0;
-"23
-[e = _ANSEL0 -> -> 0 `i `uc ]
-[; ;main.c: 24: ANSEL1 = 0;
-"24
-[e = _ANSEL1 -> -> 0 `i `uc ]
-[; ;main.c: 26: TRISCbits.RC6 = 0;
-"26
-[e = . . _TRISCbits 1 6 -> -> 0 `i `uc ]
-[; ;main.c: 27: TRISCbits.RC7 = 1;
-"27
-[e = . . _TRISCbits 1 7 -> -> 1 `i `uc ]
-[; ;main.c: 29: uart_rxbuffer_counter = 0;
-"29
-[e = _uart_rxbuffer_counter -> -> 0 `i `uc ]
-[; ;main.c: 30: }
-"30
-[e :UE 446 ]
-}
-"32
-[v _runApplcn `(v ~T0 @X0 1 ef ]
-{
-[; ;main.c: 32: void runApplcn(void) {
-[e :U _runApplcn ]
-[f ]
-"33
-[v F4697 `(v ~T0 @X0 0 tf ]
-[v _applcFtr `*F4697 ~T0 @X0 1 a ]
-[; ;main.c: 33: void (*applcFtr)(void);
-[; ;main.c: 34: applcFtr = (void (*)(void))0x000400;
-"34
-[v F4699 `(v ~T0 @X0 0 tf ]
-[e = _applcFtr -> -> 1024 `i `*F4699 ]
-[; ;main.c: 35: applcFtr();
-"35
-[e ( *U _applcFtr ..  ]
-[; ;main.c: 39: }
-"39
-[e :UE 447 ]
-}
-"41
-[v _runStateMachine `(v ~T0 @X0 1 ef ]
-{
-[; ;main.c: 41: void runStateMachine(void) {
-[e :U _runStateMachine ]
-[f ]
-"42
-[v _currentState `E4666 ~T0 @X0 1 a ]
-[; ;main.c: 42: SYS_STATE_t currentState = SYS_WAIT_FOR_CONFIG_CMND;
-[e = _currentState . `E4666 0 ]
-[; ;main.c: 44: while (1) {
-"44
-[e :U 450 ]
-{
-[; ;main.c: 45: switch (currentState) {
-"45
-[e $U 453  ]
-{
-[; ;main.c: 47: case SYS_WAIT_FOR_CONFIG_CMND:
-"47
-[e :U 454 ]
-[; ;main.c: 48: if (!uart_rxbuffer_counter || (uart_rxbuffer [0] != SYS_CONFIG_CMND_FROM_PROGRMR)) {
-"48
-[e $ ! || ! != -> _uart_rxbuffer_counter `i -> -> -> 0 `i `uc `i != -> *U + &U _uart_rxbuffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _uart_rxbuffer `ui `ux `i -> . `E4673 0 `i 455  ]
-{
-[; ;main.c: 49: currentState = SYS_WAIT_FOR_CONFIG_CMND;
-"49
-[e = _currentState . `E4666 0 ]
-"50
-}
-[; ;main.c: 50: } else {
-[e $U 456  ]
-[e :U 455 ]
-{
-[; ;main.c: 51: sendData__UART(SYS_READY_FOR_FIRMWARE_HEADER);
-"51
-[e ( _sendData__UART (1 -> . `E4673 1 `uc ]
-[; ;main.c: 52: uart_rxbuffer_counter = 0;
-"52
-[e = _uart_rxbuffer_counter -> -> 0 `i `uc ]
-[; ;main.c: 53: currentState = SYS_CONFIG_FLASH;
-"53
-[e = _currentState . `E4666 1 ]
-"54
-}
-[e :U 456 ]
-[; ;main.c: 54: }
-[; ;main.c: 55: break;
 "55
-[e $U 452  ]
-[; ;main.c: 57: case SYS_CONFIG_FLASH:
+[v _updateTablPtr__Flash `(v ~T0 @X0 1 ef ]
+{
+[; ;FlashDriver.c: 55: void updateTablPtr__Flash(void){
+[e :U _updateTablPtr__Flash ]
+[f ]
+[; ;FlashDriver.c: 56: TBLPTRU = 0x00;
+"56
+[e = _TBLPTRU -> -> 0 `i `uc ]
+[; ;FlashDriver.c: 57: TBLPTRH = 0x04;
 "57
-[e :U 457 ]
-[; ;main.c: 58: updateTablPtr__Flash();
+[e = _TBLPTRH -> -> 4 `i `uc ]
+[; ;FlashDriver.c: 58: TBLPTRL = 0x00;
 "58
-[e ( _updateTablPtr__Flash ..  ]
-[; ;main.c: 59: eraseSeq__Flash();
+[e = _TBLPTRL -> -> 0 `i `uc ]
+[; ;FlashDriver.c: 59: }
 "59
-[e ( _eraseSeq__Flash ..  ]
-[; ;main.c: 60: currentState = SYS_RCV_FIRMWARE_HEADER;
-"60
-[e = _currentState . `E4666 2 ]
-[; ;main.c: 61: break;
+[e :UE 452 ]
+}
 "61
-[e $U 452  ]
-[; ;main.c: 63: case SYS_RCV_FIRMWARE_HEADER:
+[v _eraseSeq__Flash `(v ~T0 @X0 1 ef ]
+{
+[; ;FlashDriver.c: 61: void eraseSeq__Flash(void) {
+[e :U _eraseSeq__Flash ]
+[f ]
+[; ;FlashDriver.c: 62: EECON1bits.EEPGD = 1;
+"62
+[e = . . _EECON1bits 0 7 -> -> 1 `i `uc ]
+[; ;FlashDriver.c: 63: EECON1bits.CFGS = 0;
 "63
-[e :U 458 ]
-[; ;main.c: 64: {
+[e = . . _EECON1bits 0 6 -> -> 0 `i `uc ]
+[; ;FlashDriver.c: 64: EECON1bits.WREN = 1;
 "64
-{
+[e = . . _EECON1bits 0 2 -> -> 1 `i `uc ]
+[; ;FlashDriver.c: 65: EECON1bits.FREE = 1;
 "65
-[v _cmpArr `uc ~T0 @X0 -> 4 `i a ]
-[; ;main.c: 65: uint8_t cmpArr[4];
-[; ;main.c: 66: memset(cmpArr, 0x55, 4);
-"66
-[e ( _memset (3 , , -> &U _cmpArr `*v -> 85 `i -> -> 4 `i `ui ]
-[; ;main.c: 67: if (uart_rxbuffer_counter < 5) {
+[e = . . _EECON1bits 0 4 -> -> 1 `i `uc ]
+[; ;FlashDriver.c: 67: INTCONbits.GIE = 0;
 "67
-[e $ ! < -> _uart_rxbuffer_counter `i -> 5 `i 459  ]
-{
-[; ;main.c: 68: currentState = SYS_RCV_FIRMWARE_HEADER;
-"68
-[e = _currentState . `E4666 2 ]
+[e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
+[; ;FlashDriver.c: 69: EECON2 = 0x55;
 "69
-}
-[; ;main.c: 69: } else {
-[e $U 460  ]
-[e :U 459 ]
-{
-[; ;main.c: 70: if (memcmp(cmpArr, uart_rxbuffer, 4)) {
+[e = _EECON2 -> -> 85 `i `uc ]
+[; ;FlashDriver.c: 70: EECON2 = 0xAA;
 "70
-[e $ ! != ( _memcmp (3 , , -> &U _cmpArr `*Cv -> &U _uart_rxbuffer `*Cv -> -> 4 `i `ui -> 0 `i 461  ]
-{
-[; ;main.c: 71: sendData__UART(SYS_FIRMWARE_HEADER_NEG_ACK);
-"71
-[e ( _sendData__UART (1 -> . `E4673 3 `uc ]
+[e = _EECON2 -> -> 170 `i `uc ]
+[; ;FlashDriver.c: 72: EECON1bits.WR = 1;
 "72
-}
-[; ;main.c: 72: } else {
-[e $U 462  ]
-[e :U 461 ]
-{
-[; ;main.c: 73: firmwareSize = uart_rxbuffer[4];
-"73
-[e = _firmwareSize -> *U + &U _uart_rxbuffer * -> -> -> 4 `i `ui `ux -> -> # *U &U _uart_rxbuffer `ui `ux `us ]
-[; ;main.c: 74: uart_rxbuffer_counter = 0;
+[e = . . _EECON1bits 0 1 -> -> 1 `i `uc ]
+[; ;FlashDriver.c: 74: asm(" nop");
 "74
-[e = _uart_rxbuffer_counter -> -> 0 `i `uc ]
-[; ;main.c: 75: sendData__UART(SYS_FIRMWARE_HEADER_POS_ACK);
+[; <"  nop ;# ">
+[; ;FlashDriver.c: 75: EECON1bits.WREN = 0;
 "75
-[e ( _sendData__UART (1 -> . `E4673 2 `uc ]
-[; ;main.c: 76: currentState = SYS_FIRMWARE_UPDATE;
+[e = . . _EECON1bits 0 2 -> -> 0 `i `uc ]
+[; ;FlashDriver.c: 76: INTCONbits.GIE = 1;
 "76
-[e = _currentState . `E4666 3 ]
+[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
+[; ;FlashDriver.c: 77: }
 "77
-}
-[e :U 462 ]
-"79
-}
-[e :U 460 ]
-"80
-}
-[; ;main.c: 77: }
-[; ;main.c: 79: }
-[; ;main.c: 80: }
-[; ;main.c: 81: break;
-"81
-[e $U 452  ]
-[; ;main.c: 83: case SYS_FIRMWARE_UPDATE:
-"83
-[e :U 463 ]
-[; ;main.c: 84: if (uart_rxbuffer_counter < 64) {
-"84
-[e $ ! < -> _uart_rxbuffer_counter `i -> 64 `i 464  ]
-{
-[; ;main.c: 85: currentState = SYS_FIRMWARE_UPDATE;
-"85
-[e = _currentState . `E4666 3 ]
-"86
-}
-[; ;main.c: 86: } else {
-[e $U 465  ]
-[e :U 464 ]
-{
-[; ;main.c: 87: uart_rxbuffer_counter = 0;
-"87
-[e = _uart_rxbuffer_counter -> -> 0 `i `uc ]
-[; ;main.c: 88: updateFirmware__Flash();
-"88
-[e ( _updateFirmware__Flash ..  ]
-[; ;main.c: 89: if (--firmwareSize > 0) {
-"89
-[e $ ! > -> =- _firmwareSize -> -> 1 `i `us `ui -> -> 0 `i `ui 466  ]
-{
-[; ;main.c: 90: sendData__UART(SYS_SND_NXT_CHUNK);
-"90
-[e ( _sendData__UART (1 -> . `E4673 4 `uc ]
-"91
-}
-[; ;main.c: 91: } else {
-[e $U 467  ]
-[e :U 466 ]
-{
-[; ;main.c: 92: currentState = SYS_RUN_APPLCN;
-"92
-[e = _currentState . `E4666 4 ]
-"93
-}
-[e :U 467 ]
-"94
-}
-[e :U 465 ]
-[; ;main.c: 93: }
-[; ;main.c: 94: }
-[; ;main.c: 95: break;
-"95
-[e $U 452  ]
-[; ;main.c: 97: case SYS_RUN_APPLCN:
-"97
-[e :U 468 ]
-[; ;main.c: 98: runApplcn();
-"98
-[e ( _runApplcn ..  ]
-[; ;main.c: 99: currentState = SYS_WAIT_FOR_CONFIG_CMND;
-"99
-[e = _currentState . `E4666 0 ]
-[; ;main.c: 100: break;
-"100
-[e $U 452  ]
-"101
-}
-[; ;main.c: 101: }
-[e $U 452  ]
-"45
-[e :U 453 ]
-[e [\ _currentState , $ . `E4666 0 454
- , $ . `E4666 1 457
- , $ . `E4666 2 458
- , $ . `E4666 3 463
- , $ . `E4666 4 468
- 452 ]
-"101
-[e :U 452 ]
-"102
-}
-[e :U 449 ]
-"44
-[e $U 450  ]
-[e :U 451 ]
-[; ;main.c: 102: }
-[; ;main.c: 103: }
-"103
-[e :UE 448 ]
+[e :UE 453 ]
 }

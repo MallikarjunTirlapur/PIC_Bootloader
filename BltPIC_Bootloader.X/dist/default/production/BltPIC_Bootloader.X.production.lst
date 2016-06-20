@@ -1,152 +1,1674 @@
 
 
 Microchip Technology PIC18 LITE Macro Assembler V1.21 build 54009 
-                                                                                               Mon Jun 20 21:36:53 2016
+                                                                                               Tue Jul 26 08:42:45 2016
 
 Microchip Technology Omniscient Code Generator (Lite mode) build 54009
      1                           	processor	18F4431
      2                           	fnconf	rparam,??,?,0
      3                           	opt	pw 120
      4                           	opt	lm
-     5                           	psect	text0,global,reloc=2,class=CODE,delta=1
+     5                           	psect	intcode,global,reloc=2,class=CODE,delta=1
      6                           	psect	cinit,global,reloc=2,class=CODE,delta=1
-     7                           	psect	cstackCOMRAM,global,class=COMRAM,space=1,delta=1
-     8                           	psect	text1,global,reloc=2,class=CODE,delta=1
-     9                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1
-    10                           	psect	rparam,global,class=COMRAM,space=1,delta=1
-    11  0000                     
-    12                           ; 0 bytes @ 0x0
-    13 ;;
-    14 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
-    15 ;;
-    16 ;; *************** function _main *****************
-    17 ;; Defined at:
-    18 ;;		line 11 in file "main.c"
-    19 ;; Parameters:    Size  Location     Type
-    20 ;;		None
-    21 ;; Auto vars:     Size  Location     Type
-    22 ;;		None
-    23 ;; Return value:  Size  Location     Type
-    24 ;;		None               void
-    25 ;; Registers used:
-    26 ;;		cstack
-    27 ;; Tracked objects:
-    28 ;;		On entry : 0/0
-    29 ;;		On exit  : 0/0
-    30 ;;		Unchanged: 0/0
-    31 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2
-    32 ;;      Params:         0       0       0       0
-    33 ;;      Locals:         0       0       0       0
-    34 ;;      Temps:          0       0       0       0
-    35 ;;      Totals:         0       0       0       0
-    36 ;;Total ram usage:        0 bytes
-    37 ;; Hardware stack levels required when called:    1
-    38 ;; This function calls:
-    39 ;;		_runStateMachine
-    40 ;; This function is called by:
-    41 ;;		Startup code after reset
-    42 ;; This function uses a non-reentrant model
-    43 ;;
+     7                           	psect	bssCOMRAM,global,class=COMRAM,space=1,delta=1
+     8                           	psect	bssBANK0,global,class=BANK0,space=1,delta=1
+     9                           	psect	cstackCOMRAM,global,class=COMRAM,space=1,delta=1
+    10                           	psect	text0,global,reloc=2,class=CODE,delta=1
+    11                           	psect	text1,global,reloc=2,class=CODE,delta=1
+    12                           	psect	text2,global,reloc=2,class=CODE,delta=1
+    13                           	psect	text3,global,reloc=2,class=CODE,delta=1
+    14                           	psect	text4,global,reloc=2,class=CODE,delta=1
+    15                           	psect	text5,global,reloc=2,class=CODE,delta=1
+    16                           	psect	text6,global,reloc=2,class=CODE,delta=1
+    17                           	psect	text7,global,reloc=2,class=CODE,delta=1
+    18                           	psect	text8,global,reloc=2,class=CODE,delta=1
+    19                           	psect	text9,global,reloc=2,class=CODE,delta=1
+    20                           	psect	text10,global,reloc=2,class=CODE,delta=1
+    21                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1
+    22                           	psect	rparam,global,class=COMRAM,space=1,delta=1
+    23  0000                     _ANSEL0	set	4024
+    24  0000                     _ANSEL1	set	4025
+    25  0000                     _EECON1bits	set	4006
+    26  0000                     _EECON2	set	4007
+    27  0000                     _INTCONbits	set	4082
+    28  0000                     _PIE1bits	set	3997
+    29  0000                     _PIR1bits	set	3998
+    30  0000                     _PORTB	set	3969
+    31  0000                     _RCONbits	set	4048
+    32  0000                     _RCREG	set	4014
+    33  0000                     _RCSTA	set	4011
+    34  0000                     _RCSTAbits	set	4011
+    35  0000                     _SPBRG	set	4015
+    36  0000                     _TABLAT	set	4085
+    37  0000                     _TBLPTRH	set	4087
+    38  0000                     _TBLPTRL	set	4086
+    39  0000                     _TBLPTRU	set	4088
+    40  0000                     _TRISCbits	set	3988
+    41  0000                     _TXREG	set	4013
+    42  0000                     _TXSTA	set	4012
+    43  0000                     _TXSTAbits	set	4012
     44                           
-    45                           	psect	text0
-    46  003FF8                     __ptext0:
-    47                           	opt stack 0
-    48  003FF8                     _main:
-    49                           	opt stack 30
-    50                           
-    51                           ;main.c: 12: runStateMachine();
-    52                           
-    53                           ;incstack = 0
-    54                           ;incstack = 0
-    55  003FF8  ECF8  F01F         	call	_runStateMachine	;wreg free
-    56  003FFC  EF00  F000         	goto	start
-    57  004000                     __end_of_main:
-    58                           	opt stack 0
-    59                           
-    60                           ; #config settings
-    61                           
-    62                           	psect	cinit
-    63  003FF2                     __pcinit:
-    64                           	opt stack 0
-    65  003FF2                     start_initialization:
-    66                           	opt stack 0
-    67  003FF2                     __initialization:
-    68                           	opt stack 0
-    69  003FF2                     end_of_initialization:
-    70                           	opt stack 0
-    71  003FF2                     __end_of__initialization:
-    72                           	opt stack 0
-    73  003FF2  0100               	movlb	0
-    74  003FF4  EFFC  F01F         	goto	_main	;jump to C main() function
-    75                           
-    76                           	psect	cstackCOMRAM
-    77  000000                     __pcstackCOMRAM:
-    78                           	opt stack 0
-    79  000000                     
-    80 ;; *************** function _runStateMachine *****************
-    81 ;; Defined at:
-    82 ;;		line 16 in file "main.c"
-    83 ;; Parameters:    Size  Location     Type
-    84 ;;		None
-    85 ;; Auto vars:     Size  Location     Type
-    86 ;;		None
-    87 ;; Return value:  Size  Location     Type
-    88 ;;		None               void
-    89 ;; Registers used:
-    90 ;;		None
-    91 ;; Tracked objects:
-    92 ;;		On entry : 0/0
-    93 ;;		On exit  : 0/0
-    94 ;;		Unchanged: 0/0
-    95 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2
-    96 ;;      Params:         0       0       0       0
-    97 ;;      Locals:         0       0       0       0
-    98 ;;      Temps:          0       0       0       0
-    99 ;;      Totals:         0       0       0       0
-   100 ;;Total ram usage:        0 bytes
-   101 ;; Hardware stack levels used:    1
-   102 ;; This function calls:
-   103 ;;		Nothing
-   104 ;; This function is called by:
-   105 ;;		_main
-   106 ;; This function uses a non-reentrant model
-   107 ;;
-   108                           
-   109                           	psect	text1
-   110  003FF0                     __ptext1:
-   111                           	opt stack 0
-   112  003FF0                     _runStateMachine:
-   113                           	opt stack 30
-   114                           
-   115                           ;incstack = 0
-   116                           ;incstack = 0
-   117  003FF0  0012               	return	
-   118  003FF2                     __end_of_runStateMachine:
-   119                           	opt stack 0
-   120  0000                     
-   121                           	psect	rparam
+    45 ;; *************** function _InterruptHandlerHigh *****************
+    46 ;; Defined at:
+    47 ;;		line 38 in file "UARTDriver.c"
+    48 ;; Parameters:    Size  Location     Type
+    49 ;;		None
+    50 ;; Auto vars:     Size  Location     Type
+    51 ;;		None
+    52 ;; Return value:  Size  Location     Type
+    53 ;;		None               void
+    54 ;; Registers used:
+    55 ;;		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh
+    56 ;; Tracked objects:
+    57 ;;		On entry : 0/0
+    58 ;;		On exit  : 0/0
+    59 ;;		Unchanged: 0/0
+    60 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2
+    61 ;;      Params:         0       0       0       0
+    62 ;;      Locals:         0       0       0       0
+    63 ;;      Temps:         14       0       0       0
+    64 ;;      Totals:        14       0       0       0
+    65 ;;Total ram usage:       14 bytes
+    66 ;; Hardware stack levels used:    1
+    67 ;; This function calls:
+    68 ;;		Nothing
+    69 ;; This function is called by:
+    70 ;;		Interrupt level 2
+    71 ;; This function uses a non-reentrant model
+    72 ;;
+    73                           
+    74                           	psect	intcode
+    75  000008                     __pintcode:
+    76                           	opt stack 0
+    77                           
+    78                           ; #config settings
+    79  000008                     _InterruptHandlerHigh:
+    80                           	opt stack 27
+    81                           
+    82                           ;incstack = 0
+    83  000008  CFFA F001          	movff	pclath,??_InterruptHandlerHigh
+    84  00000C  CFFB F002          	movff	pclatu,??_InterruptHandlerHigh+1
+    85  000010  CFE9 F003          	movff	fsr0l,??_InterruptHandlerHigh+2
+    86  000014  CFEA F004          	movff	fsr0h,??_InterruptHandlerHigh+3
+    87  000018  CFE1 F005          	movff	fsr1l,??_InterruptHandlerHigh+4
+    88  00001C  CFE2 F006          	movff	fsr1h,??_InterruptHandlerHigh+5
+    89  000020  CFD9 F007          	movff	fsr2l,??_InterruptHandlerHigh+6
+    90  000024  CFDA F008          	movff	fsr2h,??_InterruptHandlerHigh+7
+    91  000028  CFF3 F009          	movff	prodl,??_InterruptHandlerHigh+8
+    92  00002C  CFF4 F00A          	movff	prodh,??_InterruptHandlerHigh+9
+    93  000030  CFF6 F00B          	movff	tblptrl,??_InterruptHandlerHigh+10
+    94  000034  CFF7 F00C          	movff	tblptrh,??_InterruptHandlerHigh+11
+    95  000038  CFF8 F00D          	movff	tblptru,??_InterruptHandlerHigh+12
+    96  00003C  CFF5 F00E          	movff	tablat,??_InterruptHandlerHigh+13
+    97  000040                     
+    98                           ;UARTDriver.c: 39: if (PIR1bits.RCIF) {
+    99  000040  AA9E               	btfss	3998,5,c	;volatile
+   100  000042  D001               	goto	i2u32_41
+   101  000044  D001               	goto	i2u32_40
+   102  000046                     i2u32_41:
+   103  000046  D00F               	goto	i2l143
+   104  000048                     i2u32_40:
+   105  000048                     
+   106                           ;UARTDriver.c: 40: uart_rxbuffer[uart_rxbuffer_counter++] = RCREG;
+   107  000048  5020               	movf	_uart_rxbuffer_counter,w,c
+   108  00004A  0D01               	mullw	1
+   109  00004C  0100               	movlb	0	; () banked
+   110  00004E  0E60               	movlw	low _uart_rxbuffer
+   111  000050  24F3               	addwf	prodl,w,c
+   112  000052  6ED9               	movwf	fsr2l,c
+   113  000054  0100               	movlb	0	; () banked
+   114  000056  0E00               	movlw	high _uart_rxbuffer
+   115  000058  20F4               	addwfc	prodh,w,c
+   116  00005A  6EDA               	movwf	fsr2h,c
+   117  00005C  CFAE FFDF          	movff	4014,indf2	;volatile
+   118  000060                     
+   119                           ; BSR set to: 0
+   120  000060  2A20               	incf	_uart_rxbuffer_counter,f,c
+   121  000062                     
+   122                           ; BSR set to: 0
+   123                           ;UARTDriver.c: 41: PIR1bits.RCIF = 0;
+   124  000062  9A9E               	bcf	3998,5,c	;volatile
+   125  000064  D000               	goto	i2l143
+   126  000066                     i2l143:
+   127  000066  C00E  FFF5         	movff	??_InterruptHandlerHigh+13,tablat
+   128  00006A  C00D  FFF8         	movff	??_InterruptHandlerHigh+12,tblptru
+   129  00006E  C00C  FFF7         	movff	??_InterruptHandlerHigh+11,tblptrh
+   130  000072  C00B  FFF6         	movff	??_InterruptHandlerHigh+10,tblptrl
+   131  000076  C00A  FFF4         	movff	??_InterruptHandlerHigh+9,prodh
+   132  00007A  C009  FFF3         	movff	??_InterruptHandlerHigh+8,prodl
+   133  00007E  C008  FFDA         	movff	??_InterruptHandlerHigh+7,fsr2h
+   134  000082  C007  FFD9         	movff	??_InterruptHandlerHigh+6,fsr2l
+   135  000086  C006  FFE2         	movff	??_InterruptHandlerHigh+5,fsr1h
+   136  00008A  C005  FFE1         	movff	??_InterruptHandlerHigh+4,fsr1l
+   137  00008E  C004  FFEA         	movff	??_InterruptHandlerHigh+3,fsr0h
+   138  000092  C003  FFE9         	movff	??_InterruptHandlerHigh+2,fsr0l
+   139  000096  C002  FFFB         	movff	??_InterruptHandlerHigh+1,pclatu
+   140  00009A  C001  FFFA         	movff	??_InterruptHandlerHigh,pclath
+   141  00009E  0011               	retfie		f
+   142  0000A0                     __end_of_InterruptHandlerHigh:
+   143                           	opt stack 0
+   144  0000                     pclatu	equ	0xFFB
+   145                           pclath	equ	0xFFA
+   146                           tblptru	equ	0xFF8
+   147                           tblptrh	equ	0xFF7
+   148                           tblptrl	equ	0xFF6
+   149                           tablat	equ	0xFF5
+   150                           prodh	equ	0xFF4
+   151                           prodl	equ	0xFF3
+   152                           fsr0h	equ	0xFEA
+   153                           fsr0l	equ	0xFE9
+   154                           fsr1h	equ	0xFE2
+   155                           fsr1l	equ	0xFE1
+   156                           indf2	equ	0xFDF
+   157                           fsr2h	equ	0xFDA
+   158                           fsr2l	equ	0xFD9
+   159                           
+   160                           	psect	cinit
+   161  00032C                     __pcinit:
+   162                           	opt stack 0
+   163  00032C                     start_initialization:
+   164                           	opt stack 0
+   165  00032C                     __initialization:
+   166                           	opt stack 0
+   167                           
+   168                           ; Clear objects allocated to BANK0 (64 bytes)
+   169  00032C  EE00  F060         	lfsr	0,__pbssBANK0
+   170  000330  0E40               	movlw	64
+   171  000332                     clear_0:
+   172  000332  6AEE               	clrf	postinc0,c
+   173  000334  06E8               	decf	wreg,f,c
+   174  000336  E1FD               	bnz	clear_0
+   175                           
+   176                           ; Clear objects allocated to COMRAM (3 bytes)
+   177  000338  6A20               	clrf	(__pbssCOMRAM+2)& (0+255),c
+   178  00033A  6A1F               	clrf	(__pbssCOMRAM+1)& (0+255),c
+   179  00033C  6A1E               	clrf	__pbssCOMRAM& (0+255),c
+   180  00033E                     end_of_initialization:
+   181                           	opt stack 0
+   182  00033E                     __end_of__initialization:
+   183                           	opt stack 0
+   184  00033E  0E00               	movlw	low (__Lmediumconst shr (0+16))
+   185  000340  6EF8               	movwf	tblptru,c
+   186  000342  0100               	movlb	0
+   187  000344  EFBF  F001         	goto	_main	;jump to C main() function
+   188                           pclatu	equ	0xFFB
+   189                           pclath	equ	0xFFA
+   190                           tblptru	equ	0xFF8
+   191                           tblptrh	equ	0xFF7
+   192                           tblptrl	equ	0xFF6
+   193                           tablat	equ	0xFF5
+   194                           prodh	equ	0xFF4
+   195                           prodl	equ	0xFF3
+   196                           postinc0	equ	0xFEE
+   197                           fsr0h	equ	0xFEA
+   198                           fsr0l	equ	0xFE9
+   199                           wreg	equ	0xFE8
+   200                           fsr1h	equ	0xFE2
+   201                           fsr1l	equ	0xFE1
+   202                           indf2	equ	0xFDF
+   203                           fsr2h	equ	0xFDA
+   204                           fsr2l	equ	0xFD9
+   205                           
+   206                           	psect	bssCOMRAM
+   207  00001E                     __pbssCOMRAM:
+   208                           	opt stack 0
+   209  00001E                     _firmwareSize:
+   210                           	opt stack 0
+   211  00001E                     	ds	2
+   212  000020                     _uart_rxbuffer_counter:
+   213                           	opt stack 0
+   214  000020                     	ds	1
+   215                           pclatu	equ	0xFFB
+   216                           pclath	equ	0xFFA
+   217                           tblptru	equ	0xFF8
+   218                           tblptrh	equ	0xFF7
+   219                           tblptrl	equ	0xFF6
+   220                           tablat	equ	0xFF5
+   221                           prodh	equ	0xFF4
+   222                           prodl	equ	0xFF3
+   223                           postinc0	equ	0xFEE
+   224                           fsr0h	equ	0xFEA
+   225                           fsr0l	equ	0xFE9
+   226                           wreg	equ	0xFE8
+   227                           fsr1h	equ	0xFE2
+   228                           fsr1l	equ	0xFE1
+   229                           indf2	equ	0xFDF
+   230                           fsr2h	equ	0xFDA
+   231                           fsr2l	equ	0xFD9
+   232                           
+   233                           	psect	bssBANK0
+   234  000060                     __pbssBANK0:
+   235                           	opt stack 0
+   236  000060                     _uart_rxbuffer:
+   237                           	opt stack 0
+   238  000060                     	ds	64
+   239                           pclatu	equ	0xFFB
+   240                           pclath	equ	0xFFA
+   241                           tblptru	equ	0xFF8
+   242                           tblptrh	equ	0xFF7
+   243                           tblptrl	equ	0xFF6
+   244                           tablat	equ	0xFF5
+   245                           prodh	equ	0xFF4
+   246                           prodl	equ	0xFF3
+   247                           postinc0	equ	0xFEE
+   248                           fsr0h	equ	0xFEA
+   249                           fsr0l	equ	0xFE9
+   250                           wreg	equ	0xFE8
+   251                           fsr1h	equ	0xFE2
+   252                           fsr1l	equ	0xFE1
+   253                           indf2	equ	0xFDF
+   254                           fsr2h	equ	0xFDA
+   255                           fsr2l	equ	0xFD9
+   256                           
+   257                           	psect	cstackCOMRAM
+   258  000001                     __pcstackCOMRAM:
+   259                           	opt stack 0
+   260  000001                     ??_InterruptHandlerHigh:
+   261                           
+   262                           ; 0 bytes @ 0x0
+   263  000001                     	ds	14
+   264  00000F                     ??_initVarConfigPort:
+   265  00000F                     ?_sendData__UART:
+   266                           	opt stack 0
+   267  00000F                     ?_memset:
+   268                           	opt stack 0
+   269  00000F                     ?_memcmp:
+   270                           	opt stack 0
+   271  00000F                     sendData__UART@data:
+   272                           	opt stack 0
+   273  00000F                     runApplcn@applcFtr:
+   274                           	opt stack 0
+   275  00000F                     updateFirmware__Flash@size:
+   276                           	opt stack 0
+   277  00000F                     memcmp@s1:
+   278                           	opt stack 0
+   279  00000F                     memset@p1:
+   280                           	opt stack 0
+   281                           
+   282                           ; 2 bytes @ 0xE
+   283  00000F                     	ds	1
+   284  000010                     
+   285                           ; 0 bytes @ 0xF
+   286  000010                     	ds	1
+   287  000011                     updateFirmware__Flash@bufIndex:
+   288                           	opt stack 0
+   289  000011                     memcmp@s2:
+   290                           	opt stack 0
+   291  000011                     memset@c:
+   292                           	opt stack 0
+   293                           
+   294                           ; 2 bytes @ 0x10
+   295  000011                     	ds	2
+   296  000013                     updateFirmware__Flash@bc:
+   297                           	opt stack 0
+   298  000013                     memcmp@n:
+   299                           	opt stack 0
+   300  000013                     memset@n:
+   301                           	opt stack 0
+   302                           
+   303                           ; 2 bytes @ 0x12
+   304  000013                     	ds	2
+   305  000015                     ??_memcmp:
+   306  000015                     memset@p:
+   307                           	opt stack 0
+   308                           
+   309                           ; 2 bytes @ 0x14
+   310  000015                     	ds	3
+   311  000018                     ??_runStateMachine:
+   312                           
+   313                           ; 0 bytes @ 0x17
+   314  000018                     	ds	1
+   315  000019                     runStateMachine@cmpArr:
+   316                           	opt stack 0
+   317                           
+   318                           ; 4 bytes @ 0x18
+   319  000019                     	ds	4
+   320  00001D                     runStateMachine@currentState:
+   321                           	opt stack 0
+   322                           
+   323                           ; 1 bytes @ 0x1C
+   324  00001D                     	ds	1
+   325  00001E                     pclatu	equ	0xFFB
+   326                           pclath	equ	0xFFA
+   327                           tblptru	equ	0xFF8
+   328                           tblptrh	equ	0xFF7
+   329                           tblptrl	equ	0xFF6
+   330                           tablat	equ	0xFF5
+   331                           prodh	equ	0xFF4
+   332                           prodl	equ	0xFF3
+   333                           postinc0	equ	0xFEE
+   334                           fsr0h	equ	0xFEA
+   335                           fsr0l	equ	0xFE9
+   336                           wreg	equ	0xFE8
+   337                           fsr1h	equ	0xFE2
+   338                           fsr1l	equ	0xFE1
+   339                           indf2	equ	0xFDF
+   340                           fsr2h	equ	0xFDA
+   341                           fsr2l	equ	0xFD9
+   342                           
+   343                           ; 0 bytes @ 0x1D
+   344 ;;
+   345 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   346 ;;
+   347 ;; *************** function _main *****************
+   348 ;; Defined at:
+   349 ;;		line 14 in file "main.c"
+   350 ;; Parameters:    Size  Location     Type
+   351 ;;		None
+   352 ;; Auto vars:     Size  Location     Type
+   353 ;;		None
+   354 ;; Return value:  Size  Location     Type
+   355 ;;		None               void
+   356 ;; Registers used:
+   357 ;;		wreg, fsr0l, fsr0h, fsr1l, fsr1h, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, pclat, btemp, btemp+1, btemp+2, bt
+      +emp+3, btemp+4, btemp+5, btemp+6, btemp+7, tosl, structret, tblptrl, tblptrh, tblptru, prodl, prodh, bsr, cstack
+   358 ;; Tracked objects:
+   359 ;;		On entry : 0/0
+   360 ;;		On exit  : 0/0
+   361 ;;		Unchanged: 0/0
+   362 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2
+   363 ;;      Params:         0       0       0       0
+   364 ;;      Locals:         0       0       0       0
+   365 ;;      Temps:          0       0       0       0
+   366 ;;      Totals:         0       0       0       0
+   367 ;;Total ram usage:        0 bytes
+   368 ;; Hardware stack levels required when called:    4
+   369 ;; This function calls:
+   370 ;;		_initVarConfigPort
+   371 ;;		_driverConfig__UART
+   372 ;;		_runStateMachine
+   373 ;; This function is called by:
+   374 ;;		Startup code after reset
+   375 ;; This function uses a non-reentrant model
+   376 ;;
+   377                           
+   378                           	psect	text0
+   379  00037E                     __ptext0:
+   380                           	opt stack 0
+   381  00037E                     _main:
+   382                           	opt stack 27
+   383                           
+   384                           ;main.c: 16: initVarConfigPort();
+   385                           
+   386                           ;incstack = 0
+   387                           ;incstack = 0
+   388  00037E  ECB2  F001         	call	_initVarConfigPort	;wreg free
+   389                           
+   390                           ;main.c: 17: driverConfig__UART();
+   391  000382  EC87  F001         	call	_driverConfig__UART	;wreg free
+   392                           
+   393                           ;main.c: 18: runStateMachine();
+   394  000386  EC52  F000         	call	_runStateMachine	;wreg free
+   395  00038A  EF50  F000         	goto	start
+   396  00038E                     __end_of_main:
+   397                           	opt stack 0
+   398                           pclatu	equ	0xFFB
+   399                           pclath	equ	0xFFA
+   400                           tblptru	equ	0xFF8
+   401                           tblptrh	equ	0xFF7
+   402                           tblptrl	equ	0xFF6
+   403                           tablat	equ	0xFF5
+   404                           prodh	equ	0xFF4
+   405                           prodl	equ	0xFF3
+   406                           postinc0	equ	0xFEE
+   407                           fsr0h	equ	0xFEA
+   408                           fsr0l	equ	0xFE9
+   409                           wreg	equ	0xFE8
+   410                           fsr1h	equ	0xFE2
+   411                           fsr1l	equ	0xFE1
+   412                           indf2	equ	0xFDF
+   413                           fsr2h	equ	0xFDA
+   414                           fsr2l	equ	0xFD9
+   415                           
+   416 ;; *************** function _runStateMachine *****************
+   417 ;; Defined at:
+   418 ;;		line 41 in file "main.c"
+   419 ;; Parameters:    Size  Location     Type
+   420 ;;		None
+   421 ;; Auto vars:     Size  Location     Type
+   422 ;;  cmpArr          4   24[COMRAM] unsigned char [4]
+   423 ;;  currentState    1   28[COMRAM] enum E4666
+   424 ;; Return value:  Size  Location     Type
+   425 ;;		None               void
+   426 ;; Registers used:
+   427 ;;		wreg, fsr2l, fsr2h, status,2, status,0, pclat, tosl, cstack
+   428 ;; Tracked objects:
+   429 ;;		On entry : 0/0
+   430 ;;		On exit  : 0/0
+   431 ;;		Unchanged: 0/0
+   432 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2
+   433 ;;      Params:         0       0       0       0
+   434 ;;      Locals:         5       0       0       0
+   435 ;;      Temps:          1       0       0       0
+   436 ;;      Totals:         6       0       0       0
+   437 ;;Total ram usage:        6 bytes
+   438 ;; Hardware stack levels used:    1
+   439 ;; Hardware stack levels required when called:    3
+   440 ;; This function calls:
+   441 ;;		_runApplcn
+   442 ;;		_sendData__UART
+   443 ;;		_updateTablPtr__Flash
+   444 ;;		_eraseSeq__Flash
+   445 ;;		_memset
+   446 ;;		_memcmp
+   447 ;;		_updateFirmware__Flash
+   448 ;; This function is called by:
+   449 ;;		_main
+   450 ;; This function uses a non-reentrant model
+   451 ;;
+   452                           
+   453                           	psect	text1
+   454  0000A4                     __ptext1:
+   455                           	opt stack 0
+   456  0000A4                     _runStateMachine:
+   457                           	opt stack 0
+   458  0000A4  D077               	goto	L5
+   459  0000A6                     l904:
+   460                           
+   461                           ;main.c: 48: if (!uart_rxbuffer_counter || (uart_rxbuffer [0] != SYS_CONFIG_CMND_FROM_PR
+      +                          OGRMR)) {
+   462  0000A6  5020               	movf	_uart_rxbuffer_counter,w,c
+   463  0000A8  B4D8               	btfsc	status,2,c
+   464  0000AA  D074               	goto	L5
+   465  0000AC  0100               	movlb	0	; () banked
+   466  0000AE  0100               	movlb	0	; () banked
+   467  0000B0  0560               	decf	_uart_rxbuffer& (0+255),w,b
+   468  0000B2  A4D8               	btfss	status,2,c
+   469                           
+   470                           ; BSR set to: 0
+   471  0000B4  D06F               	goto	L5
+   472                           
+   473                           ;main.c: 51: sendData__UART(SYS_READY_FOR_FIRMWARE_HEADER);
+   474                           
+   475                           ;main.c: 50: } else {
+   476                           
+   477                           ;main.c: 49: currentState = SYS_WAIT_FOR_CONFIG_CMND;
+   478  0000B6  6E18               	movwf	??_runStateMachine& (0+255),c
+   479  0000B8  0E02               	movlw	2
+   480  0000BA  6E0F               	movwf	?_sendData__UART,c
+   481  0000BC  5018               	movf	??_runStateMachine& (0+255),w,c
+   482  0000BE  ECCE  F001         	call	_sendData__UART	;wreg free
+   483                           
+   484                           ;main.c: 52: uart_rxbuffer_counter = 0;
+   485  0000C2  6E18               	movwf	??_runStateMachine& (0+255),c
+   486  0000C4  0E00               	movlw	0
+   487  0000C6  6E20               	movwf	_uart_rxbuffer_counter,c
+   488  0000C8  5018               	movf	??_runStateMachine& (0+255),w,c
+   489                           
+   490                           ;main.c: 53: currentState = SYS_CONFIG_FLASH;
+   491  0000CA  6E18               	movwf	??_runStateMachine& (0+255),c
+   492  0000CC  0E01               	movlw	1
+   493  0000CE  D064               	goto	L3
+   494  0000D0                     l916:
+   495                           
+   496                           ;main.c: 58: updateTablPtr__Flash();
+   497  0000D0  ECC7  F001         	call	_updateTablPtr__Flash	;wreg free
+   498                           
+   499                           ;main.c: 59: eraseSeq__Flash();
+   500  0000D4  ECA4  F001         	call	_eraseSeq__Flash	;wreg free
+   501  0000D8  D011               	goto	u190
+   502  0000DA                     l920:
+   503                           
+   504                           ;main.c: 64: {
+   505                           ;main.c: 65: uint8_t cmpArr[4];
+   506                           ;main.c: 66: memset(cmpArr, 0x55, 4);
+   507  0000DA  0E00               	movlw	high runStateMachine@cmpArr
+   508  0000DC  6E10               	movwf	?_memset+1,c
+   509  0000DE  0E19               	movlw	low runStateMachine@cmpArr
+   510  0000E0  6E0F               	movwf	?_memset,c
+   511  0000E2  0E00               	movlw	0
+   512  0000E4  6E12               	movwf	?_memset+3,c
+   513  0000E6  0E55               	movlw	85
+   514  0000E8  6E11               	movwf	?_memset+2,c
+   515  0000EA  0E00               	movlw	0
+   516  0000EC  6E14               	movwf	?_memset+5,c
+   517  0000EE  0E04               	movlw	4
+   518  0000F0  6E13               	movwf	?_memset+4,c
+   519  0000F2  EC60  F001         	call	_memset	;wreg free
+   520                           
+   521                           ;main.c: 67: if (uart_rxbuffer_counter < 5) {
+   522  0000F6  0E05               	movlw	5
+   523  0000F8  6020               	cpfslt	_uart_rxbuffer_counter,c
+   524  0000FA  D003               	goto	l926
+   525  0000FC                     u190:
+   526                           
+   527                           ;main.c: 68: currentState = SYS_RCV_FIRMWARE_HEADER;
+   528  0000FC  6E18               	movwf	??_runStateMachine& (0+255),c
+   529  0000FE  0E02               	movlw	2
+   530  000100  D04B               	goto	L3
+   531  000102                     l926:
+   532                           
+   533                           ;main.c: 70: if (memcmp(cmpArr, uart_rxbuffer, 4)) {
+   534  000102  0E00               	movlw	high runStateMachine@cmpArr
+   535  000104  6E10               	movwf	?_memcmp+1,c
+   536  000106  0E19               	movlw	low runStateMachine@cmpArr
+   537  000108  6E0F               	movwf	?_memcmp,c
+   538  00010A  0100               	movlb	0	; () banked
+   539  00010C  0E00               	movlw	high _uart_rxbuffer
+   540  00010E  6E12               	movwf	?_memcmp+3,c
+   541  000110  0100               	movlb	0	; () banked
+   542  000112  0E60               	movlw	low _uart_rxbuffer
+   543  000114  6E11               	movwf	?_memcmp+2,c
+   544  000116  0E00               	movlw	0
+   545  000118  6E14               	movwf	?_memcmp+5,c
+   546  00011A  0E04               	movlw	4
+   547  00011C  6E13               	movwf	?_memcmp+4,c
+   548  00011E  EC28  F001         	call	_memcmp	;wreg free
+   549  000122  5010               	movf	?_memcmp+1,w,c
+   550  000124  100F               	iorwf	?_memcmp,w,c
+   551  000126  B4D8               	btfsc	status,2,c
+   552  000128  D007               	goto	l56
+   553                           
+   554                           ;main.c: 71: sendData__UART(SYS_FIRMWARE_HEADER_NEG_ACK);
+   555  00012A  6E18               	movwf	??_runStateMachine& (0+255),c
+   556  00012C  0E04               	movlw	4
+   557  00012E  6E0F               	movwf	?_sendData__UART,c
+   558  000130  5018               	movf	??_runStateMachine& (0+255),w,c
+   559  000132  ECCE  F001         	call	_sendData__UART	;wreg free
+   560                           
+   561                           ;main.c: 72: } else {
+   562  000136  D032               	goto	l956
+   563  000138                     l56:
+   564                           
+   565                           ;main.c: 73: firmwareSize = uart_rxbuffer[4];
+   566  000138  0100               	movlb	0	; () banked
+   567  00013A  C064  F01E         	movff	_uart_rxbuffer+4,_firmwareSize
+   568  00013E  6A1F               	clrf	_firmwareSize+1,c
+   569                           
+   570                           ; BSR set to: 0
+   571                           ;main.c: 74: uart_rxbuffer_counter = 0;
+   572  000140  6E18               	movwf	??_runStateMachine& (0+255),c
+   573  000142  0E00               	movlw	0
+   574  000144  6E20               	movwf	_uart_rxbuffer_counter,c
+   575  000146  5018               	movf	??_runStateMachine& (0+255),w,c
+   576                           
+   577                           ; BSR set to: 0
+   578                           ;main.c: 75: sendData__UART(SYS_FIRMWARE_HEADER_POS_ACK);
+   579  000148  6E18               	movwf	??_runStateMachine& (0+255),c
+   580  00014A  0E03               	movlw	3
+   581  00014C  6E0F               	movwf	?_sendData__UART,c
+   582  00014E  5018               	movf	??_runStateMachine& (0+255),w,c
+   583  000150  ECCE  F001         	call	_sendData__UART	;wreg free
+   584  000154  D003               	goto	L4
+   585  000156                     l936:
+   586                           
+   587                           ;main.c: 84: if (uart_rxbuffer_counter < 64) {
+   588  000156  0E40               	movlw	64
+   589  000158  6020               	cpfslt	_uart_rxbuffer_counter,c
+   590  00015A  D003               	goto	l940
+   591  00015C                     L4:
+   592                           
+   593                           ;main.c: 85: currentState = SYS_FIRMWARE_UPDATE;
+   594  00015C  6E18               	movwf	??_runStateMachine& (0+255),c
+   595  00015E  0E03               	movlw	3
+   596  000160  D01B               	goto	L3
+   597  000162                     l940:
+   598                           
+   599                           ;main.c: 87: uart_rxbuffer_counter = 0;
+   600  000162  6E18               	movwf	??_runStateMachine& (0+255),c
+   601  000164  0E00               	movlw	0
+   602  000166  6E20               	movwf	_uart_rxbuffer_counter,c
+   603  000168  5018               	movf	??_runStateMachine& (0+255),w,c
+   604                           
+   605                           ;main.c: 88: updateFirmware__Flash();
+   606  00016A  ECDF  F000         	call	_updateFirmware__Flash	;wreg free
+   607                           
+   608                           ;main.c: 89: if (--firmwareSize > 0) {
+   609  00016E  061E               	decf	_firmwareSize,f,c
+   610  000170  A0D8               	btfss	status,0,c
+   611  000172  061F               	decf	_firmwareSize+1,f,c
+   612  000174  501F               	movf	(_firmwareSize+1)& (0+255),w,c
+   613  000176  101E               	iorwf	_firmwareSize& (0+255),w,c
+   614  000178  B4D8               	btfsc	status,2,c
+   615  00017A  D007               	goto	l948
+   616                           
+   617                           ;main.c: 90: sendData__UART(SYS_SND_NXT_CHUNK);
+   618  00017C  6E18               	movwf	??_runStateMachine& (0+255),c
+   619  00017E  0E05               	movlw	5
+   620  000180  6E0F               	movwf	?_sendData__UART,c
+   621  000182  5018               	movf	??_runStateMachine& (0+255),w,c
+   622  000184  ECCE  F001         	call	_sendData__UART	;wreg free
+   623                           
+   624                           ;main.c: 91: } else {
+   625  000188  D009               	goto	l956
+   626  00018A                     l948:
+   627                           
+   628                           ;main.c: 92: currentState = SYS_RUN_APPLCN;
+   629  00018A  6E18               	movwf	??_runStateMachine& (0+255),c
+   630  00018C  0E04               	movlw	4
+   631  00018E  D004               	goto	L3
+   632  000190                     l950:
+   633                           
+   634                           ;main.c: 98: runApplcn();
+   635  000190  EC76  F001         	call	_runApplcn	;wreg free
+   636  000194                     L5:
+   637                           
+   638                           ;main.c: 99: currentState = SYS_WAIT_FOR_CONFIG_CMND;
+   639  000194  6E18               	movwf	??_runStateMachine& (0+255),c
+   640  000196  0E00               	movlw	0
+   641  000198                     L3:
+   642  000198  6E1D               	movwf	runStateMachine@currentState,c
+   643  00019A  5018               	movf	??_runStateMachine& (0+255),w,c
+   644  00019C                     l956:
+   645  00019C  501D               	movf	runStateMachine@currentState,w,c
+   646                           
+   647                           ; Switch size 1, requested type "space"
+   648                           ; Number of cases is 5, Range of values is 0 to 4
+   649                           ; switch strategies available:
+   650                           ; Name         Instructions Cycles
+   651                           ; simple_byte           16     9 (average)
+   652                           ;	Chosen strategy is simple_byte
+   653  00019E  0A00               	xorlw	0	; case 0
+   654  0001A0  B4D8               	btfsc	status,2,c
+   655  0001A2  D781               	goto	l904
+   656  0001A4  0A01               	xorlw	1	; case 1
+   657  0001A6  B4D8               	btfsc	status,2,c
+   658  0001A8  D793               	goto	l916
+   659  0001AA  0A03               	xorlw	3	; case 2
+   660  0001AC  B4D8               	btfsc	status,2,c
+   661  0001AE  D795               	goto	l920
+   662  0001B0  0A01               	xorlw	1	; case 3
+   663  0001B2  B4D8               	btfsc	status,2,c
+   664  0001B4  D7D0               	goto	l936
+   665  0001B6  0A07               	xorlw	7	; case 4
+   666  0001B8  B4D8               	btfsc	status,2,c
+   667  0001BA  D7EA               	goto	l950
+   668  0001BC  D7EF               	goto	l956
+   669  0001BE                     __end_of_runStateMachine:
+   670                           	opt stack 0
+   671                           pclatu	equ	0xFFB
+   672                           pclath	equ	0xFFA
+   673                           tblptru	equ	0xFF8
+   674                           tblptrh	equ	0xFF7
+   675                           tblptrl	equ	0xFF6
+   676                           tablat	equ	0xFF5
+   677                           prodh	equ	0xFF4
+   678                           prodl	equ	0xFF3
+   679                           postinc0	equ	0xFEE
+   680                           fsr0h	equ	0xFEA
+   681                           fsr0l	equ	0xFE9
+   682                           wreg	equ	0xFE8
+   683                           fsr1h	equ	0xFE2
+   684                           fsr1l	equ	0xFE1
+   685                           indf2	equ	0xFDF
+   686                           fsr2h	equ	0xFDA
+   687                           fsr2l	equ	0xFD9
+   688                           status	equ	0xFD8
+   689                           
+   690 ;; *************** function _updateFirmware__Flash *****************
+   691 ;; Defined at:
+   692 ;;		line 14 in file "FlashDriver.c"
+   693 ;; Parameters:    Size  Location     Type
+   694 ;;		None
+   695 ;; Auto vars:     Size  Location     Type
+   696 ;;  bc              2   18[COMRAM] int 
+   697 ;;  bufIndex        2   16[COMRAM] int 
+   698 ;;  size            2   14[COMRAM] int 
+   699 ;; Return value:  Size  Location     Type
+   700 ;;		None               void
+   701 ;; Registers used:
+   702 ;;		wreg, fsr2l, fsr2h, status,2, status,0
+   703 ;; Tracked objects:
+   704 ;;		On entry : 0/0
+   705 ;;		On exit  : 0/0
+   706 ;;		Unchanged: 0/0
+   707 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2
+   708 ;;      Params:         0       0       0       0
+   709 ;;      Locals:         6       0       0       0
+   710 ;;      Temps:          0       0       0       0
+   711 ;;      Totals:         6       0       0       0
+   712 ;;Total ram usage:        6 bytes
+   713 ;; Hardware stack levels used:    1
+   714 ;; Hardware stack levels required when called:    1
+   715 ;; This function calls:
+   716 ;;		Nothing
+   717 ;; This function is called by:
+   718 ;;		_runStateMachine
+   719 ;; This function uses a non-reentrant model
+   720 ;;
+   721                           
+   722                           	psect	text2
+   723  0001BE                     __ptext2:
+   724                           	opt stack 0
+   725  0001BE                     _updateFirmware__Flash:
+   726                           	opt stack 28
+   727                           
+   728                           ;FlashDriver.c: 15: int size = 0;
+   729                           
+   730                           ;incstack = 0
+   731                           ;incstack = 0
+   732  0001BE  0E00               	movlw	0
+   733  0001C0  6E10               	movwf	updateFirmware__Flash@size+1,c
+   734  0001C2  0E00               	movlw	0
+   735  0001C4  6E0F               	movwf	updateFirmware__Flash@size,c
+   736                           
+   737                           ;FlashDriver.c: 16: int bufIndex = 0;
+   738  0001C6  0E00               	movlw	0
+   739  0001C8  6E12               	movwf	updateFirmware__Flash@bufIndex+1,c
+   740  0001CA  0E00               	movlw	0
+   741  0001CC  6E11               	movwf	updateFirmware__Flash@bufIndex,c
+   742                           
+   743                           ;FlashDriver.c: 18: while (size < 8 && bufIndex < 64) {
+   744  0001CE  D02F               	goto	l1026
+   745  0001D0                     l1002:
+   746                           
+   747                           ;FlashDriver.c: 19: for (int bc = 0; bc < 8; bc++) {
+   748  0001D0  0E00               	movlw	0
+   749  0001D2  6E14               	movwf	updateFirmware__Flash@bc+1,c
+   750  0001D4  0E00               	movlw	0
+   751  0001D6  6E13               	movwf	updateFirmware__Flash@bc,c
+   752  0001D8  5014               	movf	updateFirmware__Flash@bc+1,w,c
+   753  0001DA  0A80               	xorlw	128
+   754  0001DC  0F80               	addlw	-128
+   755  0001DE  0E08               	movlw	8
+   756  0001E0  B4D8               	btfsc	status,2,c
+   757  0001E2  5C13               	subwf	updateFirmware__Flash@bc,w,c
+   758  0001E4  B0D8               	btfsc	status,0,c
+   759  0001E6  D010               	goto	l92
+   760                           
+   761                           ;FlashDriver.c: 20: TABLAT = uart_rxbuffer[bufIndex++];
+   762  0001E8  0100               	movlb	0	; () banked
+   763  0001EA  0E60               	movlw	low _uart_rxbuffer
+   764  0001EC  2411               	addwf	updateFirmware__Flash@bufIndex,w,c
+   765  0001EE  6ED9               	movwf	fsr2l,c
+   766  0001F0  0100               	movlb	0	; () banked
+   767  0001F2  0E00               	movlw	high _uart_rxbuffer
+   768  0001F4  2012               	addwfc	updateFirmware__Flash@bufIndex+1,w,c
+   769  0001F6  6EDA               	movwf	fsr2h,c
+   770  0001F8  50DF               	movf	indf2,w,c
+   771  0001FA  6EF5               	movwf	tablat,c	;volatile
+   772                           
+   773                           ; BSR set to: 0
+   774  0001FC  4A11               	infsnz	updateFirmware__Flash@bufIndex,f,c
+   775  0001FE  2A12               	incf	updateFirmware__Flash@bufIndex+1,f,c
+   776  000200  000D               	tblwt		*+	;# 
+   777  000202  4A13               	infsnz	updateFirmware__Flash@bc,f,c
+   778  000204  2A14               	incf	updateFirmware__Flash@bc+1,f,c
+   779  000206  D7E8               	goto	L6
+   780  000208                     l92:
+   781  000208  000A               	tblrd		*-	;# 
+   782                           
+   783                           ;FlashDriver.c: 36: INTCONbits.GIE = 0;
+   784  00020A  9EF2               	bcf	intcon,7,c	;volatile
+   785                           
+   786                           ;FlashDriver.c: 37: EECON1bits.WREN = 1;
+   787  00020C  84A6               	bsf	4006,2,c	;volatile
+   788                           
+   789                           ;FlashDriver.c: 38: EECON1bits.FREE = 0;
+   790  00020E  98A6               	bcf	4006,4,c	;volatile
+   791                           
+   792                           ;FlashDriver.c: 39: EECON2 = 0X55;
+   793  000210  0E55               	movlw	85
+   794  000212  6EA7               	movwf	4007,c	;volatile
+   795                           
+   796                           ;FlashDriver.c: 40: EECON2 = 0xAA;
+   797  000214  0EAA               	movlw	170
+   798  000216  6EA7               	movwf	4007,c	;volatile
+   799                           
+   800                           ;FlashDriver.c: 41: EECON1bits.WR = 1;
+   801  000218  82A6               	bsf	4006,1,c	;volatile
+   802  00021A  F000               	nop		;# 
+   803                           
+   804                           ;FlashDriver.c: 43: EECON1bits.WREN = 0;
+   805  00021C  94A6               	bcf	4006,2,c	;volatile
+   806                           
+   807                           ;FlashDriver.c: 44: INTCONbits.GIE = 1;
+   808  00021E  8EF2               	bsf	intcon,7,c	;volatile
+   809  000220  0009               	tblrd		*+	;# 
+   810                           
+   811                           ;FlashDriver.c: 51: size = size + 1;
+   812  000222  0E01               	movlw	1
+   813  000224  240F               	addwf	updateFirmware__Flash@size,w,c
+   814  000226  6E0F               	movwf	updateFirmware__Flash@size,c
+   815  000228  0E00               	movlw	0
+   816  00022A  2010               	addwfc	updateFirmware__Flash@size+1,w,c
+   817  00022C  6E10               	movwf	updateFirmware__Flash@size+1,c
+   818  00022E                     l1026:
+   819  00022E  5010               	movf	updateFirmware__Flash@size+1,w,c
+   820  000230  0A80               	xorlw	128
+   821  000232  0F80               	addlw	-128
+   822  000234  0E08               	movlw	8
+   823  000236  B4D8               	btfsc	status,2,c
+   824  000238  5C0F               	subwf	updateFirmware__Flash@size,w,c
+   825  00023A  B0D8               	btfsc	status,0,c
+   826  00023C  D008               	goto	l96
+   827  00023E  5012               	movf	updateFirmware__Flash@bufIndex+1,w,c
+   828  000240  0A80               	xorlw	128
+   829  000242  0F80               	addlw	-128
+   830  000244  0E40               	movlw	64
+   831  000246  B4D8               	btfsc	status,2,c
+   832  000248  5C11               	subwf	updateFirmware__Flash@bufIndex,w,c
+   833  00024A  A0D8               	btfss	status,0,c
+   834  00024C  D7C1               	goto	l1002
+   835  00024E                     l96:
+   836  00024E  0012               	return	
+   837  000250                     __end_of_updateFirmware__Flash:
+   838                           	opt stack 0
+   839                           pclatu	equ	0xFFB
+   840                           pclath	equ	0xFFA
+   841                           tblptru	equ	0xFF8
+   842                           tblptrh	equ	0xFF7
+   843                           tblptrl	equ	0xFF6
+   844                           tablat	equ	0xFF5
+   845                           prodh	equ	0xFF4
+   846                           prodl	equ	0xFF3
+   847                           intcon	equ	0xFF2
+   848                           postinc0	equ	0xFEE
+   849                           fsr0h	equ	0xFEA
+   850                           fsr0l	equ	0xFE9
+   851                           wreg	equ	0xFE8
+   852                           fsr1h	equ	0xFE2
+   853                           fsr1l	equ	0xFE1
+   854                           indf2	equ	0xFDF
+   855                           fsr2h	equ	0xFDA
+   856                           fsr2l	equ	0xFD9
+   857                           status	equ	0xFD8
+   858                           
+   859 ;; *************** function _memcmp *****************
+   860 ;; Defined at:
+   861 ;;		line 4 in file "C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\memcmp.c"
+   862 ;; Parameters:    Size  Location     Type
+   863 ;;  s1              2   14[COMRAM] PTR const void 
+   864 ;;		 -> runStateMachine@cmpArr(4), 
+   865 ;;  s2              2   16[COMRAM] PTR const void 
+   866 ;;		 -> uart_rxbuffer(64), 
+   867 ;;  n               2   18[COMRAM] unsigned int 
+   868 ;; Auto vars:     Size  Location     Type
+   869 ;;		None
+   870 ;; Return value:  Size  Location     Type
+   871 ;;                  2   14[COMRAM] int 
+   872 ;; Registers used:
+   873 ;;		wreg, fsr2l, fsr2h, status,2, status,0
+   874 ;; Tracked objects:
+   875 ;;		On entry : 0/0
+   876 ;;		On exit  : 0/0
+   877 ;;		Unchanged: 0/0
+   878 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2
+   879 ;;      Params:         6       0       0       0
+   880 ;;      Locals:         0       0       0       0
+   881 ;;      Temps:          3       0       0       0
+   882 ;;      Totals:         9       0       0       0
+   883 ;;Total ram usage:        9 bytes
+   884 ;; Hardware stack levels used:    1
+   885 ;; Hardware stack levels required when called:    1
+   886 ;; This function calls:
+   887 ;;		Nothing
+   888 ;; This function is called by:
+   889 ;;		_runStateMachine
+   890 ;; This function uses a non-reentrant model
+   891 ;;
+   892                           
+   893                           	psect	text3
+   894  000250                     __ptext3:
+   895                           	opt stack 0
+   896  000250                     _memcmp:
+   897                           	opt stack 28
+   898                           
+   899                           ;incstack = 0
+   900                           ;incstack = 0
+   901  000250  D02A               	goto	l994
+   902  000252                     l986:
+   903  000252  C011  FFD9         	movff	memcmp@s2,fsr2l
+   904  000256  C012  FFDA         	movff	memcmp@s2+1,fsr2h
+   905  00025A  50DF               	movf	indf2,w,c
+   906  00025C  6E15               	movwf	??_memcmp& (0+255),c
+   907  00025E  C00F  FFD9         	movff	memcmp@s1,fsr2l
+   908  000262  C010  FFDA         	movff	memcmp@s1+1,fsr2h
+   909  000266  50DF               	movf	indf2,w,c
+   910  000268  1815               	xorwf	??_memcmp,w,c
+   911  00026A  B4D8               	btfsc	status,2,c
+   912  00026C  D018               	goto	l992
+   913  00026E  C011  FFD9         	movff	memcmp@s2,fsr2l
+   914  000272  C012  FFDA         	movff	memcmp@s2+1,fsr2h
+   915  000276  50DF               	movf	indf2,w,c
+   916  000278  6E15               	movwf	??_memcmp& (0+255),c
+   917  00027A  6A16               	clrf	(??_memcmp+1)& (0+255),c
+   918  00027C  1E15               	comf	??_memcmp,f,c
+   919  00027E  1E16               	comf	??_memcmp+1,f,c
+   920  000280  4A15               	infsnz	??_memcmp,f,c
+   921  000282  2A16               	incf	??_memcmp+1,f,c
+   922  000284  C00F  FFD9         	movff	memcmp@s1,fsr2l
+   923  000288  C010  FFDA         	movff	memcmp@s1+1,fsr2h
+   924  00028C  50DF               	movf	indf2,w,c
+   925  00028E  6E17               	movwf	(??_memcmp+2)& (0+255),c
+   926  000290  5017               	movf	??_memcmp+2,w,c
+   927  000292  2415               	addwf	??_memcmp,w,c
+   928  000294  6E0F               	movwf	?_memcmp,c
+   929  000296  0E00               	movlw	0
+   930  000298  2016               	addwfc	??_memcmp+1,w,c
+   931  00029A  6E10               	movwf	?_memcmp+1,c
+   932  00029C  D010               	goto	l682
+   933  00029E                     l992:
+   934  00029E  4A0F               	infsnz	memcmp@s1,f,c
+   935  0002A0  2A10               	incf	memcmp@s1+1,f,c
+   936  0002A2  4A11               	infsnz	memcmp@s2,f,c
+   937  0002A4  2A12               	incf	memcmp@s2+1,f,c
+   938  0002A6                     l994:
+   939  0002A6  0613               	decf	memcmp@n,f,c
+   940  0002A8  A0D8               	btfss	status,0,c
+   941  0002AA  0614               	decf	memcmp@n+1,f,c
+   942  0002AC  2813               	incf	memcmp@n& (0+255),w,c
+   943  0002AE  B4D8               	btfsc	status,2,c
+   944  0002B0  2814               	incf	(memcmp@n+1)& (0+255),w,c
+   945  0002B2  A4D8               	btfss	status,2,c
+   946  0002B4  D7CE               	goto	l986
+   947  0002B6  0E00               	movlw	0
+   948  0002B8  6E10               	movwf	?_memcmp+1,c
+   949  0002BA  0E00               	movlw	0
+   950  0002BC  6E0F               	movwf	?_memcmp,c
+   951  0002BE                     l682:
+   952  0002BE  0012               	return	
+   953  0002C0                     __end_of_memcmp:
+   954                           	opt stack 0
+   955                           pclatu	equ	0xFFB
+   956                           pclath	equ	0xFFA
+   957                           tblptru	equ	0xFF8
+   958                           tblptrh	equ	0xFF7
+   959                           tblptrl	equ	0xFF6
+   960                           tablat	equ	0xFF5
+   961                           prodh	equ	0xFF4
+   962                           prodl	equ	0xFF3
+   963                           intcon	equ	0xFF2
+   964                           postinc0	equ	0xFEE
+   965                           fsr0h	equ	0xFEA
+   966                           fsr0l	equ	0xFE9
+   967                           wreg	equ	0xFE8
+   968                           fsr1h	equ	0xFE2
+   969                           fsr1l	equ	0xFE1
+   970                           indf2	equ	0xFDF
+   971                           fsr2h	equ	0xFDA
+   972                           fsr2l	equ	0xFD9
+   973                           status	equ	0xFD8
+   974                           
+   975 ;; *************** function _memset *****************
+   976 ;; Defined at:
+   977 ;;		line 10 in file "C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\memset.c"
+   978 ;; Parameters:    Size  Location     Type
+   979 ;;  p1              2   14[COMRAM] PTR void 
+   980 ;;		 -> runStateMachine@cmpArr(4), 
+   981 ;;  c               2   16[COMRAM] int 
+   982 ;;  n               2   18[COMRAM] unsigned int 
+   983 ;; Auto vars:     Size  Location     Type
+   984 ;;  p               2   20[COMRAM] PTR unsigned char 
+   985 ;;		 -> runStateMachine@cmpArr(4), 
+   986 ;; Return value:  Size  Location     Type
+   987 ;;                  2   14[COMRAM] PTR void 
+   988 ;; Registers used:
+   989 ;;		wreg, fsr2l, fsr2h, status,2, status,0
+   990 ;; Tracked objects:
+   991 ;;		On entry : 0/0
+   992 ;;		On exit  : 0/0
+   993 ;;		Unchanged: 0/0
+   994 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2
+   995 ;;      Params:         6       0       0       0
+   996 ;;      Locals:         2       0       0       0
+   997 ;;      Temps:          0       0       0       0
+   998 ;;      Totals:         8       0       0       0
+   999 ;;Total ram usage:        8 bytes
+  1000 ;; Hardware stack levels used:    1
+  1001 ;; Hardware stack levels required when called:    1
+  1002 ;; This function calls:
+  1003 ;;		Nothing
+  1004 ;; This function is called by:
+  1005 ;;		_runStateMachine
+  1006 ;; This function uses a non-reentrant model
+  1007 ;;
+  1008                           
+  1009                           	psect	text4
+  1010  0002C0                     __ptext4:
+  1011                           	opt stack 0
+  1012  0002C0                     _memset:
+  1013                           	opt stack 28
+  1014                           
+  1015                           ;incstack = 0
+  1016                           ;incstack = 0
+  1017  0002C0  C00F  F015         	movff	memset@p1,memset@p
+  1018  0002C4  C010  F016         	movff	memset@p1+1,memset@p+1
+  1019  0002C8  D008               	goto	l982
+  1020  0002CA                     l978:
+  1021  0002CA  C015  FFD9         	movff	memset@p,fsr2l
+  1022  0002CE  C016  FFDA         	movff	memset@p+1,fsr2h
+  1023  0002D2  C011  FFDF         	movff	memset@c,indf2
+  1024  0002D6  4A15               	infsnz	memset@p,f,c
+  1025  0002D8  2A16               	incf	memset@p+1,f,c
+  1026  0002DA                     l982:
+  1027  0002DA  0613               	decf	memset@n,f,c
+  1028  0002DC  A0D8               	btfss	status,0,c
+  1029  0002DE  0614               	decf	memset@n+1,f,c
+  1030  0002E0  2813               	incf	memset@n& (0+255),w,c
+  1031  0002E2  B4D8               	btfsc	status,2,c
+  1032  0002E4  2814               	incf	(memset@n+1)& (0+255),w,c
+  1033  0002E6  B4D8               	btfsc	status,2,c
+  1034                           
+  1035                           ;	Return value of _memset is never used
+  1036  0002E8  0012               	return	
+  1037  0002EA  D7EF               	goto	l978
+  1038  0002EC                     __end_of_memset:
+  1039                           	opt stack 0
+  1040                           pclatu	equ	0xFFB
+  1041                           pclath	equ	0xFFA
+  1042                           tblptru	equ	0xFF8
+  1043                           tblptrh	equ	0xFF7
+  1044                           tblptrl	equ	0xFF6
+  1045                           tablat	equ	0xFF5
+  1046                           prodh	equ	0xFF4
+  1047                           prodl	equ	0xFF3
+  1048                           intcon	equ	0xFF2
+  1049                           postinc0	equ	0xFEE
+  1050                           fsr0h	equ	0xFEA
+  1051                           fsr0l	equ	0xFE9
+  1052                           wreg	equ	0xFE8
+  1053                           fsr1h	equ	0xFE2
+  1054                           fsr1l	equ	0xFE1
+  1055                           indf2	equ	0xFDF
+  1056                           fsr2h	equ	0xFDA
+  1057                           fsr2l	equ	0xFD9
+  1058                           status	equ	0xFD8
+  1059                           
+  1060 ;; *************** function _eraseSeq__Flash *****************
+  1061 ;; Defined at:
+  1062 ;;		line 61 in file "FlashDriver.c"
+  1063 ;; Parameters:    Size  Location     Type
+  1064 ;;		None
+  1065 ;; Auto vars:     Size  Location     Type
+  1066 ;;		None
+  1067 ;; Return value:  Size  Location     Type
+  1068 ;;		None               void
+  1069 ;; Registers used:
+  1070 ;;		wreg, status,2
+  1071 ;; Tracked objects:
+  1072 ;;		On entry : 0/0
+  1073 ;;		On exit  : 0/0
+  1074 ;;		Unchanged: 0/0
+  1075 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2
+  1076 ;;      Params:         0       0       0       0
+  1077 ;;      Locals:         0       0       0       0
+  1078 ;;      Temps:          0       0       0       0
+  1079 ;;      Totals:         0       0       0       0
+  1080 ;;Total ram usage:        0 bytes
+  1081 ;; Hardware stack levels used:    1
+  1082 ;; Hardware stack levels required when called:    1
+  1083 ;; This function calls:
+  1084 ;;		Nothing
+  1085 ;; This function is called by:
+  1086 ;;		_runStateMachine
+  1087 ;; This function uses a non-reentrant model
+  1088 ;;
+  1089                           
+  1090                           	psect	text5
+  1091  000348                     __ptext5:
+  1092                           	opt stack 0
+  1093  000348                     _eraseSeq__Flash:
+  1094                           	opt stack 28
+  1095                           
+  1096                           ;FlashDriver.c: 62: EECON1bits.EEPGD = 1;
+  1097                           
+  1098                           ;incstack = 0
+  1099                           ;incstack = 0
+  1100  000348  8EA6               	bsf	4006,7,c	;volatile
+  1101                           
+  1102                           ;FlashDriver.c: 63: EECON1bits.CFGS = 0;
+  1103  00034A  9CA6               	bcf	4006,6,c	;volatile
+  1104                           
+  1105                           ;FlashDriver.c: 64: EECON1bits.WREN = 1;
+  1106  00034C  84A6               	bsf	4006,2,c	;volatile
+  1107                           
+  1108                           ;FlashDriver.c: 65: EECON1bits.FREE = 1;
+  1109  00034E  88A6               	bsf	4006,4,c	;volatile
+  1110                           
+  1111                           ;FlashDriver.c: 67: INTCONbits.GIE = 0;
+  1112  000350  9EF2               	bcf	intcon,7,c	;volatile
+  1113                           
+  1114                           ;FlashDriver.c: 69: EECON2 = 0x55;
+  1115  000352  0E55               	movlw	85
+  1116  000354  6EA7               	movwf	4007,c	;volatile
+  1117                           
+  1118                           ;FlashDriver.c: 70: EECON2 = 0xAA;
+  1119  000356  0EAA               	movlw	170
+  1120  000358  6EA7               	movwf	4007,c	;volatile
+  1121                           
+  1122                           ;FlashDriver.c: 72: EECON1bits.WR = 1;
+  1123  00035A  82A6               	bsf	4006,1,c	;volatile
+  1124  00035C  F000               	nop		;# 
+  1125                           
+  1126                           ;FlashDriver.c: 75: EECON1bits.WREN = 0;
+  1127  00035E  94A6               	bcf	4006,2,c	;volatile
+  1128                           
+  1129                           ;FlashDriver.c: 76: INTCONbits.GIE = 1;
+  1130  000360  8EF2               	bsf	intcon,7,c	;volatile
+  1131  000362  0012               	return	
+  1132  000364                     __end_of_eraseSeq__Flash:
+  1133                           	opt stack 0
+  1134                           pclatu	equ	0xFFB
+  1135                           pclath	equ	0xFFA
+  1136                           tblptru	equ	0xFF8
+  1137                           tblptrh	equ	0xFF7
+  1138                           tblptrl	equ	0xFF6
+  1139                           tablat	equ	0xFF5
+  1140                           prodh	equ	0xFF4
+  1141                           prodl	equ	0xFF3
+  1142                           intcon	equ	0xFF2
+  1143                           postinc0	equ	0xFEE
+  1144                           fsr0h	equ	0xFEA
+  1145                           fsr0l	equ	0xFE9
+  1146                           wreg	equ	0xFE8
+  1147                           fsr1h	equ	0xFE2
+  1148                           fsr1l	equ	0xFE1
+  1149                           indf2	equ	0xFDF
+  1150                           fsr2h	equ	0xFDA
+  1151                           fsr2l	equ	0xFD9
+  1152                           status	equ	0xFD8
+  1153                           
+  1154 ;; *************** function _updateTablPtr__Flash *****************
+  1155 ;; Defined at:
+  1156 ;;		line 55 in file "FlashDriver.c"
+  1157 ;; Parameters:    Size  Location     Type
+  1158 ;;		None
+  1159 ;; Auto vars:     Size  Location     Type
+  1160 ;;		None
+  1161 ;; Return value:  Size  Location     Type
+  1162 ;;		None               void
+  1163 ;; Registers used:
+  1164 ;;		wreg, status,2
+  1165 ;; Tracked objects:
+  1166 ;;		On entry : 0/0
+  1167 ;;		On exit  : 0/0
+  1168 ;;		Unchanged: 0/0
+  1169 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2
+  1170 ;;      Params:         0       0       0       0
+  1171 ;;      Locals:         0       0       0       0
+  1172 ;;      Temps:          0       0       0       0
+  1173 ;;      Totals:         0       0       0       0
+  1174 ;;Total ram usage:        0 bytes
+  1175 ;; Hardware stack levels used:    1
+  1176 ;; Hardware stack levels required when called:    1
+  1177 ;; This function calls:
+  1178 ;;		Nothing
+  1179 ;; This function is called by:
+  1180 ;;		_runStateMachine
+  1181 ;; This function uses a non-reentrant model
+  1182 ;;
+  1183                           
+  1184                           	psect	text6
+  1185  00038E                     __ptext6:
+  1186                           	opt stack 0
+  1187  00038E                     _updateTablPtr__Flash:
+  1188                           	opt stack 28
+  1189                           
+  1190                           ;FlashDriver.c: 56: TBLPTRU = 0x00;
+  1191                           
+  1192                           ;incstack = 0
+  1193                           ;incstack = 0
+  1194  00038E  0E00               	movlw	0
+  1195  000390  6EF8               	movwf	tblptru,c	;volatile
+  1196                           
+  1197                           ;FlashDriver.c: 57: TBLPTRH = 0x04;
+  1198  000392  0E04               	movlw	4
+  1199  000394  6EF7               	movwf	tblptrh,c	;volatile
+  1200                           
+  1201                           ;FlashDriver.c: 58: TBLPTRL = 0x00;
+  1202  000396  0E00               	movlw	0
+  1203  000398  6EF6               	movwf	tblptrl,c	;volatile
+  1204  00039A  0012               	return	
+  1205  00039C                     __end_of_updateTablPtr__Flash:
+  1206                           	opt stack 0
+  1207                           pclatu	equ	0xFFB
+  1208                           pclath	equ	0xFFA
+  1209                           tblptru	equ	0xFF8
+  1210                           tblptrh	equ	0xFF7
+  1211                           tblptrl	equ	0xFF6
+  1212                           tablat	equ	0xFF5
+  1213                           prodh	equ	0xFF4
+  1214                           prodl	equ	0xFF3
+  1215                           intcon	equ	0xFF2
+  1216                           postinc0	equ	0xFEE
+  1217                           fsr0h	equ	0xFEA
+  1218                           fsr0l	equ	0xFE9
+  1219                           wreg	equ	0xFE8
+  1220                           fsr1h	equ	0xFE2
+  1221                           fsr1l	equ	0xFE1
+  1222                           indf2	equ	0xFDF
+  1223                           fsr2h	equ	0xFDA
+  1224                           fsr2l	equ	0xFD9
+  1225                           status	equ	0xFD8
+  1226                           
+  1227 ;; *************** function _sendData__UART *****************
+  1228 ;; Defined at:
+  1229 ;;		line 32 in file "UARTDriver.c"
+  1230 ;; Parameters:    Size  Location     Type
+  1231 ;;  data            1   14[COMRAM] unsigned char 
+  1232 ;; Auto vars:     Size  Location     Type
+  1233 ;;		None
+  1234 ;; Return value:  Size  Location     Type
+  1235 ;;		None               void
+  1236 ;; Registers used:
+  1237 ;;		None
+  1238 ;; Tracked objects:
+  1239 ;;		On entry : 0/0
+  1240 ;;		On exit  : 0/0
+  1241 ;;		Unchanged: 0/0
+  1242 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2
+  1243 ;;      Params:         1       0       0       0
+  1244 ;;      Locals:         0       0       0       0
+  1245 ;;      Temps:          0       0       0       0
+  1246 ;;      Totals:         1       0       0       0
+  1247 ;;Total ram usage:        1 bytes
+  1248 ;; Hardware stack levels used:    1
+  1249 ;; Hardware stack levels required when called:    1
+  1250 ;; This function calls:
+  1251 ;;		Nothing
+  1252 ;; This function is called by:
+  1253 ;;		_runStateMachine
+  1254 ;; This function uses a non-reentrant model
+  1255 ;;
+  1256                           
+  1257                           	psect	text7
+  1258  00039C                     __ptext7:
+  1259                           	opt stack 0
+  1260  00039C                     _sendData__UART:
+  1261                           	opt stack 28
+  1262                           
+  1263                           ;UARTDriver.c: 33: TXREG = data;
+  1264                           
+  1265                           ;incstack = 0
+  1266                           ;incstack = 0
+  1267  00039C  C00F  FFAD         	movff	sendData__UART@data,4013	;volatile
+  1268  0003A0                     l136:
+  1269  0003A0  B2AC               	btfsc	4012,1,c	;volatile
+  1270  0003A2  0012               	return	
+  1271  0003A4  D7FD               	goto	l136
+  1272  0003A6                     __end_of_sendData__UART:
+  1273                           	opt stack 0
+  1274                           pclatu	equ	0xFFB
+  1275                           pclath	equ	0xFFA
+  1276                           tblptru	equ	0xFF8
+  1277                           tblptrh	equ	0xFF7
+  1278                           tblptrl	equ	0xFF6
+  1279                           tablat	equ	0xFF5
+  1280                           prodh	equ	0xFF4
+  1281                           prodl	equ	0xFF3
+  1282                           intcon	equ	0xFF2
+  1283                           postinc0	equ	0xFEE
+  1284                           fsr0h	equ	0xFEA
+  1285                           fsr0l	equ	0xFE9
+  1286                           wreg	equ	0xFE8
+  1287                           fsr1h	equ	0xFE2
+  1288                           fsr1l	equ	0xFE1
+  1289                           indf2	equ	0xFDF
+  1290                           fsr2h	equ	0xFDA
+  1291                           fsr2l	equ	0xFD9
+  1292                           status	equ	0xFD8
+  1293                           
+  1294 ;; *************** function _runApplcn *****************
+  1295 ;; Defined at:
+  1296 ;;		line 32 in file "main.c"
+  1297 ;; Parameters:    Size  Location     Type
+  1298 ;;		None
+  1299 ;; Auto vars:     Size  Location     Type
+  1300 ;;  applcFtr        2   14[COMRAM] PTR FTN()void 
+  1301 ;;		 -> Absolute function(0), 
+  1302 ;; Return value:  Size  Location     Type
+  1303 ;;		None               void
+  1304 ;; Registers used:
+  1305 ;;		wreg, status,2, pclat, tosl, cstack
+  1306 ;; Tracked objects:
+  1307 ;;		On entry : 0/0
+  1308 ;;		On exit  : 0/0
+  1309 ;;		Unchanged: 0/0
+  1310 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2
+  1311 ;;      Params:         0       0       0       0
+  1312 ;;      Locals:         2       0       0       0
+  1313 ;;      Temps:          0       0       0       0
+  1314 ;;      Totals:         2       0       0       0
+  1315 ;;Total ram usage:        2 bytes
+  1316 ;; Hardware stack levels used:    1
+  1317 ;; Hardware stack levels required when called:    2
+  1318 ;; This function calls:
+  1319 ;;		Absolute function
+  1320 ;; This function is called by:
+  1321 ;;		_runStateMachine
+  1322 ;; This function uses a non-reentrant model
+  1323 ;;
+  1324                           
+  1325                           	psect	text8
+  1326  0002EC                     __ptext8:
+  1327                           	opt stack 0
+  1328  0002EC                     _runApplcn:
+  1329                           	opt stack 27
+  1330                           
+  1331                           ;main.c: 33: void (*applcFtr)(void);
+  1332                           ;main.c: 34: applcFtr = (void (*)(void))0x000400;
+  1333                           
+  1334                           ;incstack = 0
+  1335                           ;incstack = 0
+  1336  0002EC  0E04               	movlw	4
+  1337  0002EE  6E10               	movwf	runApplcn@applcFtr+1,c
+  1338  0002F0  0E00               	movlw	0
+  1339  0002F2  6E0F               	movwf	runApplcn@applcFtr,c
+  1340                           
+  1341                           ;main.c: 35: applcFtr();
+  1342  0002F4  D801               	call	u238
+  1343  0002F6  D00A               	goto	u239
+  1344  0002F8                     u238:
+  1345  0002F8  0005               	push	
+  1346  0002FA  6EFA               	movwf	pclath,c
+  1347  0002FC  500F               	movf	runApplcn@applcFtr,w,c
+  1348  0002FE  6EFD               	movwf	tosl,c
+  1349  000300  5010               	movf	runApplcn@applcFtr+1,w,c
+  1350  000302  6EFE               	movwf	tosh,c
+  1351  000304  50F8               	movf	tblptru,w,c
+  1352  000306  6EFF               	movwf	tosu,c
+  1353  000308  50FA               	movf	pclath,w,c
+  1354  00030A  0012               	return		;indir
+  1355  00030C                     u239:
+  1356  00030C  0012               	return	
+  1357  00030E                     __end_of_runApplcn:
+  1358                           	opt stack 0
+  1359                           tosu	equ	0xFFF
+  1360                           tosh	equ	0xFFE
+  1361                           tosl	equ	0xFFD
+  1362                           pclatu	equ	0xFFB
+  1363                           pclath	equ	0xFFA
+  1364                           tblptru	equ	0xFF8
+  1365                           tblptrh	equ	0xFF7
+  1366                           tblptrl	equ	0xFF6
+  1367                           tablat	equ	0xFF5
+  1368                           prodh	equ	0xFF4
+  1369                           prodl	equ	0xFF3
+  1370                           intcon	equ	0xFF2
+  1371                           postinc0	equ	0xFEE
+  1372                           fsr0h	equ	0xFEA
+  1373                           fsr0l	equ	0xFE9
+  1374                           wreg	equ	0xFE8
+  1375                           fsr1h	equ	0xFE2
+  1376                           fsr1l	equ	0xFE1
+  1377                           indf2	equ	0xFDF
+  1378                           fsr2h	equ	0xFDA
+  1379                           fsr2l	equ	0xFD9
+  1380                           status	equ	0xFD8
+  1381                           
+  1382 ;; *************** function _driverConfig__UART *****************
+  1383 ;; Defined at:
+  1384 ;;		line 13 in file "UARTDriver.c"
+  1385 ;; Parameters:    Size  Location     Type
+  1386 ;;		None
+  1387 ;; Auto vars:     Size  Location     Type
+  1388 ;;		None
+  1389 ;; Return value:  Size  Location     Type
+  1390 ;;		None               void
+  1391 ;; Registers used:
+  1392 ;;		wreg, status,2
+  1393 ;; Tracked objects:
+  1394 ;;		On entry : 0/0
+  1395 ;;		On exit  : 0/0
+  1396 ;;		Unchanged: 0/0
+  1397 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2
+  1398 ;;      Params:         0       0       0       0
+  1399 ;;      Locals:         0       0       0       0
+  1400 ;;      Temps:          0       0       0       0
+  1401 ;;      Totals:         0       0       0       0
+  1402 ;;Total ram usage:        0 bytes
+  1403 ;; Hardware stack levels used:    1
+  1404 ;; Hardware stack levels required when called:    1
+  1405 ;; This function calls:
+  1406 ;;		Nothing
+  1407 ;; This function is called by:
+  1408 ;;		_main
+  1409 ;; This function uses a non-reentrant model
+  1410 ;;
+  1411                           
+  1412                           	psect	text9
+  1413  00030E                     __ptext9:
+  1414                           	opt stack 0
+  1415  00030E                     _driverConfig__UART:
+  1416                           	opt stack 29
+  1417                           
+  1418                           ;UARTDriver.c: 15: RCONbits.IPEN = 1;
+  1419                           
+  1420                           ;incstack = 0
+  1421                           ;incstack = 0
+  1422  00030E  8ED0               	bsf	4048,7,c	;volatile
+  1423                           
+  1424                           ;UARTDriver.c: 16: INTCONbits.GIE = 1;
+  1425  000310  8EF2               	bsf	intcon,7,c	;volatile
+  1426                           
+  1427                           ;UARTDriver.c: 17: INTCONbits.PEIE = 1;
+  1428  000312  8CF2               	bsf	intcon,6,c	;volatile
+  1429                           
+  1430                           ;UARTDriver.c: 18: PIE1bits.RCIE = 1;
+  1431  000314  8A9D               	bsf	3997,5,c	;volatile
+  1432                           
+  1433                           ;UARTDriver.c: 20: TXSTA = 0;
+  1434  000316  0E00               	movlw	0
+  1435  000318  6EAC               	movwf	4012,c	;volatile
+  1436                           
+  1437                           ;UARTDriver.c: 21: RCSTA = 0;
+  1438  00031A  0E00               	movlw	0
+  1439  00031C  6EAB               	movwf	4011,c	;volatile
+  1440                           
+  1441                           ;UARTDriver.c: 23: TXSTAbits.BRGH = 0;
+  1442  00031E  94AC               	bcf	4012,2,c	;volatile
+  1443                           
+  1444                           ;UARTDriver.c: 25: SPBRG = 25;
+  1445  000320  0E19               	movlw	25
+  1446  000322  6EAF               	movwf	4015,c	;volatile
+  1447                           
+  1448                           ;UARTDriver.c: 27: RCSTAbits.SPEN = 1;
+  1449  000324  8EAB               	bsf	4011,7,c	;volatile
+  1450                           
+  1451                           ;UARTDriver.c: 28: TXSTAbits.TXEN = 1;
+  1452  000326  8AAC               	bsf	4012,5,c	;volatile
+  1453                           
+  1454                           ;UARTDriver.c: 29: RCSTAbits.CREN = 1;
+  1455  000328  88AB               	bsf	4011,4,c	;volatile
+  1456  00032A  0012               	return	
+  1457  00032C                     __end_of_driverConfig__UART:
+  1458                           	opt stack 0
+  1459                           tosu	equ	0xFFF
+  1460                           tosh	equ	0xFFE
+  1461                           tosl	equ	0xFFD
+  1462                           pclatu	equ	0xFFB
+  1463                           pclath	equ	0xFFA
+  1464                           tblptru	equ	0xFF8
+  1465                           tblptrh	equ	0xFF7
+  1466                           tblptrl	equ	0xFF6
+  1467                           tablat	equ	0xFF5
+  1468                           prodh	equ	0xFF4
+  1469                           prodl	equ	0xFF3
+  1470                           intcon	equ	0xFF2
+  1471                           postinc0	equ	0xFEE
+  1472                           fsr0h	equ	0xFEA
+  1473                           fsr0l	equ	0xFE9
+  1474                           wreg	equ	0xFE8
+  1475                           fsr1h	equ	0xFE2
+  1476                           fsr1l	equ	0xFE1
+  1477                           indf2	equ	0xFDF
+  1478                           fsr2h	equ	0xFDA
+  1479                           fsr2l	equ	0xFD9
+  1480                           status	equ	0xFD8
+  1481                           
+  1482 ;; *************** function _initVarConfigPort *****************
+  1483 ;; Defined at:
+  1484 ;;		line 21 in file "main.c"
+  1485 ;; Parameters:    Size  Location     Type
+  1486 ;;		None
+  1487 ;; Auto vars:     Size  Location     Type
+  1488 ;;		None
+  1489 ;; Return value:  Size  Location     Type
+  1490 ;;		None               void
+  1491 ;; Registers used:
+  1492 ;;		wreg, status,2
+  1493 ;; Tracked objects:
+  1494 ;;		On entry : 0/0
+  1495 ;;		On exit  : 0/0
+  1496 ;;		Unchanged: 0/0
+  1497 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2
+  1498 ;;      Params:         0       0       0       0
+  1499 ;;      Locals:         0       0       0       0
+  1500 ;;      Temps:          1       0       0       0
+  1501 ;;      Totals:         1       0       0       0
+  1502 ;;Total ram usage:        1 bytes
+  1503 ;; Hardware stack levels used:    1
+  1504 ;; Hardware stack levels required when called:    1
+  1505 ;; This function calls:
+  1506 ;;		Nothing
+  1507 ;; This function is called by:
+  1508 ;;		_main
+  1509 ;; This function uses a non-reentrant model
+  1510 ;;
+  1511                           
+  1512                           	psect	text10
+  1513  000364                     __ptext10:
+  1514                           	opt stack 0
+  1515  000364                     _initVarConfigPort:
+  1516                           	opt stack 29
+  1517                           
+  1518                           ;main.c: 22: PORTB = 0;
+  1519                           
+  1520                           ;incstack = 0
+  1521                           ;incstack = 0
+  1522  000364  0E00               	movlw	0
+  1523  000366  6E81               	movwf	3969,c	;volatile
+  1524                           
+  1525                           ;main.c: 23: ANSEL0 = 0;
+  1526  000368  0E00               	movlw	0
+  1527  00036A  6EB8               	movwf	4024,c	;volatile
+  1528                           
+  1529                           ;main.c: 24: ANSEL1 = 0;
+  1530  00036C  0E00               	movlw	0
+  1531  00036E  6EB9               	movwf	4025,c	;volatile
+  1532                           
+  1533                           ;main.c: 26: TRISCbits.RC6 = 0;
+  1534  000370  9C94               	bcf	3988,6,c	;volatile
+  1535                           
+  1536                           ;main.c: 27: TRISCbits.RC7 = 1;
+  1537  000372  8E94               	bsf	3988,7,c	;volatile
+  1538                           
+  1539                           ;main.c: 29: uart_rxbuffer_counter = 0;
+  1540  000374  6E0F               	movwf	??_initVarConfigPort& (0+255),c
+  1541  000376  0E00               	movlw	0
+  1542  000378  6E20               	movwf	_uart_rxbuffer_counter,c
+  1543  00037A  500F               	movf	??_initVarConfigPort& (0+255),w,c
+  1544  00037C  0012               	return	
+  1545  00037E                     __end_of_initVarConfigPort:
+  1546                           	opt stack 0
+  1547                           tosu	equ	0xFFF
+  1548                           tosh	equ	0xFFE
+  1549                           tosl	equ	0xFFD
+  1550                           pclatu	equ	0xFFB
+  1551                           pclath	equ	0xFFA
+  1552                           tblptru	equ	0xFF8
+  1553                           tblptrh	equ	0xFF7
+  1554                           tblptrl	equ	0xFF6
+  1555                           tablat	equ	0xFF5
+  1556                           prodh	equ	0xFF4
+  1557                           prodl	equ	0xFF3
+  1558                           intcon	equ	0xFF2
+  1559                           postinc0	equ	0xFEE
+  1560                           fsr0h	equ	0xFEA
+  1561                           fsr0l	equ	0xFE9
+  1562                           wreg	equ	0xFE8
+  1563                           fsr1h	equ	0xFE2
+  1564                           fsr1l	equ	0xFE1
+  1565                           indf2	equ	0xFDF
+  1566                           fsr2h	equ	0xFDA
+  1567                           fsr2l	equ	0xFD9
+  1568                           status	equ	0xFD8
+  1569                           tosu	equ	0xFFF
+  1570                           tosh	equ	0xFFE
+  1571                           tosl	equ	0xFFD
+  1572                           pclatu	equ	0xFFB
+  1573                           pclath	equ	0xFFA
+  1574                           tblptru	equ	0xFF8
+  1575                           tblptrh	equ	0xFF7
+  1576                           tblptrl	equ	0xFF6
+  1577                           tablat	equ	0xFF5
+  1578                           prodh	equ	0xFF4
+  1579                           prodl	equ	0xFF3
+  1580                           intcon	equ	0xFF2
+  1581                           postinc0	equ	0xFEE
+  1582                           fsr0h	equ	0xFEA
+  1583                           fsr0l	equ	0xFE9
+  1584                           wreg	equ	0xFE8
+  1585                           fsr1h	equ	0xFE2
+  1586                           fsr1l	equ	0xFE1
+  1587                           indf2	equ	0xFDF
+  1588                           fsr2h	equ	0xFDA
+  1589                           fsr2l	equ	0xFD9
+  1590                           status	equ	0xFD8
+  1591                           
+  1592                           	psect	rparam
+  1593  0000                     tosu	equ	0xFFF
+  1594                           tosh	equ	0xFFE
+  1595                           tosl	equ	0xFFD
+  1596                           pclatu	equ	0xFFB
+  1597                           pclath	equ	0xFFA
+  1598                           tblptru	equ	0xFF8
+  1599                           tblptrh	equ	0xFF7
+  1600                           tblptrl	equ	0xFF6
+  1601                           tablat	equ	0xFF5
+  1602                           prodh	equ	0xFF4
+  1603                           prodl	equ	0xFF3
+  1604                           intcon	equ	0xFF2
+  1605                           postinc0	equ	0xFEE
+  1606                           fsr0h	equ	0xFEA
+  1607                           fsr0l	equ	0xFE9
+  1608                           wreg	equ	0xFE8
+  1609                           fsr1h	equ	0xFE2
+  1610                           fsr1l	equ	0xFE1
+  1611                           indf2	equ	0xFDF
+  1612                           fsr2h	equ	0xFDA
+  1613                           fsr2l	equ	0xFD9
+  1614                           status	equ	0xFD8
 
 
 Data Sizes:
     Strings     0
     Constant    0
     Data        0
-    BSS         0
+    BSS         67
     Persistent  0
     Stack       0
 
 Auto Spaces:
     Space          Size  Autos    Used
-    COMRAM           95      0       0
-    BANK0           160      0       0
+    COMRAM           95     29      32
+    BANK0           160      0      64
     BANK1           256      0       0
     BANK2           256      0       0
 
 Pointer List with Targets:
 
-    None.
+    ?_memcmp	int  size(2) Largest target is 0
+
+    ?_memset	PTR void  size(2) Largest target is 4
+		 -> runStateMachine@cmpArr(COMRAM[4]), 
+
+    memset@p1	PTR void  size(2) Largest target is 4
+		 -> runStateMachine@cmpArr(COMRAM[4]), 
+
+    memset@p	PTR unsigned char  size(2) Largest target is 4
+		 -> runStateMachine@cmpArr(COMRAM[4]), 
+
+    memcmp@s2	PTR const void  size(2) Largest target is 64
+		 -> uart_rxbuffer(BANK0[64]), 
+
+    memcmp@s1	PTR const void  size(2) Largest target is 4
+		 -> runStateMachine@cmpArr(COMRAM[4]), 
+
+    sp__memset	PTR void  size(2) Largest target is 4
+		 -> runStateMachine@cmpArr(COMRAM[4]), 
+
+    runApplcn@applcFtr	PTR FTN()void  size(2) Largest target is 0
+		 -> Absolute function(), 
+
 
 Critical Paths under _main in COMRAM
+
+    _main->_runStateMachine
+    _runStateMachine->_memcmp
+
+Critical Paths under _InterruptHandlerHigh in COMRAM
 
     None.
 
@@ -154,11 +1676,23 @@ Critical Paths under _main in BANK0
 
     None.
 
+Critical Paths under _InterruptHandlerHigh in BANK0
+
+    None.
+
 Critical Paths under _main in BANK1
 
     None.
 
+Critical Paths under _InterruptHandlerHigh in BANK1
+
+    None.
+
 Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _InterruptHandlerHigh in BANK2
 
     None.
 
@@ -167,49 +1701,160 @@ Call Graph Tables:
  ---------------------------------------------------------------------------------
  (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
  ---------------------------------------------------------------------------------
- (0) _main                                                 0     0      0       0
+ (0) _main                                                 0     0      0     470
+                  _initVarConfigPort
+                 _driverConfig__UART
                     _runStateMachine
  ---------------------------------------------------------------------------------
- (1) _runStateMachine                                      0     0      0       0
+ (1) _runStateMachine                                      6     6      0     470
+                                             23 COMRAM     6     6      0
+                          _runApplcn
+                     _sendData__UART
+               _updateTablPtr__Flash
+                    _eraseSeq__Flash
+                             _memset
+                             _memcmp
+              _updateFirmware__Flash
  ---------------------------------------------------------------------------------
- Estimated maximum stack depth 1
+ (2) _updateFirmware__Flash                                6     6      0     138
+                                             14 COMRAM     6     6      0
+ ---------------------------------------------------------------------------------
+ (2) _memcmp                                               9     3      6     112
+                                             14 COMRAM     9     3      6
+ ---------------------------------------------------------------------------------
+ (2) _memset                                               8     2      6      96
+                                             14 COMRAM     8     2      6
+ ---------------------------------------------------------------------------------
+ (2) _eraseSeq__Flash                                      0     0      0       0
+ ---------------------------------------------------------------------------------
+ (2) _updateTablPtr__Flash                                 0     0      0       0
+ ---------------------------------------------------------------------------------
+ (2) _sendData__UART                                       1     0      1      22
+                                             14 COMRAM     1     0      1
+ ---------------------------------------------------------------------------------
+ (2) _runApplcn                                            2     2      0      23
+                                             14 COMRAM     2     2      0
+                   Absolute function
+ ---------------------------------------------------------------------------------
+ (3) Absolute function(Fake)                               0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _driverConfig__UART                                   0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _initVarConfigPort                                    1     1      0       0
+                                             14 COMRAM     1     1      0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 3
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (4) _InterruptHandlerHigh                                14    14      0       0
+                                              0 COMRAM    14    14      0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 4
  ---------------------------------------------------------------------------------
 
  Call Graph Graphs:
 
  _main (ROOT)
+   _initVarConfigPort
+   _driverConfig__UART
    _runStateMachine
+     _runApplcn
+       Absolute function(Fake)
+     _sendData__UART
+     _updateTablPtr__Flash
+     _eraseSeq__Flash
+     _memset
+     _memcmp
+     _updateFirmware__Flash
+
+ _InterruptHandlerHigh (ROOT)
 
  Address spaces:
 Name               Size   Autos  Total    Cost      Usage
-BITCOMRAM           5F      0       0       0        0.0%
+BIGRAM             2FF      0       0      10        0.0%
 EEDATA             100      0       0       0        0.0%
-NULL                 0      0       0       0        0.0%
-CODE                 0      0       0       0        0.0%
-COMRAM              5F      0       0       1        0.0%
-STACK                0      0       1       2        0.0%
-ABS                  0      0       0       3        0.0%
-BITBANK0            A0      0       0       4        0.0%
-BANK0               A0      0       0       5        0.0%
-BITBANK1           100      0       0       6        0.0%
-BANK1              100      0       0       7        0.0%
 BITBANK2           100      0       0       8        0.0%
 BANK2              100      0       0       9        0.0%
-BIGRAM             2FF      0       0      10        0.0%
-DATA                 0      0       0      11        0.0%
+BITBANK1           100      0       0       6        0.0%
+BANK1              100      0       0       7        0.0%
+BITBANK0            A0      0       0       4        0.0%
+BANK0               A0      0      40       5       40.0%
+BITCOMRAM           5F      0       0       0        0.0%
+COMRAM              5F     1D      20       1       33.7%
 BITSFR               0      0       0      40        0.0%
 SFR                  0      0       0      40        0.0%
+STACK                0      0       3       2        0.0%
+NULL                 0      0       0       0        0.0%
+ABS                  0      0      60       3        0.0%
+DATA                 0      0      63      11        0.0%
+CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V1.21 build 54009 
-Symbol Table                                                                                   Mon Jun 20 21:36:53 2016
+Symbol Table                                                                                   Tue Jul 26 08:42:45 2016
 
-                    _main 3FF8                      start 0000                     ?_main 0000  
-         _runStateMachine 3FF0           __initialization 3FF2              __end_of_main 4000  
-                  ??_main 0000             __activetblptr 000000   __end_of_runStateMachine 3FF2  
-              __accesstop 0060   __end_of__initialization 3FF2            __pcstackCOMRAM 0000  
-        ?_runStateMachine 0000                   __Hparam 0000                   __Lparam 0000  
-                 __pcinit 3FF2                   __ramtop 0300                   __ptext0 3FF8  
-                 __ptext1 3FF0      end_of_initialization 3FF2       start_initialization 3FF2  
-__size_of_runStateMachine 0002                  __Hrparam 0000                  __Lrparam 0000  
-           __size_of_main 0008         ??_runStateMachine 0000  
+                            l56 0138                              l92 0208                              l96 024E  
+                   __CFG_OSC$HS 000000                     __CFG_LVP$ON 000000                             l136 03A0  
+                           l920 00DA                             l904 00A6                             l682 02BE  
+                           l940 0162                             l916 00D0                             l950 0190  
+                           l926 0102                             l936 0156                             l948 018A  
+                           l956 019C                             l982 02DA                             l992 029E  
+                           l978 02CA                             l986 0252                             l994 02A6  
+                           u238 02F8                             u190 00FC                             u239 030C  
+                  __CFG_CPD$OFF 000000              _driverConfig__UART 030E                             prod 000FF3  
+                           tosl 000FFD                             wreg 000FE8                    __CFG_IESO$ON 000000  
+    __size_of_initVarConfigPort 001A             ?_driverConfig__UART 0001                            l1002 01D0  
+                          l1026 022E          __end_of_sendData__UART 03A6                   __CFG_FCMEN$ON 000000  
+                          _main 037E                            fsr0h 000FEA                            fsr1h 000FE2  
+                          fsr0l 000FE9                            fsr2h 000FDA                            fsr1l 000FE1  
+                          indf2 000FDF                            fsr2l 000FD9  __size_of_updateFirmware__Flash 0092  
+                          pclat 000FFA                   __CFG_BOREN$ON 000000   __end_of_updateFirmware__Flash 0250  
+                          prodh 000FF4                            prodl 000FF3                            start 00A0  
+                 __CFG_MCLRE$ON 000000            ??_driverConfig__UART 000F                           ?_main 0001  
+                         i2l142 0066                           i2l143 0066                           _RCREG 000FAE  
+                         _RCSTA 000FAB                           _SPBRG 000FAF                           _PORTB 000F81  
+                         _TXREG 000FAD                           _TXSTA 000FAC         __end_of_eraseSeq__Flash 0364  
+ updateFirmware__Flash@bufIndex 0011                           pclath 000FFA                 _runStateMachine 00A4  
+                         tablat 000FF5                 ?_sendData__UART 000F                           status 000FD8  
+               __initialization 032C                    __end_of_main 038E                          ??_main 001E  
+                 __activetblptr 000002                          _EECON2 000FA7                          _ANSEL0 000FB8  
+                        _ANSEL1 000FB9                          i2l1030 0040                          i2l1032 0048  
+                        i2l1034 0060                          i2l1036 0062                  __CFG_WDTEN$OFF 000000  
+                        _TABLAT 000FF5                  __CFG_STVREN$ON 000000                          _memcmp 0250  
+                        _memset 02C0                          clear_0 0332         __end_of_runStateMachine 01BE  
+                        tblptrh 000FF7                          tblptrl 000FF6                          tblptru 000FF8  
+              ?_eraseSeq__Flash 0001                      __accesstop 0060         __end_of__initialization 033E  
+                __pcstackCOMRAM 0001   __size_of_updateTablPtr__Flash 000E   __size_of_InterruptHandlerHigh 0098  
+            sendData__UART@data 000F                      __pbssBANK0 0060                         ?_memcmp 000F  
+                       ?_memset 000F              __size_of_runApplcn 0022                ?_runStateMachine 0001  
+                       _TBLPTRH 000FF7                         _TBLPTRL 000FF6                         _TBLPTRU 000FF8  
+                       i2u32_40 0048                         i2u32_41 0046                ??_sendData__UART 0010  
+                       __Hparam 0000                         __Lparam 0000           _updateFirmware__Flash 01BE  
+   __size_of_driverConfig__UART 001E                         __pcinit 032C                 __size_of_memcmp 0070  
+               __size_of_memset 002C                         __ramtop 0300                         __ptext0 037E  
+                       __ptext1 00A4                         __ptext2 01BE                         __ptext3 0250  
+                       __ptext4 02C0                         __ptext5 0348                         __ptext6 038E  
+                       __ptext7 039C                         __ptext8 02EC                         __ptext9 030E  
+          end_of_initialization 033E                         memcmp@n 0013                         memset@c 0011  
+                       memset@n 0013                         memset@p 0015                   __Lmediumconst 0000  
+             __end_of_runApplcn 030E                       _RCSTAbits 000FAB     runStateMachine@currentState 001D  
+                       postinc0 000FEE                       _TRISCbits 000F94                       _TXSTAbits 000FAC  
+        ?_updateFirmware__Flash 0001                  __end_of_memcmp 02C0                  __end_of_memset 02EC  
+                  _firmwareSize 001E             start_initialization 032C    __end_of_updateTablPtr__Flash 039C  
+  __end_of_InterruptHandlerHigh 00A0        __size_of_eraseSeq__Flash 001C       updateFirmware__Flash@size 000F  
+                      ??_memcmp 0015                        ??_memset 0015                     __pbssCOMRAM 001E  
+                     __pintcode 0008               runApplcn@applcFtr 000F           runStateMachine@cmpArr 0019  
+      __size_of_runStateMachine 011A                        _PIE1bits 000F9D                        _PIR1bits 000F9E  
+    __end_of_driverConfig__UART 032C                        _RCONbits 000FD0            _updateTablPtr__Flash 038E  
+                     _runApplcn 02EC               ??_eraseSeq__Flash 000F         updateFirmware__Flash@bc 0013  
+          _InterruptHandlerHigh 0008         ??_updateFirmware__Flash 000F                      _EECON1bits 000FA6  
+       __size_of_sendData__UART 000A                        __Hrparam 0000                        __Lrparam 0000  
+         ?_updateTablPtr__Flash 0001                      ?_runApplcn 0001           ?_InterruptHandlerHigh 0001  
+                      __ptext10 0364           _uart_rxbuffer_counter 0020               _initVarConfigPort 0364  
+                 __size_of_main 0010              ?_initVarConfigPort 0001                   _uart_rxbuffer 0060  
+             ??_runStateMachine 0018             ??_initVarConfigPort 000F                      _INTCONbits 000FF2  
+                      memcmp@s1 000F                        memcmp@s2 0011                        memset@p1 000F  
+     __end_of_initVarConfigPort 037E                        intlevel2 0000          ??_updateTablPtr__Flash 000F  
+                   ??_runApplcn 000F          ??_InterruptHandlerHigh 0001                  _sendData__UART 039C  
+               _eraseSeq__Flash 0348  

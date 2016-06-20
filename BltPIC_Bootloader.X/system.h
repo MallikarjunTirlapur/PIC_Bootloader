@@ -1,80 +1,61 @@
-/* Microchip Technology Inc. and its subsidiaries.  You may use this software 
- * and any derivatives exclusively with Microchip products. 
- * 
- * THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS".  NO WARRANTIES, WHETHER 
- * EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS SOFTWARE, INCLUDING ANY IMPLIED 
- * WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS FOR A 
- * PARTICULAR PURPOSE, OR ITS INTERACTION WITH MICROCHIP PRODUCTS, COMBINATION 
- * WITH ANY OTHER PRODUCTS, OR USE IN ANY APPLICATION. 
- *
- * IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE, 
- * INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY KIND 
- * WHATSOEVER RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF MICROCHIP HAS 
- * BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE FORESEEABLE.  TO THE 
- * FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS 
- * IN ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF 
- * ANY, THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
- *
- * MICROCHIP PROVIDES THIS SOFTWARE CONDITIONALLY UPON YOUR ACCEPTANCE OF THESE 
- * TERMS. 
- */
-
 /* 
- * File:   System.h
+ * File:   system.h
  * Author: Mallik
- * Comments: configure the device
- * Revision history: 1
+ *
+ * Created on 16 May, 2016, 1:32 PM
  */
 
-// This is a guard condition so that contents of this file are not included
-// more than once.  
-#ifndef XC_HEADER_TEMPLATE_H
-#define	XC_HEADER_TEMPLATE_H
-
-#include <pic18f4431.h> // include processor files - each processor file is guarded.  
-
-// TODO Insert appropriate #include <>
-
-// TODO Insert C++ class definitions if appropriate
-
-// TODO Insert declarations
-
-// Comment a function and leverage automatic documentation with slash star star
-/**
-    <p><b>Function prototype:</b></p>
-  
-    <p><b>Summary:</b></p>
-
-    <p><b>Description:</b></p>
-
-    <p><b>Precondition:</b></p>
-
-    <p><b>Parameters:</b></p>
-
-    <p><b>Returns:</b></p>
-
-    <p><b>Example:</b></p>
-    <code>
- 
-    </code>
-
-    <p><b>Remarks:</b></p>
- */
-// TODO Insert declarations or function prototypes (right here) to leverage 
-// live documentation
+#ifndef SYSTEM_H
+#define	SYSTEM_H
 
 #ifdef	__cplusplus
 extern "C" {
-#endif /* __cplusplus */
+#endif
+#include <xc.h>
+#include <p18f4431.h>
+#include <string.h>
+#include <stdlib.h>
 
-    // TODO If C++ is being used, regular C code needs function names to have C 
-    // linkage so the functions can be used by the c code. 
+#pragma config OSC = HS
+#pragma config WDTEN = OFF
+#pragma config MCLRE = ON
+#pragma config CPD = OFF
+#pragma config BOREN = ON
+#pragma config IESO = ON
+#pragma config FCMEN = ON
+#pragma config STVREN = ON
+#pragma config LVP = ON
+
+
+typedef unsigned char uint8_t;
+typedef unsigned short uint16_t;
+typedef unsigned long uint32_t;
+
+void runStateMachine(void);
+void initVarConfigPort(void);
+void runApplcn(void);
+
+uint16_t firmwareSize;
+
+typedef enum SYSTEM_STATUS_Tag {
+    SYS_WAIT_FOR_CONFIG_CMND,
+    SYS_CONFIG_FLASH,
+    SYS_RCV_FIRMWARE_HEADER,
+    SYS_FIRMWARE_UPDATE,
+    SYS_RUN_APPLCN,
+} SYS_STATE_t;
+
+typedef enum SYSTEM_COM_PROTOCOL_MSG_Tag {
+    SYS_CONFIG_CMND_FROM_PROGRMR = 0x01,
+    SYS_READY_FOR_FIRMWARE_HEADER,
+    SYS_FIRMWARE_HEADER_POS_ACK,
+    SYS_FIRMWARE_HEADER_NEG_ACK,
+    SYS_SND_NXT_CHUNK,
+} SYS_COM_PROTOCL_MSG_t;
     
-    void runStateMachine(void);
-
 #ifdef	__cplusplus
 }
-#endif /* __cplusplus */
+#endif
 
-#endif	/* XC_HEADER_TEMPLATE_H */
+#endif	/* SYSTEM_H */
 

@@ -1,5 +1,5 @@
 
-# 1 "main.c"
+# 1 "UARTDriver.c"
 
 # 44 "C:\Program Files (x86)\Microchip\xc8\v1.21\include\pic18f4431.h"
 extern volatile unsigned char DFLTCON @ 0xF60;
@@ -5650,11 +5650,6 @@ SYS_FIRMWARE_HEADER_NEG_ACK,
 SYS_SND_NXT_CHUNK,
 } SYS_COM_PROTOCL_MSG_t;
 
-# 24 "FlashDriver.h"
-void updateFirmware__Flash(void);
-void eraseSeq__Flash(void);
-void updateTablPtr__Flash(void);
-
 # 23 "UARTDriver.h"
 uint8_t uart_rxbuffer[64];
 uint8_t uart_rxbuffer_counter;
@@ -5662,94 +5657,35 @@ uint8_t uart_rxbuffer_counter;
 void driverConfig__UART(void);
 void sendData__UART(uint8_t data);
 
-# 14 "main.c"
-void main(void) {
+# 13 "UARTDriver.c"
+void driverConfig__UART(void) {
 
-initVarConfigPort();
-driverConfig__UART();
-runStateMachine();
+RCONbits.IPEN = 1;
+INTCONbits.GIE = 1;
+INTCONbits.PEIE = 1;
+PIE1bits.RCIE = 1;
+
+TXSTA = 0;
+RCSTA = 0;
+
+TXSTAbits.BRGH = 0;
+
+SPBRG = 25;
+
+RCSTAbits.SPEN = 1;
+TXSTAbits.TXEN = 1;
+RCSTAbits.CREN = 1;
 }
 
-void initVarConfigPort(void) {
-PORTB = 0;
-ANSEL0 = 0;
-ANSEL1 = 0;
-
-TRISCbits.RC6 = 0;
-TRISCbits.RC7 = 1;
-
-uart_rxbuffer_counter = 0;
+void sendData__UART(uint8_t data) {
+TXREG = data;
+while (!TXSTAbits.TRMT);
 }
 
-void runApplcn(void) {
-void (*applcFtr)(void);
-applcFtr = (void (*)(void))0x000400;
-applcFtr();
 
-
-
-}
-
-void runStateMachine(void) {
-SYS_STATE_t currentState = SYS_WAIT_FOR_CONFIG_CMND;
-
-while (1) {
-switch (currentState) {
-
-case SYS_WAIT_FOR_CONFIG_CMND:
-if (!uart_rxbuffer_counter || (uart_rxbuffer [0] != SYS_CONFIG_CMND_FROM_PROGRMR)) {
-currentState = SYS_WAIT_FOR_CONFIG_CMND;
-} else {
-sendData__UART(SYS_READY_FOR_FIRMWARE_HEADER);
-uart_rxbuffer_counter = 0;
-currentState = SYS_CONFIG_FLASH;
-}
-break;
-
-case SYS_CONFIG_FLASH:
-updateTablPtr__Flash();
-eraseSeq__Flash();
-currentState = SYS_RCV_FIRMWARE_HEADER;
-break;
-
-case SYS_RCV_FIRMWARE_HEADER:
-{
-uint8_t cmpArr[4];
-memset(cmpArr, 0x55, 4);
-if (uart_rxbuffer_counter < 5) {
-currentState = SYS_RCV_FIRMWARE_HEADER;
-} else {
-if (memcmp(cmpArr, uart_rxbuffer, 4)) {
-sendData__UART(SYS_FIRMWARE_HEADER_NEG_ACK);
-} else {
-firmwareSize = uart_rxbuffer[4];
-uart_rxbuffer_counter = 0;
-sendData__UART(SYS_FIRMWARE_HEADER_POS_ACK);
-currentState = SYS_FIRMWARE_UPDATE;
-}
-
-}
-}
-break;
-
-case SYS_FIRMWARE_UPDATE:
-if (uart_rxbuffer_counter < 64) {
-currentState = SYS_FIRMWARE_UPDATE;
-} else {
-uart_rxbuffer_counter = 0;
-updateFirmware__Flash();
-if (--firmwareSize > 0) {
-sendData__UART(SYS_SND_NXT_CHUNK);
-} else {
-currentState = SYS_RUN_APPLCN;
-}
-}
-break;
-
-case SYS_RUN_APPLCN:
-runApplcn();
-currentState = SYS_WAIT_FOR_CONFIG_CMND;
-break;
-}
+static void interrupt InterruptHandlerHigh(void) {
+if (PIR1bits.RCIF) {
+uart_rxbuffer[uart_rxbuffer_counter++] = RCREG;
+PIR1bits.RCIF = 0;
 }
 }

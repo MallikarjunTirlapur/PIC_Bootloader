@@ -1,0 +1,3 @@
+Warning[2058] G:\embedded\PIC_Bootloader\BltPIC_Bootloader.X\FlashDriver.c 26 : call of function without prototype
+Warning[2058] G:\embedded\PIC_Bootloader\BltPIC_Bootloader.X\FlashDriver.c 32 : call of function without prototype
+Warning[2058] G:\embedded\PIC_Bootloader\BltPIC_Bootloader.X\FlashDriver.c 47 : call of function without prototype

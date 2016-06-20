@@ -1,5 +1,5 @@
 
-# 1 "main.c"
+# 1 "FlashDriver.c"
 
 # 44 "C:\Program Files (x86)\Microchip\xc8\v1.21\include\pic18f4431.h"
 extern volatile unsigned char DFLTCON @ 0xF60;
@@ -5662,94 +5662,66 @@ uint8_t uart_rxbuffer_counter;
 void driverConfig__UART(void);
 void sendData__UART(uint8_t data);
 
-# 14 "main.c"
-void main(void) {
+# 14 "FlashDriver.c"
+void updateFirmware__Flash(void) {
+int size = 0;
+int bufIndex = 0;
 
-initVarConfigPort();
-driverConfig__UART();
-runStateMachine();
-}
+while (size < 8 && bufIndex < 64) {
+for (int bc = 0; bc < 8; bc++) {
+TABLAT = uart_rxbuffer[bufIndex++];
 
-void initVarConfigPort(void) {
-PORTB = 0;
-ANSEL0 = 0;
-ANSEL1 = 0;
-
-TRISCbits.RC6 = 0;
-TRISCbits.RC7 = 1;
-
-uart_rxbuffer_counter = 0;
-}
-
-void runApplcn(void) {
-void (*applcFtr)(void);
-applcFtr = (void (*)(void))0x000400;
-applcFtr();
-
-
+# 26
+asm(" TBLWTPOSTINC");
 
 }
 
-void runStateMachine(void) {
-SYS_STATE_t currentState = SYS_WAIT_FOR_CONFIG_CMND;
 
-while (1) {
-switch (currentState) {
 
-case SYS_WAIT_FOR_CONFIG_CMND:
-if (!uart_rxbuffer_counter || (uart_rxbuffer [0] != SYS_CONFIG_CMND_FROM_PROGRMR)) {
-currentState = SYS_WAIT_FOR_CONFIG_CMND;
-} else {
-sendData__UART(SYS_READY_FOR_FIRMWARE_HEADER);
-uart_rxbuffer_counter = 0;
-currentState = SYS_CONFIG_FLASH;
+asm(" TBLRDPOSTDEC");
+
+
+
+INTCONbits.GIE = 0;
+EECON1bits.WREN = 1;
+EECON1bits.FREE = 0;
+EECON2 = 0X55;
+EECON2 = 0xAA;
+EECON1bits.WR = 1;
+asm(" nop");
+EECON1bits.WREN = 0;
+INTCONbits.GIE = 1;
+
+
+asm(" TBLRDPOSTINC");
+
+
+
+size = size + 1;
 }
-break;
-
-case SYS_CONFIG_FLASH:
-updateTablPtr__Flash();
-eraseSeq__Flash();
-currentState = SYS_RCV_FIRMWARE_HEADER;
-break;
-
-case SYS_RCV_FIRMWARE_HEADER:
-{
-uint8_t cmpArr[4];
-memset(cmpArr, 0x55, 4);
-if (uart_rxbuffer_counter < 5) {
-currentState = SYS_RCV_FIRMWARE_HEADER;
-} else {
-if (memcmp(cmpArr, uart_rxbuffer, 4)) {
-sendData__UART(SYS_FIRMWARE_HEADER_NEG_ACK);
-} else {
-firmwareSize = uart_rxbuffer[4];
-uart_rxbuffer_counter = 0;
-sendData__UART(SYS_FIRMWARE_HEADER_POS_ACK);
-currentState = SYS_FIRMWARE_UPDATE;
 }
 
+void updateTablPtr__Flash(void){
+TBLPTRU = 0x00;
+TBLPTRH = 0x04;
+TBLPTRL = 0x00;
 }
-}
-break;
 
-case SYS_FIRMWARE_UPDATE:
-if (uart_rxbuffer_counter < 64) {
-currentState = SYS_FIRMWARE_UPDATE;
-} else {
-uart_rxbuffer_counter = 0;
-updateFirmware__Flash();
-if (--firmwareSize > 0) {
-sendData__UART(SYS_SND_NXT_CHUNK);
-} else {
-currentState = SYS_RUN_APPLCN;
-}
-}
-break;
+void eraseSeq__Flash(void) {
+EECON1bits.EEPGD = 1;
+EECON1bits.CFGS = 0;
+EECON1bits.WREN = 1;
+EECON1bits.FREE = 1;
 
-case SYS_RUN_APPLCN:
-runApplcn();
-currentState = SYS_WAIT_FOR_CONFIG_CMND;
-break;
+INTCONbits.GIE = 0;
+
+EECON2 = 0x55;
+EECON2 = 0xAA;
+
+EECON1bits.WR = 1;
+
+asm(" nop");
+EECON1bits.WREN = 0;
+INTCONbits.GIE = 1;
 }
-}
-}
+
