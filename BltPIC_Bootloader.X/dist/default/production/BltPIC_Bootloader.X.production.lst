@@ -1,0 +1,215 @@
+
+
+Microchip Technology PIC18 LITE Macro Assembler V1.21 build 54009 
+                                                                                               Mon Jun 20 21:36:53 2016
+
+Microchip Technology Omniscient Code Generator (Lite mode) build 54009
+     1                           	processor	18F4431
+     2                           	fnconf	rparam,??,?,0
+     3                           	opt	pw 120
+     4                           	opt	lm
+     5                           	psect	text0,global,reloc=2,class=CODE,delta=1
+     6                           	psect	cinit,global,reloc=2,class=CODE,delta=1
+     7                           	psect	cstackCOMRAM,global,class=COMRAM,space=1,delta=1
+     8                           	psect	text1,global,reloc=2,class=CODE,delta=1
+     9                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1
+    10                           	psect	rparam,global,class=COMRAM,space=1,delta=1
+    11  0000                     
+    12                           ; 0 bytes @ 0x0
+    13 ;;
+    14 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+    15 ;;
+    16 ;; *************** function _main *****************
+    17 ;; Defined at:
+    18 ;;		line 11 in file "main.c"
+    19 ;; Parameters:    Size  Location     Type
+    20 ;;		None
+    21 ;; Auto vars:     Size  Location     Type
+    22 ;;		None
+    23 ;; Return value:  Size  Location     Type
+    24 ;;		None               void
+    25 ;; Registers used:
+    26 ;;		cstack
+    27 ;; Tracked objects:
+    28 ;;		On entry : 0/0
+    29 ;;		On exit  : 0/0
+    30 ;;		Unchanged: 0/0
+    31 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2
+    32 ;;      Params:         0       0       0       0
+    33 ;;      Locals:         0       0       0       0
+    34 ;;      Temps:          0       0       0       0
+    35 ;;      Totals:         0       0       0       0
+    36 ;;Total ram usage:        0 bytes
+    37 ;; Hardware stack levels required when called:    1
+    38 ;; This function calls:
+    39 ;;		_runStateMachine
+    40 ;; This function is called by:
+    41 ;;		Startup code after reset
+    42 ;; This function uses a non-reentrant model
+    43 ;;
+    44                           
+    45                           	psect	text0
+    46  003FF8                     __ptext0:
+    47                           	opt stack 0
+    48  003FF8                     _main:
+    49                           	opt stack 30
+    50                           
+    51                           ;main.c: 12: runStateMachine();
+    52                           
+    53                           ;incstack = 0
+    54                           ;incstack = 0
+    55  003FF8  ECF8  F01F         	call	_runStateMachine	;wreg free
+    56  003FFC  EF00  F000         	goto	start
+    57  004000                     __end_of_main:
+    58                           	opt stack 0
+    59                           
+    60                           ; #config settings
+    61                           
+    62                           	psect	cinit
+    63  003FF2                     __pcinit:
+    64                           	opt stack 0
+    65  003FF2                     start_initialization:
+    66                           	opt stack 0
+    67  003FF2                     __initialization:
+    68                           	opt stack 0
+    69  003FF2                     end_of_initialization:
+    70                           	opt stack 0
+    71  003FF2                     __end_of__initialization:
+    72                           	opt stack 0
+    73  003FF2  0100               	movlb	0
+    74  003FF4  EFFC  F01F         	goto	_main	;jump to C main() function
+    75                           
+    76                           	psect	cstackCOMRAM
+    77  000000                     __pcstackCOMRAM:
+    78                           	opt stack 0
+    79  000000                     
+    80 ;; *************** function _runStateMachine *****************
+    81 ;; Defined at:
+    82 ;;		line 16 in file "main.c"
+    83 ;; Parameters:    Size  Location     Type
+    84 ;;		None
+    85 ;; Auto vars:     Size  Location     Type
+    86 ;;		None
+    87 ;; Return value:  Size  Location     Type
+    88 ;;		None               void
+    89 ;; Registers used:
+    90 ;;		None
+    91 ;; Tracked objects:
+    92 ;;		On entry : 0/0
+    93 ;;		On exit  : 0/0
+    94 ;;		Unchanged: 0/0
+    95 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2
+    96 ;;      Params:         0       0       0       0
+    97 ;;      Locals:         0       0       0       0
+    98 ;;      Temps:          0       0       0       0
+    99 ;;      Totals:         0       0       0       0
+   100 ;;Total ram usage:        0 bytes
+   101 ;; Hardware stack levels used:    1
+   102 ;; This function calls:
+   103 ;;		Nothing
+   104 ;; This function is called by:
+   105 ;;		_main
+   106 ;; This function uses a non-reentrant model
+   107 ;;
+   108                           
+   109                           	psect	text1
+   110  003FF0                     __ptext1:
+   111                           	opt stack 0
+   112  003FF0                     _runStateMachine:
+   113                           	opt stack 30
+   114                           
+   115                           ;incstack = 0
+   116                           ;incstack = 0
+   117  003FF0  0012               	return	
+   118  003FF2                     __end_of_runStateMachine:
+   119                           	opt stack 0
+   120  0000                     
+   121                           	psect	rparam
+
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        0
+    BSS         0
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMRAM           95      0       0
+    BANK0           160      0       0
+    BANK1           256      0       0
+    BANK2           256      0       0
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMRAM
+
+    None.
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 0     0      0       0
+                    _runStateMachine
+ ---------------------------------------------------------------------------------
+ (1) _runStateMachine                                      0     0      0       0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 1
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _runStateMachine
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BITCOMRAM           5F      0       0       0        0.0%
+EEDATA             100      0       0       0        0.0%
+NULL                 0      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+COMRAM              5F      0       0       1        0.0%
+STACK                0      0       1       2        0.0%
+ABS                  0      0       0       3        0.0%
+BITBANK0            A0      0       0       4        0.0%
+BANK0               A0      0       0       5        0.0%
+BITBANK1           100      0       0       6        0.0%
+BANK1              100      0       0       7        0.0%
+BITBANK2           100      0       0       8        0.0%
+BANK2              100      0       0       9        0.0%
+BIGRAM             2FF      0       0      10        0.0%
+DATA                 0      0       0      11        0.0%
+BITSFR               0      0       0      40        0.0%
+SFR                  0      0       0      40        0.0%
+
+
+Microchip Technology PIC18 Macro Assembler V1.21 build 54009 
+Symbol Table                                                                                   Mon Jun 20 21:36:53 2016
+
+                    _main 3FF8                      start 0000                     ?_main 0000  
+         _runStateMachine 3FF0           __initialization 3FF2              __end_of_main 4000  
+                  ??_main 0000             __activetblptr 000000   __end_of_runStateMachine 3FF2  
+              __accesstop 0060   __end_of__initialization 3FF2            __pcstackCOMRAM 0000  
+        ?_runStateMachine 0000                   __Hparam 0000                   __Lparam 0000  
+                 __pcinit 3FF2                   __ramtop 0300                   __ptext0 3FF8  
+                 __ptext1 3FF0      end_of_initialization 3FF2       start_initialization 3FF2  
+__size_of_runStateMachine 0002                  __Hrparam 0000                  __Lrparam 0000  
+           __size_of_main 0008         ??_runStateMachine 0000  

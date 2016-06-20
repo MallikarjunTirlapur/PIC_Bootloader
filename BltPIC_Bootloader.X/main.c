@@ -6,7 +6,7 @@
  */
 
 
-#include <xc.h>
+#include "system.h"
 
 void main(void) {
     runStateMachine();   
