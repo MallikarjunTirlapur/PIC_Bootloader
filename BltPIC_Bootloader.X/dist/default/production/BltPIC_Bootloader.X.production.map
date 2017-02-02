@@ -5,10 +5,10 @@ Linker command line:
 -W-3 --edf=C:\Program Files (x86)\Microchip\xc8\v1.21\dat\en_msgs.txt -cs \
   -h+dist/default/production\BltPIC_Bootloader.X.production.sym \
   --cmf=dist/default/production\BltPIC_Bootloader.X.production.cmf -z \
-  -Q18F4431 -oC:\Users\Ramya_S\AppData\Local\Temp\seg4.6 \
+  -Q18F4431 -oC:\Users\Ramya_S\AppData\Local\Temp\s5vk.6 \
   -Mdist/default/production/BltPIC_Bootloader.X.production.map -E1 -ver=XC8 \
-  -ACODE=00h-03FFFh -ACONST=00h-03FFFh -ASMALLCONST=0300h-03FFhx61 \
-  -AMEDIUMCONST=0300h-03FFFh -ACOMRAM=01h-05Fh -AABS1=00h-02FFh \
+  -ACODE=00h-03FFh -ACONST=00h-03FFh -ASMALLCONST=0300h-03FFh \
+  -AMEDIUMCONST=0300h-03FFh -ACOMRAM=01h-05Fh -AABS1=00h-02FFh \
   -ABIGRAM=01h-02FFh -ARAM=060h-0FFh,0100h-01FFhx2 -ABANK0=060h-0FFh \
   -ABANK1=0100h-01FFh -ABANK2=0200h-02FFh -ASFR=0F60h-0FFFh \
   -preset_vec=00h,intcode=08h,intcodelo,powerup,init,end_init \
@@ -20,7 +20,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE \
-  C:\Users\Ramya_S\AppData\Local\Temp\seg4.obj \
+  C:\Users\Ramya_S\AppData\Local\Temp\s5vk.obj \
   dist/default/production\BltPIC_Bootloader.X.production.obj 
 
 Object code version is 3.11
@@ -33,46 +33,45 @@ Call graph: (short form)
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\Ramya_S\AppData\Local\Temp\seg4.obj
+C:\Users\Ramya_S\AppData\Local\Temp\s5vk.obj
                 end_init                             A0       A0        4        4       0
                 reset_vec                             0        0        4        0       0
                 idloc                            200000   200000        8   200000       0
                 config                           300000   300000        E   300000       0
 dist/default/production\BltPIC_Bootloader.X.production.obj
                 intcode                               8        8       98        4       0
-                text10                              364      364       1A        4       0
-                text9                               30E      30E       1E        4       0
-                text8                               2EC      2EC       22        4       0
-                text7                               39C      39C        A        4       0
-                text6                               38E      38E        E        4       0
-                text5                               348      348       1C        4       0
-                text4                               2C0      2C0       2C        4       0
-                text3                               250      250       70        4       0
-                text2                               1BE      1BE       92        4       0
-                text1                                A4       A4      11A        4       0
-                text0                               37E      37E       10        4       0
-                cstackCOMRAM                          1        1       1D        1       1
+                text8                               36E      36E       12        4       0
+                text7                               350      350       1E        4       0
+                text6                               32E      32E       22        4       0
+                text5                               3A8      3A8        A        4       0
+                text4                               29E      29E       52        4       0
+                text3                               390      390        E        4       0
+                text2                               20C      20C       92        4       0
+                text1                                A4       A4      168        4       0
+                text0                               380      380       10        4       0
+                cstackCOMRAM                          1        1       1B        1       1
                 bssBANK0                             60       60       40       60       1
-                bssCOMRAM                            1E       1E        3        1       1
-                cinit                               32C      32C       1C        4       0
+                dataCOMRAM                           1C       1C        A        1       1
+                bssCOMRAM                            26       26        4        1       1
+                cinit                               2F0      2F0       3E        4       0
+                idataCOMRAM                         39E      39E        A        4       0
 
 TOTAL           Name                               Link     Load   Length     Space
         CLASS   CODE           
                 end_init                             A0       A0        4         0
                 intcode                               8        8       98         0
                 reset_vec                             0        0        4         0
-                text10                              364      364       1A         0
-                text9                               30E      30E       1E         0
-                text8                               2EC      2EC       22         0
-                text7                               39C      39C        A         0
-                text6                               38E      38E        E         0
-                text5                               348      348       1C         0
-                text4                               2C0      2C0       2C         0
-                text3                               250      250       70         0
-                text2                               1BE      1BE       92         0
-                text1                                A4       A4      11A         0
-                text0                               37E      37E       10         0
-                cinit                               32C      32C       1C         0
+                text8                               36E      36E       12         0
+                text7                               350      350       1E         0
+                text6                               32E      32E       22         0
+                text5                               3A8      3A8        A         0
+                text4                               29E      29E       52         0
+                text3                               390      390        E         0
+                text2                               20C      20C       92         0
+                text1                                A4       A4      168         0
+                text0                               380      380       10         0
+                cinit                               2F0      2F0       3E         0
+                idataCOMRAM                         39E      39E        A         0
 
         CLASS   CONST          
 
@@ -81,8 +80,9 @@ TOTAL           Name                               Link     Load   Length     Sp
         CLASS   MEDIUMCONST    
 
         CLASS   COMRAM         
-                cstackCOMRAM                          1        1       1D         1
-                bssCOMRAM                            1E       1E        3         1
+                cstackCOMRAM                          1        1       1B         1
+                dataCOMRAM                           1C       1C        A         1
+                bssCOMRAM                            26       26        4         1
 
         CLASS   ABS1           
 
@@ -114,8 +114,8 @@ TOTAL           Name                               Link     Load   Length     Sp
 SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class
 
                 reset_vec                      000000  000004  000004         0       0  CODE    
-                cstackCOMRAM                   000001  000020  000021         1       1  COMRAM  
-                intcode                        000008  00039E  0003A6         4       0  CODE    
+                cstackCOMRAM                   000001  000029  00002A         1       1  COMRAM  
+                intcode                        000008  0003AA  0003B2         4       0  CODE    
                 bssBANK0                       000060  000040  0000A0        60       1  BANK0   
                 idloc                          200000  000008  200008    200000       0  IDLOC   
                 config                         300000  00000E  30000E    300000       0  CONFIG  
@@ -127,23 +127,21 @@ UNUSED ADDRESS RANGES
         BANK0            0000A0-0000FF               60
         BANK1            000100-0001FF              100
         BANK2            000200-0002FF              100
-        BIGRAM           000021-00005F               3F
+        BIGRAM           00002A-00005F               36
                          0000A0-0002FF              260
         CODE             000004-000007                4
-                         0003A6-003FFF             3C5A
-        COMRAM           000021-00005F               3F
+                         0003B2-0003FF               4E
+        COMRAM           00002A-00005F               36
         CONST            000004-000007                4
-                         0003A6-003FFF             3C5A
+                         0003B2-0003FF               4E
         EEDATA           F00000-F000FF              100
-        MEDIUMCONST      0003A6-003FFF             3C5A
+        MEDIUMCONST      0003B2-0003FF               4E
         RAM              0000A0-0002FF              100
         SFR              000F60-000FFF               A0
-        SMALLCONST       0003A6-003FFF              100
+        SMALLCONST       0003B2-0003FF               4E
 
                                   Symbol Table
 
-?_memcmp                        cstackCOMRAM 00000F
-?_memset                        cstackCOMRAM 00000F
 ?_sendData__UART                cstackCOMRAM 00000F
 _ANSEL0                         (abs)        000FB8
 _ANSEL1                         (abs)        000FB9
@@ -194,12 +192,14 @@ __Hconfig                       config       30000E
 __Hconst                        const        000000
 __HcstackCOMRAM                 cstackCOMRAM 000000
 __Hdata                         data         000000
+__HdataCOMRAM                   dataCOMRAM   000000
 __Heeprom_data                  eeprom_data  000000
 __Hend_init                     end_init     0000A4
 __Hfarbss                       farbss       000000
 __Hfardata                      fardata      000000
 __Hibigdata                     ibigdata     000000
 __Hidata                        idata        000000
+__HidataCOMRAM                  idataCOMRAM  000000
 __Hidloc                        idloc        200008
 __Hifardata                     ifardata     000000
 __Hinit                         init         0000A0
@@ -230,7 +230,6 @@ __Htemp                         temp         000000
 __Htext                         text         000000
 __Htext0                        text0        000000
 __Htext1                        text1        000000
-__Htext10                       text10       000000
 __Htext2                        text2        000000
 __Htext3                        text3        000000
 __Htext4                        text4        000000
@@ -238,7 +237,6 @@ __Htext5                        text5        000000
 __Htext6                        text6        000000
 __Htext7                        text7        000000
 __Htext8                        text8        000000
-__Htext9                        text9        000000
 __LRAM                          (abs)        000001
 __Labs1                         abs1         000000
 __Lbank0                        bank0        000000
@@ -257,12 +255,14 @@ __Lconfig                       config       300000
 __Lconst                        const        000000
 __LcstackCOMRAM                 cstackCOMRAM 000000
 __Ldata                         data         000000
+__LdataCOMRAM                   dataCOMRAM   000000
 __Leeprom_data                  eeprom_data  000000
 __Lend_init                     end_init     0000A0
 __Lfarbss                       farbss       000000
 __Lfardata                      fardata      000000
 __Libigdata                     ibigdata     000000
 __Lidata                        idata        000000
+__LidataCOMRAM                  idataCOMRAM  000000
 __Lidloc                        idloc        200000
 __Lifardata                     ifardata     000000
 __Linit                         init         0000A0
@@ -293,7 +293,6 @@ __Ltemp                         temp         000000
 __Ltext                         text         000000
 __Ltext0                        text0        000000
 __Ltext1                        text1        000000
-__Ltext10                       text10       000000
 __Ltext2                        text2        000000
 __Ltext3                        text3        000000
 __Ltext4                        text4        000000
@@ -301,88 +300,77 @@ __Ltext5                        text5        000000
 __Ltext6                        text6        000000
 __Ltext7                        text7        000000
 __Ltext8                        text8        000000
-__Ltext9                        text9        000000
 __S0                            (abs)        30000E
 __S1                            (abs)        0000A0
 __accesstop                     (abs)        000060
 __activetblptr                  (abs)        000002
 __end_of_InterruptHandlerHigh   intcode      0000A0
-__end_of__initialization        cinit        00033E
-__end_of_driverConfig__UART     text9        00032C
-__end_of_eraseSeq__Flash        text5        000364
-__end_of_initVarConfigPort      text10       00037E
-__end_of_main                   text0        00038E
-__end_of_memcmp                 text3        0002C0
-__end_of_memset                 text4        0002EC
-__end_of_runApplcn              text8        00030E
-__end_of_runStateMachine        text1        0001BE
-__end_of_sendData__UART         text7        0003A6
-__end_of_updateFirmware__Flash  text2        000250
-__end_of_updateTablPtr__Flash   text6        00039C
-__initialization                cinit        00032C
+__end_of__initialization        cinit        000324
+__end_of_driverConfig__UART     text7        00036E
+__end_of_erasePage__Flash       text4        0002F0
+__end_of_initVarConfigPort      text8        000380
+__end_of_main                   text0        000390
+__end_of_runApplcn              text6        000350
+__end_of_runStateMachine        text1        00020C
+__end_of_sendData__UART         text5        0003B2
+__end_of_updateFirmware__Flash  text2        00029E
+__end_of_updateTablPtr__Flash   text3        00039E
+__initialization                cinit        0002F0
 __mediumconst                   mediumconst  000000
 __pbssBANK0                     bssBANK0     000060
-__pbssCOMRAM                    bssCOMRAM    00001E
-__pcinit                        cinit        00032C
+__pbssCOMRAM                    bssCOMRAM    000026
+__pcinit                        cinit        0002F0
 __pcstackCOMRAM                 cstackCOMRAM 000001
+__pdataCOMRAM                   dataCOMRAM   00001C
+__pidataCOMRAM                  idataCOMRAM  00039E
 __pintcode                      intcode      000008
-__ptext0                        text0        00037E
+__ptext0                        text0        000380
 __ptext1                        text1        0000A4
-__ptext10                       text10       000364
-__ptext2                        text2        0001BE
-__ptext3                        text3        000250
-__ptext4                        text4        0002C0
-__ptext5                        text5        000348
-__ptext6                        text6        00038E
-__ptext7                        text7        00039C
-__ptext8                        text8        0002EC
-__ptext9                        text9        00030E
+__ptext2                        text2        00020C
+__ptext3                        text3        000390
+__ptext4                        text4        00029E
+__ptext5                        text5        0003A8
+__ptext6                        text6        00032E
+__ptext7                        text7        000350
+__ptext8                        text8        00036E
 __ramtop                        ramtop       000300
 __size_of_InterruptHandlerHigh  (abs)        000000
 __size_of_driverConfig__UART    (abs)        000000
-__size_of_eraseSeq__Flash       (abs)        000000
+__size_of_erasePage__Flash      (abs)        000000
 __size_of_initVarConfigPort     (abs)        000000
 __size_of_main                  (abs)        000000
-__size_of_memcmp                (abs)        000000
-__size_of_memset                (abs)        000000
 __size_of_runApplcn             (abs)        000000
 __size_of_runStateMachine       (abs)        000000
 __size_of_sendData__UART        (abs)        000000
 __size_of_updateFirmware__Flash (abs)        000000
 __size_of_updateTablPtr__Flash  (abs)        000000
 __smallconst                    smallconst   000000
-_driverConfig__UART             text9        00030E
-_eraseSeq__Flash                text5        000348
-_firmwareSize                   bssCOMRAM    00001E
-_initVarConfigPort              text10       000364
-_main                           text0        00037E
-_memcmp                         text3        000250
-_memset                         text4        0002C0
-_runApplcn                      text8        0002EC
+_applStartAdd                   bssCOMRAM    000026
+_driverConfig__UART             text7        000350
+_erasePage__Flash               text4        00029E
+_initVarConfigPort              text8        00036E
+_main                           text0        000380
+_progMemRange                   dataCOMRAM   00001C
+_runApplcn                      text6        00032E
 _runStateMachine                text1        0000A4
-_sendData__UART                 text7        00039C
+_sendData__UART                 text5        0003A8
+_totalNumberOfPacckets          bssCOMRAM    000028
 _uart_rxbuffer                  bssBANK0     000060
-_uart_rxbuffer_counter          bssCOMRAM    000020
-_updateFirmware__Flash          text2        0001BE
-_updateTablPtr__Flash           text6        00038E
-end_of_initialization           cinit        00033E
+_uart_rxbuffer_counter          bssCOMRAM    000029
+_updateFirmware__Flash          text2        00020C
+_updateTablPtr__Flash           text3        000390
+end_of_initialization           cinit        000324
+erasePage__Flash@rowAdd         cstackCOMRAM 00000F
 intlevel0                       text         000000
 intlevel1                       text         000000
 intlevel2                       text         000000
 intlevel3                       text         000000
-memcmp@n                        cstackCOMRAM 000013
-memcmp@s1                       cstackCOMRAM 00000F
-memcmp@s2                       cstackCOMRAM 000011
-memset@c                        cstackCOMRAM 000011
-memset@n                        cstackCOMRAM 000013
-memset@p                        cstackCOMRAM 000015
-memset@p1                       cstackCOMRAM 00000F
 runApplcn@applcFtr              cstackCOMRAM 00000F
-runStateMachine@cmpArr          cstackCOMRAM 000019
-runStateMachine@currentState    cstackCOMRAM 00001D
+runStateMachine@currentState    cstackCOMRAM 00001B
+runStateMachine@i               cstackCOMRAM 00001A
 sendData__UART@data             cstackCOMRAM 00000F
 start                           init         0000A0
-start_initialization            cinit        00032C
+start_initialization            cinit        0002F0
 updateFirmware__Flash@bc        cstackCOMRAM 000013
 updateFirmware__Flash@bufIndex  cstackCOMRAM 000011
 updateFirmware__Flash@size      cstackCOMRAM 00000F
@@ -392,7 +380,7 @@ FUNCTION INFORMATION:
 
  *************** function _main *****************
  Defined at:
-		line 14 in file "main.c"
+		line 42 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -423,35 +411,33 @@ Total ram usage:        0 bytes
 
  *************** function _runStateMachine *****************
  Defined at:
-		line 41 in file "main.c"
+		line 82 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
-  cmpArr          4   24[COMRAM] unsigned char [4]
-  currentState    1   28[COMRAM] enum E4666
+  currentState    1   26[COMRAM] enum E4667
+  i               1   25[COMRAM] unsigned char 
  Return value:  Size  Location     Type
 		None               void
  Registers used:
-		wreg, fsr2l, fsr2h, status,2, status,0, pclat, tosl, cstack
+		wreg, fsr2l, fsr2h, status,2, status,0, pclat, tosl, prodl, prodh, cstack
  Tracked objects:
 		On entry : 
 		On exit  : 
 		Unchanged: 
  Data sizes:     COMRAM   BANK0   BANK1   BANK2
       Params:         0       0       0       0
-      Locals:         5       0       0       0
-      Temps:          1       0       0       0
-      Totals:         6       0       0       0
-Total ram usage:        6 bytes
+      Locals:         2       0       0       0
+      Temps:          5       0       0       0
+      Totals:         7       0       0       0
+Total ram usage:        7 bytes
  Hardware stack levels used:    1
  Hardware stack levels required when called:    3
  This function calls:
 		_runApplcn
 		_sendData__UART
+		_erasePage__Flash
 		_updateTablPtr__Flash
-		_eraseSeq__Flash
-		_memset
-		_memcmp
 		_updateFirmware__Flash
  This function is called by:
 		_main
@@ -460,7 +446,7 @@ Total ram usage:        6 bytes
 
  *************** function _updateFirmware__Flash *****************
  Defined at:
-		line 14 in file "FlashDriver.c"
+		line 41 in file "FlashDriver.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -490,107 +476,9 @@ Total ram usage:        6 bytes
  This function uses a non-reentrant model
 
 
- *************** function _memcmp *****************
- Defined at:
-		line 4 in file "C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\memcmp.c"
- Parameters:    Size  Location     Type
-  s1              2   14[COMRAM] PTR const void 
-		 -> runStateMachine@cmpArr(4), 
-  s2              2   16[COMRAM] PTR const void 
-		 -> uart_rxbuffer(64), 
-  n               2   18[COMRAM] unsigned int 
- Auto vars:     Size  Location     Type
-		None
- Return value:  Size  Location     Type
-                  2   14[COMRAM] int 
- Registers used:
-		wreg, fsr2l, fsr2h, status,2, status,0
- Tracked objects:
-		On entry : 
-		On exit  : 
-		Unchanged: 
- Data sizes:     COMRAM   BANK0   BANK1   BANK2
-      Params:         6       0       0       0
-      Locals:         0       0       0       0
-      Temps:          3       0       0       0
-      Totals:         9       0       0       0
-Total ram usage:        9 bytes
- Hardware stack levels used:    1
- Hardware stack levels required when called:    1
- This function calls:
-		Nothing
- This function is called by:
-		_runStateMachine
- This function uses a non-reentrant model
-
-
- *************** function _memset *****************
- Defined at:
-		line 10 in file "C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\memset.c"
- Parameters:    Size  Location     Type
-  p1              2   14[COMRAM] PTR void 
-		 -> runStateMachine@cmpArr(4), 
-  c               2   16[COMRAM] int 
-  n               2   18[COMRAM] unsigned int 
- Auto vars:     Size  Location     Type
-  p               2   20[COMRAM] PTR unsigned char 
-		 -> runStateMachine@cmpArr(4), 
- Return value:  Size  Location     Type
-                  2   14[COMRAM] PTR void 
- Registers used:
-		wreg, fsr2l, fsr2h, status,2, status,0
- Tracked objects:
-		On entry : 
-		On exit  : 
-		Unchanged: 
- Data sizes:     COMRAM   BANK0   BANK1   BANK2
-      Params:         6       0       0       0
-      Locals:         2       0       0       0
-      Temps:          0       0       0       0
-      Totals:         8       0       0       0
-Total ram usage:        8 bytes
- Hardware stack levels used:    1
- Hardware stack levels required when called:    1
- This function calls:
-		Nothing
- This function is called by:
-		_runStateMachine
- This function uses a non-reentrant model
-
-
- *************** function _eraseSeq__Flash *****************
- Defined at:
-		line 61 in file "FlashDriver.c"
- Parameters:    Size  Location     Type
-		None
- Auto vars:     Size  Location     Type
-		None
- Return value:  Size  Location     Type
-		None               void
- Registers used:
-		wreg, status,2
- Tracked objects:
-		On entry : 
-		On exit  : 
-		Unchanged: 
- Data sizes:     COMRAM   BANK0   BANK1   BANK2
-      Params:         0       0       0       0
-      Locals:         0       0       0       0
-      Temps:          0       0       0       0
-      Totals:         0       0       0       0
-Total ram usage:        0 bytes
- Hardware stack levels used:    1
- Hardware stack levels required when called:    1
- This function calls:
-		Nothing
- This function is called by:
-		_runStateMachine
- This function uses a non-reentrant model
-
-
  *************** function _updateTablPtr__Flash *****************
  Defined at:
-		line 55 in file "FlashDriver.c"
+		line 84 in file "FlashDriver.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -609,6 +497,36 @@ Total ram usage:        0 bytes
       Temps:          0       0       0       0
       Totals:         0       0       0       0
 Total ram usage:        0 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_runStateMachine
+ This function uses a non-reentrant model
+
+
+ *************** function _erasePage__Flash *****************
+ Defined at:
+		line 93 in file "FlashDriver.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+  rowAdd          2   14[COMRAM] unsigned short 
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, status,2, status,0, prodl, prodh
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2
+      Params:         0       0       0       0
+      Locals:         2       0       0       0
+      Temps:          0       0       0       0
+      Totals:         2       0       0       0
+Total ram usage:        2 bytes
  Hardware stack levels used:    1
  Hardware stack levels required when called:    1
  This function calls:
@@ -620,7 +538,7 @@ Total ram usage:        0 bytes
 
  *************** function _sendData__UART *****************
  Defined at:
-		line 32 in file "UARTDriver.c"
+		line 63 in file "UARTDriver.c"
  Parameters:    Size  Location     Type
   data            1   14[COMRAM] unsigned char 
  Auto vars:     Size  Location     Type
@@ -650,7 +568,7 @@ Total ram usage:        1 bytes
 
  *************** function _runApplcn *****************
  Defined at:
-		line 32 in file "main.c"
+		line 67 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -659,7 +577,7 @@ Total ram usage:        1 bytes
  Return value:  Size  Location     Type
 		None               void
  Registers used:
-		wreg, status,2, pclat, tosl, cstack
+		wreg, pclat, tosl, cstack
  Tracked objects:
 		On entry : 
 		On exit  : 
@@ -681,7 +599,7 @@ Total ram usage:        2 bytes
 
  *************** function _driverConfig__UART *****************
  Defined at:
-		line 13 in file "UARTDriver.c"
+		line 39 in file "UARTDriver.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -711,7 +629,7 @@ Total ram usage:        0 bytes
 
  *************** function _initVarConfigPort *****************
  Defined at:
-		line 21 in file "main.c"
+		line 51 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -727,9 +645,9 @@ Total ram usage:        0 bytes
  Data sizes:     COMRAM   BANK0   BANK1   BANK2
       Params:         0       0       0       0
       Locals:         0       0       0       0
-      Temps:          1       0       0       0
-      Totals:         1       0       0       0
-Total ram usage:        1 bytes
+      Temps:          0       0       0       0
+      Totals:         0       0       0       0
+Total ram usage:        0 bytes
  Hardware stack levels used:    1
  Hardware stack levels required when called:    1
  This function calls:
@@ -741,7 +659,7 @@ Total ram usage:        1 bytes
 
  *************** function _InterruptHandlerHigh *****************
  Defined at:
-		line 38 in file "UARTDriver.c"
+		line 73 in file "UARTDriver.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -773,39 +691,29 @@ MODULE INFORMATION
 
 Module		Function		Class		Link	Load	Size
 shared
-		__initializatio		CODE           	032C	0000	18
+		__initializatio		CODE           	02F0	0000	52
 
-shared estimated size: 18
+shared estimated size: 52
 
 main.c
-		_initVarConfigP		CODE           	0364	0000	26
-		_runApplcn     		CODE           	02EC	0000	34
-		_main          		CODE           	037E	0000	16
-		_runStateMachin		CODE           	00A4	0000	282
+		_initVarConfigP		CODE           	036E	0000	18
+		_runApplcn     		CODE           	032E	0000	34
+		_main          		CODE           	0380	0000	16
+		_runStateMachin		CODE           	00A4	0000	360
 
-main.c estimated size: 358
-
-C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\memcmp.c
-		_memcmp        		CODE           	0250	0000	112
-
-C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\memcmp.c estimated size: 112
+main.c estimated size: 428
 
 FlashDriver.c
-		_updateFirmware		CODE           	01BE	0000	146
-		_eraseSeq__Flas		CODE           	0348	0000	28
-		_updateTablPtr_		CODE           	038E	0000	14
+		_updateFirmware		CODE           	020C	0000	146
+		_erasePage__Fla		CODE           	029E	0000	82
+		_updateTablPtr_		CODE           	0390	0000	14
 
-FlashDriver.c estimated size: 188
+FlashDriver.c estimated size: 242
 
 UARTDriver.c
-		_driverConfig__		CODE           	030E	0000	30
+		_driverConfig__		CODE           	0350	0000	30
 		_InterruptHandl		CODE           	0008	0000	152
-		_sendData__UART		CODE           	039C	0000	10
+		_sendData__UART		CODE           	03A8	0000	10
 
 UARTDriver.c estimated size: 192
-
-C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\memset.c
-		_memset        		CODE           	02C0	0000	44
-
-C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\memset.c estimated size: 44
 

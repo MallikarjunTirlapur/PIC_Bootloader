@@ -5612,7 +5612,7 @@ extern char * ultoa(char * buf, unsigned long val, int base);
 extern char * ftoa(float f, int * status);
 
 
-# 19 "system.h"
+# 43 "system.h"
 #pragma config OSC = HS
 #pragma config WDTEN = OFF
 #pragma config MCLRE = ON
@@ -5623,113 +5623,158 @@ extern char * ftoa(float f, int * status);
 #pragma config STVREN = ON
 #pragma config LVP = ON
 
-
 typedef unsigned char uint8_t;
 typedef unsigned short uint16_t;
 typedef unsigned long uint32_t;
 
+# 63
+uint16_t applStartAdd;
+
 void runStateMachine(void);
+
 void initVarConfigPort(void);
+
 void runApplcn(void);
 
-uint16_t firmwareSize;
+uint8_t totalNumberOfPacckets;
 
+# 76
 typedef enum SYSTEM_STATUS_Tag {
-SYS_WAIT_FOR_CONFIG_CMND,
+SYS_WAIT_FOR_START_CMND,
 SYS_CONFIG_FLASH,
 SYS_RCV_FIRMWARE_HEADER,
 SYS_FIRMWARE_UPDATE,
 SYS_RUN_APPLCN,
+SYS_SND_ADDRS_RANGE,
 } SYS_STATE_t;
 
+# 88
 typedef enum SYSTEM_COM_PROTOCOL_MSG_Tag {
-SYS_CONFIG_CMND_FROM_PROGRMR = 0x01,
+SYS_START_CMND_FROM_PROGRMR = 0x01,
 SYS_READY_FOR_FIRMWARE_HEADER,
 SYS_FIRMWARE_HEADER_POS_ACK,
 SYS_FIRMWARE_HEADER_NEG_ACK,
 SYS_SND_NXT_CHUNK,
+SYS_ADDRESS_RANGE_TAG,
+SYS_ADDRESS_RANGE_RQT,
 } SYS_COM_PROTOCL_MSG_t;
 
-# 24 "FlashDriver.h"
+
+uint8_t progMemRange[] = {SYS_ADDRESS_RANGE_TAG, 64,
+(uint8_t)((0x3fff & 0xff000000) >> 24),
+(uint8_t)((0x3fff & 0x00ff0000) >> 16),
+(uint8_t)((0x3fff & 0x0000ff00) >> 8),
+(uint8_t)(0x3fff & 0x000000ff),
+(uint8_t)((0x00 & 0xff000000) >> 24),
+(uint8_t)((0x00 & 0x00ff0000) >> 16),
+(uint8_t)((0x00 & 0x0000ff00) >> 8),
+(uint8_t)(0x00 & 0x000000ff)};
+
+# 42 "FlashDriver.h"
 void updateFirmware__Flash(void);
-void eraseSeq__Flash(void);
+
+void erasePage__Flash(void);
+
 void updateTablPtr__Flash(void);
 
-# 23 "UARTDriver.h"
+# 44 "UARTDriver.h"
 uint8_t uart_rxbuffer[64];
 uint8_t uart_rxbuffer_counter;
 
+
 void driverConfig__UART(void);
+
 void sendData__UART(uint8_t data);
 
-# 14 "main.c"
+# 42 "main.c"
 void main(void) {
-
 initVarConfigPort();
 driverConfig__UART();
 runStateMachine();
 }
 
+# 51
 void initVarConfigPort(void) {
 PORTB = 0;
+
 ANSEL0 = 0;
 ANSEL1 = 0;
 
-TRISCbits.RC6 = 0;
-TRISCbits.RC7 = 1;
 
-uart_rxbuffer_counter = 0;
+TRISCbits.RC6 = 0;
+
+
+TRISCbits.RC7 = 1;
 }
 
+# 67
 void runApplcn(void) {
 void (*applcFtr)(void);
-applcFtr = (void (*)(void))0x000400;
+applcFtr = (void (*)(void))applStartAdd;
 applcFtr();
-
-
-
 }
 
+# 82
 void runStateMachine(void) {
-SYS_STATE_t currentState = SYS_WAIT_FOR_CONFIG_CMND;
+
+uint8_t i;
+SYS_STATE_t currentState = SYS_SND_ADDRS_RANGE;
+
 
 while (1) {
 switch (currentState) {
 
-case SYS_WAIT_FOR_CONFIG_CMND:
-if (!uart_rxbuffer_counter || (uart_rxbuffer [0] != SYS_CONFIG_CMND_FROM_PROGRMR)) {
-currentState = SYS_WAIT_FOR_CONFIG_CMND;
+case SYS_SND_ADDRS_RANGE:
+if (!uart_rxbuffer_counter || (uart_rxbuffer [0] != SYS_ADDRESS_RANGE_RQT)) {
+currentState = SYS_SND_ADDRS_RANGE;
+} else {
+sendData__UART(progMemRange[0]);
+sendData__UART(progMemRange[1]);
+for (i = 2; i <= (progMemRange[1] + 1); i++) {
+sendData__UART(progMemRange[i]);
+}
+uart_rxbuffer_counter = 0;
+currentState = SYS_WAIT_FOR_START_CMND;
+}
+break;
+
+case SYS_WAIT_FOR_START_CMND:
+if (!uart_rxbuffer_counter || (uart_rxbuffer [0] != SYS_START_CMND_FROM_PROGRMR)) {
+currentState = SYS_WAIT_FOR_START_CMND;
 } else {
 sendData__UART(SYS_READY_FOR_FIRMWARE_HEADER);
 uart_rxbuffer_counter = 0;
-currentState = SYS_CONFIG_FLASH;
-}
-break;
-
-case SYS_CONFIG_FLASH:
-updateTablPtr__Flash();
-eraseSeq__Flash();
 currentState = SYS_RCV_FIRMWARE_HEADER;
+}
 break;
 
 case SYS_RCV_FIRMWARE_HEADER:
-{
-uint8_t cmpArr[4];
-memset(cmpArr, 0x55, 4);
-if (uart_rxbuffer_counter < 5) {
+if (uart_rxbuffer_counter < 3) {
 currentState = SYS_RCV_FIRMWARE_HEADER;
 } else {
-if (memcmp(cmpArr, uart_rxbuffer, 4)) {
-sendData__UART(SYS_FIRMWARE_HEADER_NEG_ACK);
-} else {
-firmwareSize = uart_rxbuffer[4];
+
+
+totalNumberOfPacckets = uart_rxbuffer[0];
+
+
+applStartAdd += uart_rxbuffer[2];
+applStartAdd = applStartAdd << 8;
+applStartAdd += uart_rxbuffer[1];
+
 uart_rxbuffer_counter = 0;
-sendData__UART(SYS_FIRMWARE_HEADER_POS_ACK);
-currentState = SYS_FIRMWARE_UPDATE;
+currentState = SYS_CONFIG_FLASH;
 }
 
-}
-}
+break;
+
+case SYS_CONFIG_FLASH:
+
+erasePage__Flash();
+
+
+updateTablPtr__Flash();
+sendData__UART(SYS_FIRMWARE_HEADER_POS_ACK);
+currentState = SYS_FIRMWARE_UPDATE;
 break;
 
 case SYS_FIRMWARE_UPDATE:
@@ -5737,8 +5782,10 @@ if (uart_rxbuffer_counter < 64) {
 currentState = SYS_FIRMWARE_UPDATE;
 } else {
 uart_rxbuffer_counter = 0;
+
+
 updateFirmware__Flash();
-if (--firmwareSize > 0) {
+if (--totalNumberOfPacckets > 0) {
 sendData__UART(SYS_SND_NXT_CHUNK);
 } else {
 currentState = SYS_RUN_APPLCN;
@@ -5747,8 +5794,10 @@ currentState = SYS_RUN_APPLCN;
 break;
 
 case SYS_RUN_APPLCN:
+uart_rxbuffer_counter = 0;
+
 runApplcn();
-currentState = SYS_WAIT_FOR_CONFIG_CMND;
+currentState = SYS_WAIT_FOR_START_CMND;
 break;
 }
 }

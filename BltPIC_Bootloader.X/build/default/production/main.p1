@@ -1,10 +1,13 @@
 Version 3.2 HI-TECH Software Intermediate Code
+"99 system.h
+[c E4675 1 2 3 4 5 6 7 .. ]
+[n E4675 SYSTEM_COM_PROTOCOL_MSG_Tag SYS_START_CMND_FROM_PROGRMR SYS_READY_FOR_FIRMWARE_HEADER SYS_FIRMWARE_HEADER_POS_ACK SYS_FIRMWARE_HEADER_NEG_ACK SYS_SND_NXT_CHUNK SYS_ADDRESS_RANGE_TAG SYS_ADDRESS_RANGE_RQT  ]
 [p mainexit ]
-"35 system.h
+"67
 [v _initVarConfigPort `(v ~T0 @X0 0 ef ]
-"26 UARTDriver.h
+"48 UARTDriver.h
 [v _driverConfig__UART `(v ~T0 @X0 0 ef ]
-"34 system.h
+"65 system.h
 [v _runStateMachine `(v ~T0 @X0 0 ef ]
 "1158 C:\Program Files (x86)\Microchip\xc8\v1.21\include\pic18f4431.h
 [v _PORTB `Vuc ~T0 @X0 0 e@3969 ]
@@ -23,23 +26,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S147 . . . ]
 "2957
 [v _TRISCbits `VS147 ~T0 @X0 0 e@3988 ]
-"42 main.c
-[c E4666 0 1 2 3 4 .. ]
-[n E4666 SYSTEM_STATUS_Tag SYS_WAIT_FOR_CONFIG_CMND SYS_CONFIG_FLASH SYS_RCV_FIRMWARE_HEADER SYS_FIRMWARE_UPDATE SYS_RUN_APPLCN  ]
-"48
-[c E4673 1 2 3 4 5 .. ]
-[n E4673 SYSTEM_COM_PROTOCOL_MSG_Tag SYS_CONFIG_CMND_FROM_PROGRMR SYS_READY_FOR_FIRMWARE_HEADER SYS_FIRMWARE_HEADER_POS_ACK SYS_FIRMWARE_HEADER_NEG_ACK SYS_SND_NXT_CHUNK  ]
-"27 UARTDriver.h
+"85 main.c
+[c E4667 0 1 2 3 4 5 .. ]
+[n E4667 SYSTEM_STATUS_Tag SYS_WAIT_FOR_START_CMND SYS_CONFIG_FLASH SYS_RCV_FIRMWARE_HEADER SYS_FIRMWARE_UPDATE SYS_RUN_APPLCN SYS_SND_ADDRS_RANGE  ]
+"50 UARTDriver.h
 [v _sendData__UART `(v ~T0 @X0 0 ef1`uc ]
-"26 FlashDriver.h
+"44 FlashDriver.h
+[v _erasePage__Flash `(v ~T0 @X0 0 ef ]
+"46
 [v _updateTablPtr__Flash `(v ~T0 @X0 0 ef ]
-"25
-[v _eraseSeq__Flash `(v ~T0 @X0 0 ef ]
-"24 C:\Program Files (x86)\Microchip\xc8\v1.21\include\string.h
-[v _memset `(*v ~T0 @X0 0 ef3`*v`i`ui ]
-"43
-[v _memcmp `(i ~T0 @X0 0 ef3`*Cv`*Cv`ui ]
-"24 FlashDriver.h
+"42
 [v _updateFirmware__Flash `(v ~T0 @X0 0 ef ]
 [; ;pic18f4431.h: 44: extern volatile unsigned char DFLTCON @ 0xF60;
 "46 C:\Program Files (x86)\Microchip\xc8\v1.21\include\pic18f4431.h
@@ -4246,338 +4242,416 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdlib.h: 109: extern char * ltoa(char * buf, long val, int base);
 [; ;stdlib.h: 110: extern char * ultoa(char * buf, unsigned long val, int base);
 [; ;stdlib.h: 112: extern char * ftoa(float f, int * status);
-"19 system.h
+"43 system.h
 [p x OSC=HS ]
-"20
+"44
 [p x WDTEN=OFF ]
-"21
+"45
 [p x MCLRE=ON ]
-"22
+"46
 [p x CPD=OFF ]
-"23
+"47
 [p x BOREN=ON ]
-"24
+"48
 [p x IESO=ON ]
-"25
+"49
 [p x FCMEN=ON ]
-"26
+"50
 [p x STVREN=ON ]
-"27
+"51
 [p x LVP=ON ]
-[; ;system.h: 30: typedef unsigned char uint8_t;
-[; ;system.h: 31: typedef unsigned short uint16_t;
-[; ;system.h: 32: typedef unsigned long uint32_t;
-[; ;system.h: 34: void runStateMachine(void);
-[; ;system.h: 35: void initVarConfigPort(void);
-[; ;system.h: 36: void runApplcn(void);
-"38
-[v _firmwareSize `us ~T0 @X0 1 e ]
-[; ;system.h: 38: uint16_t firmwareSize;
-[; ;system.h: 40: typedef enum SYSTEM_STATUS_Tag {
-[; ;system.h: 41: SYS_WAIT_FOR_CONFIG_CMND,
-[; ;system.h: 42: SYS_CONFIG_FLASH,
-[; ;system.h: 43: SYS_RCV_FIRMWARE_HEADER,
-[; ;system.h: 44: SYS_FIRMWARE_UPDATE,
-[; ;system.h: 45: SYS_RUN_APPLCN,
-[; ;system.h: 46: } SYS_STATE_t;
-[; ;system.h: 48: typedef enum SYSTEM_COM_PROTOCOL_MSG_Tag {
-[; ;system.h: 49: SYS_CONFIG_CMND_FROM_PROGRMR = 0x01,
-[; ;system.h: 50: SYS_READY_FOR_FIRMWARE_HEADER,
-[; ;system.h: 51: SYS_FIRMWARE_HEADER_POS_ACK,
-[; ;system.h: 52: SYS_FIRMWARE_HEADER_NEG_ACK,
-[; ;system.h: 53: SYS_SND_NXT_CHUNK,
-[; ;system.h: 54: } SYS_COM_PROTOCL_MSG_t;
-[; ;FlashDriver.h: 24: void updateFirmware__Flash(void);
-[; ;FlashDriver.h: 25: void eraseSeq__Flash(void);
-[; ;FlashDriver.h: 26: void updateTablPtr__Flash(void);
-"23 UARTDriver.h
+[; ;system.h: 53: typedef unsigned char uint8_t;
+[; ;system.h: 54: typedef unsigned short uint16_t;
+[; ;system.h: 55: typedef unsigned long uint32_t;
+"63
+[v _applStartAdd `us ~T0 @X0 1 e ]
+[; ;system.h: 63: uint16_t applStartAdd;
+[; ;system.h: 65: void runStateMachine(void);
+[; ;system.h: 67: void initVarConfigPort(void);
+[; ;system.h: 69: void runApplcn(void);
+"71
+[v _totalNumberOfPacckets `uc ~T0 @X0 1 e ]
+[; ;system.h: 71: uint8_t totalNumberOfPacckets;
+[; ;system.h: 76: typedef enum SYSTEM_STATUS_Tag {
+[; ;system.h: 77: SYS_WAIT_FOR_START_CMND,
+[; ;system.h: 78: SYS_CONFIG_FLASH,
+[; ;system.h: 79: SYS_RCV_FIRMWARE_HEADER,
+[; ;system.h: 80: SYS_FIRMWARE_UPDATE,
+[; ;system.h: 81: SYS_RUN_APPLCN,
+[; ;system.h: 82: SYS_SND_ADDRS_RANGE,
+[; ;system.h: 83: } SYS_STATE_t;
+[; ;system.h: 88: typedef enum SYSTEM_COM_PROTOCOL_MSG_Tag {
+[; ;system.h: 89: SYS_START_CMND_FROM_PROGRMR = 0x01,
+[; ;system.h: 90: SYS_READY_FOR_FIRMWARE_HEADER,
+[; ;system.h: 91: SYS_FIRMWARE_HEADER_POS_ACK,
+[; ;system.h: 92: SYS_FIRMWARE_HEADER_NEG_ACK,
+[; ;system.h: 93: SYS_SND_NXT_CHUNK,
+[; ;system.h: 94: SYS_ADDRESS_RANGE_TAG,
+[; ;system.h: 95: SYS_ADDRESS_RANGE_RQT,
+[; ;system.h: 96: } SYS_COM_PROTOCL_MSG_t;
+"99
+[v _progMemRange `uc ~T0 @X0 -> 0 `x e ]
+[i _progMemRange
+:U ..
+-> . `E4675 5 `uc
+-> -> 64 `i `uc
+"100
+-> >> & -> -> -> 16383 `i `l `ul -> -16777216 `ul -> 24 `i `uc
+"101
+-> >> & -> -> 16383 `i `l -> 16711680 `l -> 16 `i `uc
+"102
+-> >> & -> -> 16383 `i `ui -> 65280 `ui -> 8 `i `uc
+"103
+-> & -> 16383 `i -> 255 `i `uc
+"104
+-> >> & -> -> -> 0 `i `l `ul -> -16777216 `ul -> 24 `i `uc
+"105
+-> >> & -> -> 0 `i `l -> 16711680 `l -> 16 `i `uc
+"106
+-> >> & -> -> 0 `i `ui -> 65280 `ui -> 8 `i `uc
+"107
+-> & -> 0 `i -> 255 `i `uc
+..
+]
+[; ;system.h: 99: uint8_t progMemRange[] = {SYS_ADDRESS_RANGE_TAG, 64,
+[; ;system.h: 100: (uint8_t)((0x3fff & 0xff000000) >> 24),
+[; ;system.h: 101: (uint8_t)((0x3fff & 0x00ff0000) >> 16),
+[; ;system.h: 102: (uint8_t)((0x3fff & 0x0000ff00) >> 8),
+[; ;system.h: 103: (uint8_t)(0x3fff & 0x000000ff),
+[; ;system.h: 104: (uint8_t)((0x00 & 0xff000000) >> 24),
+[; ;system.h: 105: (uint8_t)((0x00 & 0x00ff0000) >> 16),
+[; ;system.h: 106: (uint8_t)((0x00 & 0x0000ff00) >> 8),
+[; ;system.h: 107: (uint8_t)(0x00 & 0x000000ff)};
+[; ;FlashDriver.h: 42: void updateFirmware__Flash(void);
+[; ;FlashDriver.h: 44: void erasePage__Flash(void);
+[; ;FlashDriver.h: 46: void updateTablPtr__Flash(void);
+"44 UARTDriver.h
 [v _uart_rxbuffer `uc ~T0 @X0 -> 64 `i e ]
-[; ;UARTDriver.h: 23: uint8_t uart_rxbuffer[64];
-"24
+[; ;UARTDriver.h: 44: uint8_t uart_rxbuffer[64];
+"45
 [v _uart_rxbuffer_counter `uc ~T0 @X0 1 e ]
-[; ;UARTDriver.h: 24: uint8_t uart_rxbuffer_counter;
-[; ;UARTDriver.h: 26: void driverConfig__UART(void);
-[; ;UARTDriver.h: 27: void sendData__UART(uint8_t data);
-"14 main.c
+[; ;UARTDriver.h: 45: uint8_t uart_rxbuffer_counter;
+[; ;UARTDriver.h: 48: void driverConfig__UART(void);
+[; ;UARTDriver.h: 50: void sendData__UART(uint8_t data);
+"42 main.c
 [v _main `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 14: void main(void) {
+[; ;main.c: 42: void main(void) {
 [e :U _main ]
 [f ]
-[; ;main.c: 16: initVarConfigPort();
-"16
+[; ;main.c: 43: initVarConfigPort();
+"43
 [e ( _initVarConfigPort ..  ]
-[; ;main.c: 17: driverConfig__UART();
-"17
+[; ;main.c: 44: driverConfig__UART();
+"44
 [e ( _driverConfig__UART ..  ]
-[; ;main.c: 18: runStateMachine();
-"18
+[; ;main.c: 45: runStateMachine();
+"45
 [e ( _runStateMachine ..  ]
-[; ;main.c: 19: }
-"19
+[; ;main.c: 46: }
+"46
 [e :UE 445 ]
 }
-"21
+"51
 [v _initVarConfigPort `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 21: void initVarConfigPort(void) {
+[; ;main.c: 51: void initVarConfigPort(void) {
 [e :U _initVarConfigPort ]
 [f ]
-[; ;main.c: 22: PORTB = 0;
-"22
+[; ;main.c: 52: PORTB = 0;
+"52
 [e = _PORTB -> -> 0 `i `uc ]
-[; ;main.c: 23: ANSEL0 = 0;
-"23
+[; ;main.c: 54: ANSEL0 = 0;
+"54
 [e = _ANSEL0 -> -> 0 `i `uc ]
-[; ;main.c: 24: ANSEL1 = 0;
-"24
+[; ;main.c: 55: ANSEL1 = 0;
+"55
 [e = _ANSEL1 -> -> 0 `i `uc ]
-[; ;main.c: 26: TRISCbits.RC6 = 0;
-"26
+[; ;main.c: 58: TRISCbits.RC6 = 0;
+"58
 [e = . . _TRISCbits 1 6 -> -> 0 `i `uc ]
-[; ;main.c: 27: TRISCbits.RC7 = 1;
-"27
+[; ;main.c: 61: TRISCbits.RC7 = 1;
+"61
 [e = . . _TRISCbits 1 7 -> -> 1 `i `uc ]
-[; ;main.c: 29: uart_rxbuffer_counter = 0;
-"29
-[e = _uart_rxbuffer_counter -> -> 0 `i `uc ]
-[; ;main.c: 30: }
-"30
+[; ;main.c: 62: }
+"62
 [e :UE 446 ]
 }
-"32
+"67
 [v _runApplcn `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 32: void runApplcn(void) {
+[; ;main.c: 67: void runApplcn(void) {
 [e :U _runApplcn ]
 [f ]
-"33
-[v F4697 `(v ~T0 @X0 0 tf ]
-[v _applcFtr `*F4697 ~T0 @X0 1 a ]
-[; ;main.c: 33: void (*applcFtr)(void);
-[; ;main.c: 34: applcFtr = (void (*)(void))0x000400;
-"34
-[v F4699 `(v ~T0 @X0 0 tf ]
-[e = _applcFtr -> -> 1024 `i `*F4699 ]
-[; ;main.c: 35: applcFtr();
-"35
+"68
+[v F4710 `(v ~T0 @X0 0 tf ]
+[v _applcFtr `*F4710 ~T0 @X0 1 a ]
+[; ;main.c: 68: void (*applcFtr)(void);
+[; ;main.c: 69: applcFtr = (void (*)(void))applStartAdd;
+"69
+[v F4712 `(v ~T0 @X0 0 tf ]
+[e = _applcFtr -> _applStartAdd `*F4712 ]
+[; ;main.c: 70: applcFtr();
+"70
 [e ( *U _applcFtr ..  ]
-[; ;main.c: 39: }
-"39
+[; ;main.c: 71: }
+"71
 [e :UE 447 ]
 }
-"41
+"82
 [v _runStateMachine `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 41: void runStateMachine(void) {
+[; ;main.c: 82: void runStateMachine(void) {
 [e :U _runStateMachine ]
 [f ]
-"42
-[v _currentState `E4666 ~T0 @X0 1 a ]
-[; ;main.c: 42: SYS_STATE_t currentState = SYS_WAIT_FOR_CONFIG_CMND;
-[e = _currentState . `E4666 0 ]
-[; ;main.c: 44: while (1) {
-"44
+"84
+[v _i `uc ~T0 @X0 1 a ]
+"85
+[v _currentState `E4667 ~T0 @X0 1 a ]
+[; ;main.c: 84: uint8_t i;
+[; ;main.c: 85: SYS_STATE_t currentState = SYS_SND_ADDRS_RANGE;
+[e = _currentState -> . `E4667 5 `E4667 ]
+[; ;main.c: 88: while (1) {
+"88
 [e :U 450 ]
 {
-[; ;main.c: 45: switch (currentState) {
-"45
+[; ;main.c: 89: switch (currentState) {
+"89
 [e $U 453  ]
 {
-[; ;main.c: 47: case SYS_WAIT_FOR_CONFIG_CMND:
-"47
+[; ;main.c: 91: case SYS_SND_ADDRS_RANGE:
+"91
 [e :U 454 ]
-[; ;main.c: 48: if (!uart_rxbuffer_counter || (uart_rxbuffer [0] != SYS_CONFIG_CMND_FROM_PROGRMR)) {
-"48
-[e $ ! || ! != -> _uart_rxbuffer_counter `i -> -> -> 0 `i `uc `i != -> *U + &U _uart_rxbuffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _uart_rxbuffer `ui `ux `i -> . `E4673 0 `i 455  ]
+[; ;main.c: 92: if (!uart_rxbuffer_counter || (uart_rxbuffer [0] != SYS_ADDRESS_RANGE_RQT)) {
+"92
+[e $ ! || ! != -> _uart_rxbuffer_counter `i -> -> -> 0 `i `uc `i != -> *U + &U _uart_rxbuffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _uart_rxbuffer `ui `ux `i -> . `E4675 6 `i 455  ]
 {
-[; ;main.c: 49: currentState = SYS_WAIT_FOR_CONFIG_CMND;
-"49
-[e = _currentState . `E4666 0 ]
-"50
+[; ;main.c: 93: currentState = SYS_SND_ADDRS_RANGE;
+"93
+[e = _currentState -> . `E4667 5 `E4667 ]
+"94
 }
-[; ;main.c: 50: } else {
+[; ;main.c: 94: } else {
 [e $U 456  ]
 [e :U 455 ]
 {
-[; ;main.c: 51: sendData__UART(SYS_READY_FOR_FIRMWARE_HEADER);
-"51
-[e ( _sendData__UART (1 -> . `E4673 1 `uc ]
-[; ;main.c: 52: uart_rxbuffer_counter = 0;
-"52
-[e = _uart_rxbuffer_counter -> -> 0 `i `uc ]
-[; ;main.c: 53: currentState = SYS_CONFIG_FLASH;
-"53
-[e = _currentState . `E4666 1 ]
-"54
-}
-[e :U 456 ]
-[; ;main.c: 54: }
-[; ;main.c: 55: break;
-"55
-[e $U 452  ]
-[; ;main.c: 57: case SYS_CONFIG_FLASH:
-"57
-[e :U 457 ]
-[; ;main.c: 58: updateTablPtr__Flash();
-"58
-[e ( _updateTablPtr__Flash ..  ]
-[; ;main.c: 59: eraseSeq__Flash();
-"59
-[e ( _eraseSeq__Flash ..  ]
-[; ;main.c: 60: currentState = SYS_RCV_FIRMWARE_HEADER;
-"60
-[e = _currentState . `E4666 2 ]
-[; ;main.c: 61: break;
-"61
-[e $U 452  ]
-[; ;main.c: 63: case SYS_RCV_FIRMWARE_HEADER:
-"63
-[e :U 458 ]
-[; ;main.c: 64: {
-"64
-{
-"65
-[v _cmpArr `uc ~T0 @X0 -> 4 `i a ]
-[; ;main.c: 65: uint8_t cmpArr[4];
-[; ;main.c: 66: memset(cmpArr, 0x55, 4);
-"66
-[e ( _memset (3 , , -> &U _cmpArr `*v -> 85 `i -> -> 4 `i `ui ]
-[; ;main.c: 67: if (uart_rxbuffer_counter < 5) {
-"67
-[e $ ! < -> _uart_rxbuffer_counter `i -> 5 `i 459  ]
-{
-[; ;main.c: 68: currentState = SYS_RCV_FIRMWARE_HEADER;
-"68
-[e = _currentState . `E4666 2 ]
-"69
-}
-[; ;main.c: 69: } else {
-[e $U 460  ]
-[e :U 459 ]
-{
-[; ;main.c: 70: if (memcmp(cmpArr, uart_rxbuffer, 4)) {
-"70
-[e $ ! != ( _memcmp (3 , , -> &U _cmpArr `*Cv -> &U _uart_rxbuffer `*Cv -> -> 4 `i `ui -> 0 `i 461  ]
-{
-[; ;main.c: 71: sendData__UART(SYS_FIRMWARE_HEADER_NEG_ACK);
-"71
-[e ( _sendData__UART (1 -> . `E4673 3 `uc ]
-"72
-}
-[; ;main.c: 72: } else {
-[e $U 462  ]
-[e :U 461 ]
-{
-[; ;main.c: 73: firmwareSize = uart_rxbuffer[4];
-"73
-[e = _firmwareSize -> *U + &U _uart_rxbuffer * -> -> -> 4 `i `ui `ux -> -> # *U &U _uart_rxbuffer `ui `ux `us ]
-[; ;main.c: 74: uart_rxbuffer_counter = 0;
-"74
-[e = _uart_rxbuffer_counter -> -> 0 `i `uc ]
-[; ;main.c: 75: sendData__UART(SYS_FIRMWARE_HEADER_POS_ACK);
-"75
-[e ( _sendData__UART (1 -> . `E4673 2 `uc ]
-[; ;main.c: 76: currentState = SYS_FIRMWARE_UPDATE;
-"76
-[e = _currentState . `E4666 3 ]
-"77
-}
-[e :U 462 ]
-"79
-}
-[e :U 460 ]
-"80
-}
-[; ;main.c: 77: }
-[; ;main.c: 79: }
-[; ;main.c: 80: }
-[; ;main.c: 81: break;
-"81
-[e $U 452  ]
-[; ;main.c: 83: case SYS_FIRMWARE_UPDATE:
-"83
-[e :U 463 ]
-[; ;main.c: 84: if (uart_rxbuffer_counter < 64) {
-"84
-[e $ ! < -> _uart_rxbuffer_counter `i -> 64 `i 464  ]
-{
-[; ;main.c: 85: currentState = SYS_FIRMWARE_UPDATE;
-"85
-[e = _currentState . `E4666 3 ]
-"86
-}
-[; ;main.c: 86: } else {
-[e $U 465  ]
-[e :U 464 ]
-{
-[; ;main.c: 87: uart_rxbuffer_counter = 0;
-"87
-[e = _uart_rxbuffer_counter -> -> 0 `i `uc ]
-[; ;main.c: 88: updateFirmware__Flash();
-"88
-[e ( _updateFirmware__Flash ..  ]
-[; ;main.c: 89: if (--firmwareSize > 0) {
-"89
-[e $ ! > -> =- _firmwareSize -> -> 1 `i `us `ui -> -> 0 `i `ui 466  ]
-{
-[; ;main.c: 90: sendData__UART(SYS_SND_NXT_CHUNK);
-"90
-[e ( _sendData__UART (1 -> . `E4673 4 `uc ]
-"91
-}
-[; ;main.c: 91: } else {
-[e $U 467  ]
-[e :U 466 ]
-{
-[; ;main.c: 92: currentState = SYS_RUN_APPLCN;
-"92
-[e = _currentState . `E4666 4 ]
-"93
-}
-[e :U 467 ]
-"94
-}
-[e :U 465 ]
-[; ;main.c: 93: }
-[; ;main.c: 94: }
-[; ;main.c: 95: break;
+[; ;main.c: 95: sendData__UART(progMemRange[0]);
 "95
-[e $U 452  ]
-[; ;main.c: 97: case SYS_RUN_APPLCN:
+[e ( _sendData__UART (1 *U + &U _progMemRange * -> -> -> 0 `i `ui `ux -> -> # *U &U _progMemRange `ui `ux ]
+[; ;main.c: 96: sendData__UART(progMemRange[1]);
+"96
+[e ( _sendData__UART (1 *U + &U _progMemRange * -> -> -> 1 `i `ui `ux -> -> # *U &U _progMemRange `ui `ux ]
+[; ;main.c: 97: for (i = 2; i <= (progMemRange[1] + 1); i++) {
 "97
-[e :U 468 ]
-[; ;main.c: 98: runApplcn();
+{
+[e = _i -> -> 2 `i `uc ]
+[e $U 460  ]
+[e :U 457 ]
+{
+[; ;main.c: 98: sendData__UART(progMemRange[i]);
 "98
-[e ( _runApplcn ..  ]
-[; ;main.c: 99: currentState = SYS_WAIT_FOR_CONFIG_CMND;
+[e ( _sendData__UART (1 *U + &U _progMemRange * -> _i `ux -> -> # *U &U _progMemRange `ui `ux ]
 "99
-[e = _currentState . `E4666 0 ]
-[; ;main.c: 100: break;
-"100
-[e $U 452  ]
-"101
 }
-[; ;main.c: 101: }
-[e $U 452  ]
-"45
-[e :U 453 ]
-[e [\ _currentState , $ . `E4666 0 454
- , $ . `E4666 1 457
- , $ . `E4666 2 458
- , $ . `E4666 3 463
- , $ . `E4666 4 468
- 452 ]
+"97
+[e ++ _i -> -> 1 `i `uc ]
+[e :U 460 ]
+[e $ <= -> _i `i + -> *U + &U _progMemRange * -> -> -> 1 `i `ui `ux -> -> # *U &U _progMemRange `ui `ux `i -> 1 `i 457  ]
+[e :U 458 ]
+"99
+}
+[; ;main.c: 99: }
+[; ;main.c: 100: uart_rxbuffer_counter = 0;
+"100
+[e = _uart_rxbuffer_counter -> -> 0 `i `uc ]
+[; ;main.c: 101: currentState = SYS_WAIT_FOR_START_CMND;
 "101
-[e :U 452 ]
+[e = _currentState -> . `E4667 0 `E4667 ]
 "102
 }
+[e :U 456 ]
+[; ;main.c: 102: }
+[; ;main.c: 103: break;
+"103
+[e $U 452  ]
+[; ;main.c: 105: case SYS_WAIT_FOR_START_CMND:
+"105
+[e :U 461 ]
+[; ;main.c: 106: if (!uart_rxbuffer_counter || (uart_rxbuffer [0] != SYS_START_CMND_FROM_PROGRMR)) {
+"106
+[e $ ! || ! != -> _uart_rxbuffer_counter `i -> -> -> 0 `i `uc `i != -> *U + &U _uart_rxbuffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _uart_rxbuffer `ui `ux `i -> . `E4675 0 `i 462  ]
+{
+[; ;main.c: 107: currentState = SYS_WAIT_FOR_START_CMND;
+"107
+[e = _currentState -> . `E4667 0 `E4667 ]
+"108
+}
+[; ;main.c: 108: } else {
+[e $U 463  ]
+[e :U 462 ]
+{
+[; ;main.c: 109: sendData__UART(SYS_READY_FOR_FIRMWARE_HEADER);
+"109
+[e ( _sendData__UART (1 -> . `E4675 1 `uc ]
+[; ;main.c: 110: uart_rxbuffer_counter = 0;
+"110
+[e = _uart_rxbuffer_counter -> -> 0 `i `uc ]
+[; ;main.c: 111: currentState = SYS_RCV_FIRMWARE_HEADER;
+"111
+[e = _currentState -> . `E4667 2 `E4667 ]
+"112
+}
+[e :U 463 ]
+[; ;main.c: 112: }
+[; ;main.c: 113: break;
+"113
+[e $U 452  ]
+[; ;main.c: 115: case SYS_RCV_FIRMWARE_HEADER:
+"115
+[e :U 464 ]
+[; ;main.c: 116: if (uart_rxbuffer_counter < 3) {
+"116
+[e $ ! < -> _uart_rxbuffer_counter `i -> 3 `i 465  ]
+{
+[; ;main.c: 117: currentState = SYS_RCV_FIRMWARE_HEADER;
+"117
+[e = _currentState -> . `E4667 2 `E4667 ]
+"118
+}
+[; ;main.c: 118: } else {
+[e $U 466  ]
+[e :U 465 ]
+{
+[; ;main.c: 121: totalNumberOfPacckets = uart_rxbuffer[0];
+"121
+[e = _totalNumberOfPacckets *U + &U _uart_rxbuffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _uart_rxbuffer `ui `ux ]
+[; ;main.c: 124: applStartAdd += uart_rxbuffer[2];
+"124
+[e =+ _applStartAdd -> *U + &U _uart_rxbuffer * -> -> -> 2 `i `ui `ux -> -> # *U &U _uart_rxbuffer `ui `ux `us ]
+[; ;main.c: 125: applStartAdd = applStartAdd << 8;
+"125
+[e = _applStartAdd -> << -> _applStartAdd `ui -> 8 `i `us ]
+[; ;main.c: 126: applStartAdd += uart_rxbuffer[1];
+"126
+[e =+ _applStartAdd -> *U + &U _uart_rxbuffer * -> -> -> 1 `i `ui `ux -> -> # *U &U _uart_rxbuffer `ui `ux `us ]
+[; ;main.c: 128: uart_rxbuffer_counter = 0;
+"128
+[e = _uart_rxbuffer_counter -> -> 0 `i `uc ]
+[; ;main.c: 129: currentState = SYS_CONFIG_FLASH;
+"129
+[e = _currentState -> . `E4667 1 `E4667 ]
+"130
+}
+[e :U 466 ]
+[; ;main.c: 130: }
+[; ;main.c: 132: break;
+"132
+[e $U 452  ]
+[; ;main.c: 134: case SYS_CONFIG_FLASH:
+"134
+[e :U 467 ]
+[; ;main.c: 136: erasePage__Flash();
+"136
+[e ( _erasePage__Flash ..  ]
+[; ;main.c: 139: updateTablPtr__Flash();
+"139
+[e ( _updateTablPtr__Flash ..  ]
+[; ;main.c: 140: sendData__UART(SYS_FIRMWARE_HEADER_POS_ACK);
+"140
+[e ( _sendData__UART (1 -> . `E4675 2 `uc ]
+[; ;main.c: 141: currentState = SYS_FIRMWARE_UPDATE;
+"141
+[e = _currentState -> . `E4667 3 `E4667 ]
+[; ;main.c: 142: break;
+"142
+[e $U 452  ]
+[; ;main.c: 144: case SYS_FIRMWARE_UPDATE:
+"144
+[e :U 468 ]
+[; ;main.c: 145: if (uart_rxbuffer_counter < 64) {
+"145
+[e $ ! < -> _uart_rxbuffer_counter `i -> 64 `i 469  ]
+{
+[; ;main.c: 146: currentState = SYS_FIRMWARE_UPDATE;
+"146
+[e = _currentState -> . `E4667 3 `E4667 ]
+"147
+}
+[; ;main.c: 147: } else {
+[e $U 470  ]
+[e :U 469 ]
+{
+[; ;main.c: 148: uart_rxbuffer_counter = 0;
+"148
+[e = _uart_rxbuffer_counter -> -> 0 `i `uc ]
+[; ;main.c: 151: updateFirmware__Flash();
+"151
+[e ( _updateFirmware__Flash ..  ]
+[; ;main.c: 152: if (--totalNumberOfPacckets > 0) {
+"152
+[e $ ! > -> =- _totalNumberOfPacckets -> -> 1 `i `uc `i -> 0 `i 471  ]
+{
+[; ;main.c: 153: sendData__UART(SYS_SND_NXT_CHUNK);
+"153
+[e ( _sendData__UART (1 -> . `E4675 4 `uc ]
+"154
+}
+[; ;main.c: 154: } else {
+[e $U 472  ]
+[e :U 471 ]
+{
+[; ;main.c: 155: currentState = SYS_RUN_APPLCN;
+"155
+[e = _currentState -> . `E4667 4 `E4667 ]
+"156
+}
+[e :U 472 ]
+"157
+}
+[e :U 470 ]
+[; ;main.c: 156: }
+[; ;main.c: 157: }
+[; ;main.c: 158: break;
+"158
+[e $U 452  ]
+[; ;main.c: 160: case SYS_RUN_APPLCN:
+"160
+[e :U 473 ]
+[; ;main.c: 161: uart_rxbuffer_counter = 0;
+"161
+[e = _uart_rxbuffer_counter -> -> 0 `i `uc ]
+[; ;main.c: 163: runApplcn();
+"163
+[e ( _runApplcn ..  ]
+[; ;main.c: 164: currentState = SYS_WAIT_FOR_START_CMND;
+"164
+[e = _currentState -> . `E4667 0 `E4667 ]
+[; ;main.c: 165: break;
+"165
+[e $U 452  ]
+"166
+}
+[; ;main.c: 166: }
+[e $U 452  ]
+"89
+[e :U 453 ]
+[e [\ _currentState , $ -> . `E4667 5 `E4667 454
+ , $ -> . `E4667 0 `E4667 461
+ , $ -> . `E4667 2 `E4667 464
+ , $ -> . `E4667 1 `E4667 467
+ , $ -> . `E4667 3 `E4667 468
+ , $ -> . `E4667 4 `E4667 473
+ 452 ]
+"166
+[e :U 452 ]
+"167
+}
 [e :U 449 ]
-"44
+"88
 [e $U 450  ]
 [e :U 451 ]
-[; ;main.c: 102: }
-[; ;main.c: 103: }
-"103
+[; ;main.c: 167: }
+[; ;main.c: 168: }
+"168
 [e :UE 448 ]
 }

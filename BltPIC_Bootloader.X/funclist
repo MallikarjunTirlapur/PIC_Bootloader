@@ -1,14 +1,12 @@
-_initVarConfigPort: CODE, 868 0 26
-_runApplcn: CODE, 748 0 34
-_memset: CODE, 704 0 44
-_updateFirmware__Flash: CODE, 446 0 146
-_main: CODE, 894 0 16
-_runStateMachine: CODE, 164 0 282
-_driverConfig__UART: CODE, 782 0 30
-__initialization: CODE, 812 0 18
-_eraseSeq__Flash: CODE, 840 0 28
+_initVarConfigPort: CODE, 878 0 18
+_runApplcn: CODE, 814 0 34
+_updateFirmware__Flash: CODE, 524 0 146
+_main: CODE, 896 0 16
+_runStateMachine: CODE, 164 0 360
+_erasePage__Flash: CODE, 670 0 82
+_driverConfig__UART: CODE, 848 0 30
+__initialization: CODE, 752 0 52
 _InterruptHandlerHigh: CODE, 8 0 152
-_memcmp: CODE, 592 0 112
-_sendData__UART: CODE, 924 0 10
-_updateTablPtr__Flash: CODE, 910 0 14
-Total: 912
+_sendData__UART: CODE, 936 0 10
+_updateTablPtr__Flash: CODE, 912 0 14
+Total: 914

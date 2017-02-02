@@ -3,12 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/G:/embedded/PIC_Bootloader/BltPIC_Bootloader.X/UARTDriver.h</file>
-            <file>file:/G:/embedded/PIC_Bootloader/BltPIC_Bootloader.X/FlashDriver.h</file>
-            <file>file:/G:/embedded/PIC_Bootloader/BltPIC_Bootloader.X/UARTDriver.c</file>
-            <file>file:/G:/embedded/PIC_Bootloader/BltPIC_Bootloader.X/main.c</file>
-            <file>file:/G:/embedded/PIC_Bootloader/BltPIC_Bootloader.X/FlashDriver.c</file>
-            <file>file:/G:/embedded/PIC_Bootloader/BltPIC_Bootloader.X/system.h</file>
+            <file>file:/G:/embedded/misc/PIC_Bootloader/BltPIC_Bootloader.X/FlashDriver.h</file>
+            <file>file:/G:/embedded/misc/PIC_Bootloader/BltPIC_Bootloader.X/main.c</file>
+            <file>file:/G:/embedded/misc/PIC_Bootloader/BltPIC_Bootloader.X/FlashDriver.c</file>
+            <file>file:/G:/embedded/misc/PIC_Bootloader/BltPIC_Bootloader.X/UARTDriver.c</file>
+            <file>file:/G:/embedded/misc/PIC_Bootloader/BltPIC_Bootloader.X/system.h</file>
+            <file>file:/G:/embedded/misc/PIC_Bootloader/BltPIC_Bootloader.X/UARTDriver.h</file>
         </group>
     </open-files>
 </project-private>
