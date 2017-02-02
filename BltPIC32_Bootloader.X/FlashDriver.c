@@ -43,8 +43,6 @@
  *
  * Created on 29 Aug, 2016, 1:34 PM
  */
-
-
 #include "FlashDriver.h"
 #include "UARTDriver.h"
 #include "GenericTypeDefs.h"
@@ -58,10 +56,6 @@ const uint_t countPerMicroSec = ((SYS_FREQ/1000000)/2);
 uint32_t rowCnt    = 0;
 uint32_t rowAddr   = 0;
 uint32_t rowOffset = 0;
-
-
-
-
 
 /********************************************************************
 * Function: 	delay_us()
